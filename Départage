@@ -1,4 +1,3 @@
-Répartition en trois parties
 Partie 1: Base de données et infrastructure
 Responsabilités:
 
@@ -10,6 +9,9 @@ Volet 3: Parcours des équipements d'une caserne (mode déconnecté)
 Structure de base de l'interface utilisateur (menu principal, navigation)
 
 Justification: Cette partie pose les fondations du projet sur lesquelles les autres parties s'appuieront. Le volet 3 est relativement autonome et utilise le concept de liaison de données sans accès à la base de données.
+
+
+
 Partie 2: Gestion des missions
 Responsabilités:
 
@@ -21,6 +23,9 @@ Génération de PDF de bilan de mission
 Gestion du mode déconnecté/connecté pour les missions
 
 Justification: Cette partie constitue le cœur fonctionnel de l'application avec les algorithmes d'affectation les plus complexes. Elle forme un ensemble cohérent autour de la gestion des missions.
+
+
+
 Partie 3: Gestion du personnel et statistiques
 Responsabilités:
 
