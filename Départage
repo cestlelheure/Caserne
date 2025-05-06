@@ -1,14 +1,18 @@
-Partie 1: Base de données et infrastructure
+Partie 1: Interface principale et gestion des équipements
 Responsabilités:
 
-Configuration de la base de données SQLite "SDIS67.db"
-Classe Connexion.cs pour la gestion de la connexion à la BD
-Classe mesDatas.cs pour partager le DataSet entre les formulaires
-Modèles de données et mapping avec les tables de la BD
+Structure principale de l'interface utilisateur (formulaire de démarrage)
 Volet 3: Parcours des équipements d'une caserne (mode déconnecté)
-Structure de base de l'interface utilisateur (menu principal, navigation)
 
-Justification: Cette partie pose les fondations du projet sur lesquelles les autres parties s'appuieront. Le volet 3 est relativement autonome et utilise le concept de liaison de données sans accès à la base de données.
+Implémentation de la visualisation 1 à 1 des engins
+Navigation avant/arrière en utilisant les liaisons de données
+Affichage de l'état des engins (en réparation/en mission)
+
+
+Intégration des classes existantes (Connexion, MesDatas)
+Gestion du mode déconnecté/connecté pour l'ensemble de l'application
+
+Justification: Cette partie permet de mettre en place l'architecture globale de l'application tout en développant le volet 3 qui est relativement indépendant. Elle servira de base pour les autres parties.
 
 
 
@@ -16,24 +20,42 @@ Partie 2: Gestion des missions
 Responsabilités:
 
 Volet 1: Tableau de bord des missions en cours
-Volet 2: Création d'une nouvelle mission et affectation
-Algorithme d'affectation du personnel selon disponibilité et habilitations
-Algorithme de sélection de caserne selon disponibilité des engins
-Génération de PDF de bilan de mission
-Gestion du mode déconnecté/connecté pour les missions
 
-Justification: Cette partie constitue le cœur fonctionnel de l'application avec les algorithmes d'affectation les plus complexes. Elle forme un ensemble cohérent autour de la gestion des missions.
+Affichage des missions en cours/passées
+Interface pour la clôture rapide des missions
+
+
+Volet 2: Création d'une nouvelle mission
+
+Interface de création des missions
+Algorithme d'affectation des engins selon le type de sinistre
+Algorithme d'affectation du personnel selon disponibilité et habilitations
+Gestion des casernes alternatives si équipement non disponible
+
+
+Génération des PDF de bilan de mission
+
+Justification: Cette partie constitue toujours le cœur fonctionnel de l'application avec les algorithmes les plus complexes. L'implémentation de ces volets forme un ensemble cohérent autour du cycle de vie des missions.
 
 
 
 Partie 3: Gestion du personnel et statistiques
 Responsabilités:
 
-Volet 4: Gestion des pompiers (consultation, mise à jour)
-Système d'authentification et gestion des droits d'administration
-Gestion des transactions pour les modifications de données
-Volet 5: Statistiques pour le régulateur
-Requêtes SQL pour les rapports statistiques
-Interface utilisateur pour la visualisation des statistiques
+Volet 4: Gestion des pompiers
 
-Justification: Cette partie rassemble les fonctionnalités d'administration et d'analyse. La gestion du personnel et les statistiques partagent des compétences similaires (SQL avancé, transactions).
+Interface de consultation/modification des données des pompiers
+Gestion des droits d'administration pour les modifications
+Implémentation des transactions pour les mises à jour
+Gestion des affectations, grades et congés
+
+
+Volet 5: Statistiques pour le régulateur
+
+Requêtes SQL pour les différentes statistiques demandées
+Interface utilisateur pour la visualisation des statistiques
+Rapports par caserne et pour l'ensemble des casernes
+
+
+
+Justification: Cette partie conserve les fonctionnalités d'administration et d'analyse qui forment un ensemble cohérent.
