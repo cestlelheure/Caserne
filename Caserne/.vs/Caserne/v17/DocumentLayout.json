@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\arthu\\OneDrive\\Bureau\\COURS\\D21\\Caserne\\",
+  "WorkspaceRootPath": "C:\\Users\\arthu\\A21\\Caserne\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\onedrive\\bureau\\cours\\d21\\caserne\\caserne\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\a21\\caserne\\caserne\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:caserne\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -24,9 +24,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\arthu\\OneDrive\\Bureau\\COURS\\D21\\Caserne\\Caserne\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs",
               "RelativeDocumentMoniker": "Caserne\\Form1.cs",
-              "ToolTip": "C:\\Users\\arthu\\OneDrive\\Bureau\\COURS\\D21\\Caserne\\Caserne\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs [Design]",
               "RelativeToolTip": "Caserne\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T14:55:39.237Z",
