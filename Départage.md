@@ -1,61 +1,68 @@
-Partie 1: Interface principale et gestion des équipements
-Responsabilités:
+# Répartition du travail – SAÉ 2.04 « Les soldats du feu »
 
-Structure principale de l'interface utilisateur (formulaire de démarrage)
-Volet 3: Parcours des équipements d'une caserne (mode déconnecté)
+## Contexte
+La base de données `SDIS67.db`, ainsi que les classes `Connexion.cs` et `mesDatas.cs`, sont déjà fournies et prêtes à l'emploi. Le projet est développé en trinôme et consiste à implémenter les différents volets de l'application de gestion des casernes.
 
-Implémentation de la visualisation 1 à 1 des engins
-Navigation avant/arrière en utilisant les liaisons de données
-Affichage de l'état des engins (en réparation/en mission)
+---
 
+## Andy 1 – **Missions (Volet 1 & 2)**
 
-Intégration des classes existantes (Connexion, MesDatas)
-Gestion du mode déconnecté/connecté pour l'ensemble de l'application
+### Volet 1 : Tableau de bord des missions
+- Affichage des missions en cours / passées via le `DataSet`.
+- Clôture des missions au retour des pompiers.
+- Génération de PDF récapitulatif des missions (à partir du DataSet local).
 
-Justification: Cette partie permet de mettre en place l'architecture globale de l'application tout en développant le volet 3 qui est relativement indépendant. Elle servira de base pour les autres parties.
+### Volet 2 : Création d'une nouvelle mission
+- Formulaire de création en mode déconnecté.
+- Sélection automatique des engins et pompiers disponibles selon sinistre.
+- Attribution intelligente à la caserne la mieux équipée.
+- Répercussion en base au moment de la clôture.
 
+**Technologies :** WinForms/WPF, DataGridView ou UserControl, PDF, DataSet
 
+---
 
-Partie 2: Gestion des missions
-Responsabilités:
+## Arthur – **Matériel et Statistiques (Volet 3 & 5)**
 
-Volet 1: Tableau de bord des missions en cours
+### Volet 3 : Parcours des équipements
+- Visualisation 1 à 1 des engins d'une caserne.
+- Navigation avant/arrière.
+- Affichage de l'état (en réparation / en mission).
+- Liaison de données (sans accès direct à la base).
 
-Affichage des missions en cours/passées
-Interface pour la clôture rapide des missions
+### Volet 5 : Statistiques régulateur
+- Requêtes SQL pour :
+  - Engins les plus utilisés.
+  - Heures d’utilisation cumulées.
+  - Interventions par type de sinistre.
+  - Habilitations les plus sollicitées.
+  - Liste des pompiers par habilitation (y compris habilitations sans pompiers).
+- Présentation des résultats (tableaux, graphiques...).
 
+**Technologies :** Liaison DataSet, SQL, Visualisation de données
 
-Volet 2: Création d'une nouvelle mission
+---
 
-Interface de création des missions
-Algorithme d'affectation des engins selon le type de sinistre
-Algorithme d'affectation du personnel selon disponibilité et habilitations
-Gestion des casernes alternatives si équipement non disponible
+## Adrien – **Gestion du personnel (Volet 4) + UI globale**
 
+### Volet 4 : Gestion des pompiers
+- Consultation / modification des pompiers.
+- Gestion des affectations, grades, congés, habilitations.
+- Ajout de nouveaux pompiers.
+- Vérification des droits via la table `Admin`.
+- Utilisation de transactions pour sécuriser les modifications.
 
-Génération des PDF de bilan de mission
+### Interface et ergonomie
+- Design global de l’application.
+- Navigation entre les volets.
+- Uniformisation de l’interface graphique.
 
-Justification: Cette partie constitue toujours le cœur fonctionnel de l'application avec les algorithmes les plus complexes. L'implémentation de ces volets forme un ensemble cohérent autour du cycle de vie des missions.
+**Technologies :** SQL (mode connecté), Transactions, Design UI
 
+---
 
+## Travail commun
+- Définition partagée des classes métiers (`Pompier`, `Mission`, `Engin`…).
+- Intégration et tests finaux.
+- Préparation de la soutenance et du rapport de présentation.
 
-Partie 3: Gestion du personnel et statistiques
-Responsabilités:
-
-Volet 4: Gestion des pompiers
-
-Interface de consultation/modification des données des pompiers
-Gestion des droits d'administration pour les modifications
-Implémentation des transactions pour les mises à jour
-Gestion des affectations, grades et congés
-
-
-Volet 5: Statistiques pour le régulateur
-
-Requêtes SQL pour les différentes statistiques demandées
-Interface utilisateur pour la visualisation des statistiques
-Rapports par caserne et pour l'ensemble des casernes
-
-
-
-Justification: Cette partie conserve les fonctionnalités d'administration et d'analyse qui forment un ensemble cohérent.
