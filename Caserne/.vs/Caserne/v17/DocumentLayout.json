@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\arthu\\A21\\Caserne\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\a21\\caserne\\caserne\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:caserne\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\a21\\caserne\\caserne\\formparcoursengins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:caserne\\formparcoursengins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:Caserne\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\a21\\caserne\\caserne\\formparcoursengins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:caserne\\formparcoursengins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|c:\\users\\arthu\\a21\\caserne\\caserne\\formparcoursengins.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93A3AD11-F964-4A87-8B91-DB1C17817DA5}|Caserne\\Caserne.csproj|solutionrelative:caserne\\formparcoursengins.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,27 +30,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs",
-              "RelativeDocumentMoniker": "Caserne\\Form1.cs",
-              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs",
-              "RelativeToolTip": "Caserne\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FormParcoursEngins.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.Designer.cs",
+              "RelativeDocumentMoniker": "Caserne\\FormParcoursEngins.Designer.cs",
+              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.Designer.cs",
+              "RelativeToolTip": "Caserne\\FormParcoursEngins.Designer.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAcwFcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:43:25.888Z",
+              "WhenOpened": "2025-05-09T07:17:52.64Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs",
-              "RelativeDocumentMoniker": "Caserne\\Form1.cs",
-              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\Form1.cs [Design]",
-              "RelativeToolTip": "Caserne\\Form1.cs [Design]",
+              "Title": "FormParcoursEngins.cs",
+              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.cs",
+              "RelativeDocumentMoniker": "Caserne\\FormParcoursEngins.cs",
+              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.cs",
+              "RelativeToolTip": "Caserne\\FormParcoursEngins.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwCEAAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T14:55:39.237Z",
+              "WhenOpened": "2025-05-09T07:17:48.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormParcoursEngins.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.cs",
+              "RelativeDocumentMoniker": "Caserne\\FormParcoursEngins.cs",
+              "ToolTip": "C:\\Users\\arthu\\A21\\Caserne\\Caserne\\FormParcoursEngins.cs [Design]",
+              "RelativeToolTip": "Caserne\\FormParcoursEngins.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T07:07:40.838Z",
               "EditorCaption": " [Design]"
             }
           ]
