@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pinpon
+namespace Caserne
 {
 	// Classe basée sur le pattern Singleton pour s'assurer que la connexion n'est ouverte qu'une seule fois
     internal class Connexion
