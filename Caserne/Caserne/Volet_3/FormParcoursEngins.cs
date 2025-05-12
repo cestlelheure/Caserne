@@ -7,57 +7,97 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.IO;
 
 namespace Caserne
 {
     public partial class FormParcoursEngins : Form
     {
-        private BindingSource bsEngins = new BindingSource();
-
         public FormParcoursEngins()
         {
             InitializeComponent();
-            // Charger les casernes dans la ComboBox
-            LoadCasernes();
-            // Initialisation des événements
-            cmbCaserne.SelectedIndexChanged += CmbCaserne_SelectedIndexChanged;
-            bttnPrecedent.Click += bttnPrecedent_Click;
-            bttnSuivant.Click += bttnSuivant_Click;
+            ChargerCasernes();
         }
 
-        private void LoadCasernes()
+        private void ChargerCasernes()
         {
-            // Récupère la liste des casernes
-            var dt = new DataTable();
-            using (var cmd = new SQLiteCommand("SELECT deptno AS Id, dname AS Nom FROM dept", Connexion.Connec))
-            using (var da = new SQLiteDataAdapter(cmd))
+            try
             {
-                da.Fill(dt);
+                // Récupération de la connexion via le Singleton
+                SQLiteConnection connection = Connexion.Connec;
+
+                string requete = "SELECT nom FROM Caserne";
+                SQLiteCommand command = new SQLiteCommand(requete, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbChoixCaserne.Items.Add(reader["nom"].ToString());
+                }
+
+                reader.Close(); 
             }
-            cmbCaserne.DisplayMember = "Nom";
-            cmbCaserne.ValueMember = "Id";
-            cmbCaserne.DataSource = dt;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des casernes : " + ex.Message);
+            }
         }
 
-        private void CmbCaserne_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChoixCaserne_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (cmbCaserne.SelectedValue == null) return;
-            int caserneId = (int)cmbCaserne.SelectedValue;
-            LoadEngins(caserneId);
+            // Récupérer le nom de la caserne sélectionnée
+            string caserneNom = cmbChoixCaserne.SelectedItem.ToString();
+            // Charger les engins associés à cette caserne
+            ChargerEnginsParCaserne(caserneNom);
         }
 
-        private void bttnPrecedent_Click(object sender, EventArgs e)
+        private void ChargerEnginsParCaserne(string caserneNom)
         {
-            if (bsEngins.Position > 0)
-                bsEngins.MovePrevious();
-        }
+            try
+            {
+                // Récupérer la connexion
+                SQLiteConnection connection = Connexion.Connec;
 
-        private void bttnSuivant_Click(object sender, EventArgs e)
-        {
-            if (bsEngins.Position < bsEngins.Count - 1)
-                bsEngins.MoveNext();
+                // Préparer la requête SQL avec une jointure entre Engin et Caserne
+                string requete = @"
+                    SELECT e.codeTypeEngin, e.numero, e.dateReception, e.idCaserne
+                    FROM Engin e
+                    INNER JOIN Caserne c ON e.idCaserne = c.id
+                    WHERE c.nom = @caserneNom;
+                ";
+
+                SQLiteCommand command = new SQLiteCommand(requete, connection);
+                command.Parameters.AddWithValue("@caserneNom", caserneNom);  // Remplacer avec le nom de la caserne sélectionnée
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                // S'assurer que la GroupBox contient déjà des Label pour afficher les données
+                if (reader.HasRows)
+                {
+                    // Récupérer les premières données et les afficher dans les Labels
+                    reader.Read();  // Lire la première ligne de résultat
+
+                    // Mettre à jour les labels existants avec les données de la base
+                    lblNumero.Text = reader["idCaserne"].ToString() + 
+                        " - " +
+                        reader["codeTypeEngin"].ToString() +
+                        " - " +
+                        reader["numero"].ToString();
+                    lblDate.Text = "Date de Réception: " + Convert.ToDateTime(reader["dateReception"]).ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    // Si aucune donnée n'est trouvée
+                    MessageBox.Show("Aucun engin trouvé pour la caserne spécifiée.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération des engins : " + ex.Message);
+            }
         }
     }
 }
