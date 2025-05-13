@@ -2,7 +2,7 @@
 
 namespace Caserne
 {
-    partial class Form1
+    partial class FrmTableauBord
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -19,41 +19,30 @@ namespace Caserne
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTableauBord));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.picQuitter = new System.Windows.Forms.PictureBox();
+            this.picStat = new System.Windows.Forms.PictureBox();
+            this.picPerso = new System.Windows.Forms.PictureBox();
+            this.picEng = new System.Windows.Forms.PictureBox();
+            this.picMenu = new System.Windows.Forms.PictureBox();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
             this.btnPersonnel = new System.Windows.Forms.Button();
             this.btnEngins = new System.Windows.Forms.Button();
             this.btnTableauDeBord = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.btnMission = new System.Windows.Forms.Button();
             this.lblTitre = new System.Windows.Forms.Label();
             this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.flowMissions = new System.Windows.Forms.FlowLayoutPanel();
-            this.missionPanel = new System.Windows.Forms.Panel();
-            this.lblID = new System.Windows.Forms.Label();
-            this.lblDesc = new System.Windows.Forms.Label();
-            this.pic1 = new System.Windows.Forms.PictureBox();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.picture1 = new System.Windows.Forms.PictureBox();
-            this.picMenu = new System.Windows.Forms.PictureBox();
-            this.picEng = new System.Windows.Forms.PictureBox();
-            this.picPerso = new System.Windows.Forms.PictureBox();
-            this.picStat = new System.Windows.Forms.PictureBox();
-            this.picQuitter = new System.Windows.Forms.PictureBox();
-            this.btnMission = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
-            this.panelMain.SuspendLayout();
-            this.flowMissions.SuspendLayout();
-            this.missionPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEng)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPerso)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEng)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
+            this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -74,6 +63,48 @@ namespace Caserne
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(380, 673);
             this.panelMenu.TabIndex = 1;
+            // 
+            // picQuitter
+            // 
+            this.picQuitter.Image = ((System.Drawing.Image)(resources.GetObject("picQuitter.Image")));
+            this.picQuitter.Location = new System.Drawing.Point(12, 581);
+            this.picQuitter.Name = "picQuitter";
+            this.picQuitter.Size = new System.Drawing.Size(80, 80);
+            this.picQuitter.TabIndex = 10;
+            this.picQuitter.TabStop = false;
+            // 
+            // picStat
+            // 
+            this.picStat.Image = ((System.Drawing.Image)(resources.GetObject("picStat.Image")));
+            this.picStat.Location = new System.Drawing.Point(12, 273);
+            this.picStat.Name = "picStat";
+            this.picStat.Size = new System.Drawing.Size(75, 75);
+            this.picStat.TabIndex = 9;
+            this.picStat.TabStop = false;
+            // 
+            // picPerso
+            // 
+            this.picPerso.Location = new System.Drawing.Point(12, 186);
+            this.picPerso.Name = "picPerso";
+            this.picPerso.Size = new System.Drawing.Size(75, 75);
+            this.picPerso.TabIndex = 8;
+            this.picPerso.TabStop = false;
+            // 
+            // picEng
+            // 
+            this.picEng.Location = new System.Drawing.Point(12, 97);
+            this.picEng.Name = "picEng";
+            this.picEng.Size = new System.Drawing.Size(75, 75);
+            this.picEng.TabIndex = 7;
+            this.picEng.TabStop = false;
+            // 
+            // picMenu
+            // 
+            this.picMenu.Location = new System.Drawing.Point(12, 8);
+            this.picMenu.Name = "picMenu";
+            this.picMenu.Size = new System.Drawing.Size(75, 75);
+            this.picMenu.TabIndex = 6;
+            this.picMenu.TabStop = false;
             // 
             // btnQuitter
             // 
@@ -143,6 +174,16 @@ namespace Caserne
             this.panelMain.Size = new System.Drawing.Size(882, 673);
             this.panelMain.TabIndex = 0;
             // 
+            // btnMission
+            // 
+            this.btnMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMission.Location = new System.Drawing.Point(573, 8);
+            this.btnMission.Name = "btnMission";
+            this.btnMission.Size = new System.Drawing.Size(290, 97);
+            this.btnMission.TabIndex = 3;
+            this.btnMission.Text = "Nouvelle mission";
+            this.btnMission.UseVisualStyleBackColor = true;
+            // 
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
@@ -166,156 +207,29 @@ namespace Caserne
             // flowMissions
             // 
             this.flowMissions.AutoScroll = true;
-            this.flowMissions.Controls.Add(this.missionPanel);
+            this.flowMissions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowMissions.Location = new System.Drawing.Point(6, 111);
             this.flowMissions.Name = "flowMissions";
-            this.flowMissions.Size = new System.Drawing.Size(864, 550);
+            this.flowMissions.Size = new System.Drawing.Size(857, 550);
             this.flowMissions.TabIndex = 2;
+            this.flowMissions.WrapContents = false;
             // 
-            // missionPanel
-            // 
-            this.missionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.missionPanel.Controls.Add(this.picture1);
-            this.missionPanel.Controls.Add(this.label1);
-            this.missionPanel.Controls.Add(this.lblDate);
-            this.missionPanel.Controls.Add(this.lblID);
-            this.missionPanel.Controls.Add(this.lblDesc);
-            this.missionPanel.Controls.Add(this.pic1);
-            this.missionPanel.Location = new System.Drawing.Point(10, 10);
-            this.missionPanel.Margin = new System.Windows.Forms.Padding(10);
-            this.missionPanel.Name = "missionPanel";
-            this.missionPanel.Size = new System.Drawing.Size(847, 110);
-            this.missionPanel.TabIndex = 0;
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(113, 3);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(104, 24);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "Id mission :";
-            // 
-            // lblDesc
-            // 
-            this.lblDesc.AutoSize = true;
-            this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesc.Location = new System.Drawing.Point(508, 56);
-            this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(152, 24);
-            this.lblDesc.TabIndex = 1;
-            this.lblDesc.Text = "--> Description ...";
-            // 
-            // pic1
-            // 
-            this.pic1.Location = new System.Drawing.Point(3, 133);
-            this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(100, 50);
-            this.pic1.TabIndex = 2;
-            this.pic1.TabStop = false;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(306, 3);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(85, 24);
-            this.lblDate.TabIndex = 3;
-            this.lblDate.Text = "Debut le ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(479, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 24);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Caserne : ";
-            // 
-            // picture1
-            // 
-            this.picture1.Image = ((System.Drawing.Image)(resources.GetObject("picture1.Image")));
-            this.picture1.Location = new System.Drawing.Point(3, 3);
-            this.picture1.Name = "picture1";
-            this.picture1.Size = new System.Drawing.Size(104, 102);
-            this.picture1.TabIndex = 5;
-            this.picture1.TabStop = false;
-            // 
-            // picMenu
-            // 
-            this.picMenu.Location = new System.Drawing.Point(12, 8);
-            this.picMenu.Name = "picMenu";
-            this.picMenu.Size = new System.Drawing.Size(75, 75);
-            this.picMenu.TabIndex = 6;
-            this.picMenu.TabStop = false;
-            // 
-            // picEng
-            // 
-            this.picEng.Location = new System.Drawing.Point(12, 97);
-            this.picEng.Name = "picEng";
-            this.picEng.Size = new System.Drawing.Size(75, 75);
-            this.picEng.TabIndex = 7;
-            this.picEng.TabStop = false;
-            // 
-            // picPerso
-            // 
-            this.picPerso.Location = new System.Drawing.Point(12, 186);
-            this.picPerso.Name = "picPerso";
-            this.picPerso.Size = new System.Drawing.Size(75, 75);
-            this.picPerso.TabIndex = 8;
-            this.picPerso.TabStop = false;
-            // 
-            // picStat
-            // 
-            this.picStat.Image = ((System.Drawing.Image)(resources.GetObject("picStat.Image")));
-            this.picStat.Location = new System.Drawing.Point(12, 273);
-            this.picStat.Name = "picStat";
-            this.picStat.Size = new System.Drawing.Size(75, 75);
-            this.picStat.TabIndex = 9;
-            this.picStat.TabStop = false;
-            // 
-            // picQuitter
-            // 
-            this.picQuitter.Image = ((System.Drawing.Image)(resources.GetObject("picQuitter.Image")));
-            this.picQuitter.Location = new System.Drawing.Point(12, 581);
-            this.picQuitter.Name = "picQuitter";
-            this.picQuitter.Size = new System.Drawing.Size(80, 80);
-            this.picQuitter.TabIndex = 10;
-            this.picQuitter.TabStop = false;
-            // 
-            // btnMission
-            // 
-            this.btnMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMission.Location = new System.Drawing.Point(573, 8);
-            this.btnMission.Name = "btnMission";
-            this.btnMission.Size = new System.Drawing.Size(290, 97);
-            this.btnMission.TabIndex = 3;
-            this.btnMission.Text = "Nouvelle mission";
-            this.btnMission.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // FrmTableauBord
             // 
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelMenu);
-            this.Name = "Form1";
+            this.Name = "FrmTableauBord";
             this.Text = "Les soldats du feu";
+            this.Load += new System.EventHandler(this.FrmTableauBord_Load);
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEng)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
-            this.flowMissions.ResumeLayout(false);
-            this.missionPanel.ResumeLayout(false);
-            this.missionPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEng)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPerso)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,13 +246,6 @@ namespace Caserne
         private System.Windows.Forms.Label lblTitre;
         private System.Windows.Forms.CheckBox chkEnCours;
         private System.Windows.Forms.FlowLayoutPanel flowMissions;
-        private Panel missionPanel;
-        private Label lblID;
-        private Label lblDesc;
-        private PictureBox pic1;
-        private PictureBox picture1;
-        private Label label1;
-        private Label lblDate;
         private PictureBox picQuitter;
         private PictureBox picStat;
         private PictureBox picPerso;
