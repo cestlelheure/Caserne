@@ -40,6 +40,12 @@ namespace Caserne
             get => lblDesc.Text;
             set => lblDesc.Text = "--> " + value;
         }
+
+        public string NatureSinistre
+        {
+            get => lblNature.Text;
+            set => lblNature.Text = value;
+        }
     }
 
 }

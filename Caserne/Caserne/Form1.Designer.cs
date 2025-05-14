@@ -36,6 +36,7 @@ namespace Caserne
             this.lblTitre = new System.Windows.Forms.Label();
             this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.flowMissions = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStat)).BeginInit();
@@ -43,11 +44,13 @@ namespace Caserne
             ((System.ComponentModel.ISupportInitialize)(this.picEng)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.IndianRed;
+            this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Controls.Add(this.picQuitter);
             this.panelMenu.Controls.Add(this.picStat);
             this.panelMenu.Controls.Add(this.picPerso);
@@ -116,6 +119,7 @@ namespace Caserne
             this.btnQuitter.Size = new System.Drawing.Size(380, 106);
             this.btnQuitter.TabIndex = 0;
             this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // btnStats
             // 
@@ -190,7 +194,7 @@ namespace Caserne
             this.lblTitre.Font = new System.Drawing.Font("Arial", 21F, System.Drawing.FontStyle.Bold);
             this.lblTitre.Location = new System.Drawing.Point(270, 20);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(280, 41);
+            this.lblTitre.Size = new System.Drawing.Size(232, 33);
             this.lblTitre.TabIndex = 0;
             this.lblTitre.Text = "Tableau de bord";
             // 
@@ -200,9 +204,10 @@ namespace Caserne
             this.chkEnCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEnCours.Location = new System.Drawing.Point(16, 12);
             this.chkEnCours.Name = "chkEnCours";
-            this.chkEnCours.Size = new System.Drawing.Size(108, 28);
+            this.chkEnCours.Size = new System.Drawing.Size(87, 22);
             this.chkEnCours.TabIndex = 1;
             this.chkEnCours.Text = "En cours";
+            this.chkEnCours.CheckedChanged += new System.EventHandler(this.chkEnCours_CheckedChanged);
             // 
             // flowMissions
             // 
@@ -214,11 +219,21 @@ namespace Caserne
             this.flowMissions.TabIndex = 2;
             this.flowMissions.WrapContents = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(88, 361);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmTableauBord
             // 
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTableauBord";
             this.Text = "Les soldats du feu";
             this.Load += new System.EventHandler(this.FrmTableauBord_Load);
@@ -230,6 +245,7 @@ namespace Caserne
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +268,6 @@ namespace Caserne
         private PictureBox picEng;
         private PictureBox picMenu;
         private Button btnMission;
+        private PictureBox pictureBox1;
     }
 }
