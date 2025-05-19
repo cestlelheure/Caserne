@@ -12,6 +12,8 @@ namespace Caserne
 {
     public partial class UcMission : UserControl
     {
+        public Button BtnTerminer => btnTerminer;
+        public Button BtnPDF => btnPDF;
         public UcMission()
         {
             InitializeComponent();
@@ -47,5 +49,4 @@ namespace Caserne
             set => lblNature.Text = value;
         }
     }
-
 }

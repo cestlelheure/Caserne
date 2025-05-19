@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcMission));
             this.picture1 = new System.Windows.Forms.PictureBox();
             this.missionPanel = new System.Windows.Forms.Panel();
+            this.lblNature = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
             this.pic1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblNature = new System.Windows.Forms.Label();
+            this.btnPDF = new System.Windows.Forms.Button();
+            this.btnTerminer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picture1)).BeginInit();
             this.missionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
@@ -46,11 +45,11 @@
             // 
             // picture1
             // 
-            this.picture1.Image = ((System.Drawing.Image)(resources.GetObject("picture1.Image")));
+            this.picture1.Image = global::Caserne.Properties.Resources.sirene;
             this.picture1.Location = new System.Drawing.Point(-1, -1);
-            this.picture1.Margin = new System.Windows.Forms.Padding(2);
+            this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picture1.Name = "picture1";
-            this.picture1.Size = new System.Drawing.Size(102, 90);
+            this.picture1.Size = new System.Drawing.Size(136, 111);
             this.picture1.TabIndex = 5;
             this.picture1.TabStop = false;
             // 
@@ -64,20 +63,29 @@
             this.missionPanel.Controls.Add(this.lblID);
             this.missionPanel.Controls.Add(this.lblDesc);
             this.missionPanel.Controls.Add(this.pic1);
-            this.missionPanel.Location = new System.Drawing.Point(2, 8);
-            this.missionPanel.Margin = new System.Windows.Forms.Padding(8);
+            this.missionPanel.Location = new System.Drawing.Point(3, 10);
+            this.missionPanel.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.missionPanel.Name = "missionPanel";
-            this.missionPanel.Size = new System.Drawing.Size(770, 90);
+            this.missionPanel.Size = new System.Drawing.Size(1026, 110);
             this.missionPanel.TabIndex = 1;
+            // 
+            // lblNature
+            // 
+            this.lblNature.AutoSize = true;
+            this.lblNature.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNature.Location = new System.Drawing.Point(140, 60);
+            this.lblNature.Name = "lblNature";
+            this.lblNature.Size = new System.Drawing.Size(141, 24);
+            this.lblNature.TabIndex = 6;
+            this.lblNature.Text = "NatureSinistre";
             // 
             // lblCaserne
             // 
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCaserne.Location = new System.Drawing.Point(436, 2);
-            this.lblCaserne.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCaserne.Location = new System.Drawing.Point(581, 2);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(76, 18);
+            this.lblCaserne.Size = new System.Drawing.Size(96, 24);
             this.lblCaserne.TabIndex = 4;
             this.lblCaserne.Text = "Caserne : ";
             // 
@@ -85,10 +93,9 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(223, 2);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDate.Location = new System.Drawing.Point(297, 2);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(66, 18);
+            this.lblDate.Size = new System.Drawing.Size(85, 24);
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "Debut le ";
             // 
@@ -96,10 +103,9 @@
             // 
             this.lblID.AutoSize = true;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(105, 2);
-            this.lblID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblID.Location = new System.Drawing.Point(140, 2);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(83, 18);
+            this.lblID.Size = new System.Drawing.Size(104, 24);
             this.lblID.TabIndex = 0;
             this.lblID.Text = "Id mission :";
             // 
@@ -107,61 +113,49 @@
             // 
             this.lblDesc.AutoSize = true;
             this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesc.Location = new System.Drawing.Point(366, 49);
-            this.lblDesc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDesc.Location = new System.Drawing.Point(488, 60);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(122, 18);
+            this.lblDesc.Size = new System.Drawing.Size(152, 24);
             this.lblDesc.TabIndex = 1;
             this.lblDesc.Text = "--> Description ...";
             // 
             // pic1
             // 
-            this.pic1.Location = new System.Drawing.Point(2, 108);
-            this.pic1.Margin = new System.Windows.Forms.Padding(2);
+            this.pic1.Location = new System.Drawing.Point(3, 133);
+            this.pic1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(75, 41);
+            this.pic1.Size = new System.Drawing.Size(100, 50);
             this.pic1.TabIndex = 2;
             this.pic1.TabStop = false;
             // 
-            // button1
+            // btnPDF
             // 
-            this.button1.Location = new System.Drawing.Point(783, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPDF.Location = new System.Drawing.Point(1044, 10);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(53, 49);
+            this.btnPDF.TabIndex = 2;
+            this.btnPDF.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnTerminer
             // 
-            this.button2.Location = new System.Drawing.Point(783, 58);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 40);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // lblNature
-            // 
-            this.lblNature.AutoSize = true;
-            this.lblNature.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNature.Location = new System.Drawing.Point(105, 49);
-            this.lblNature.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNature.Name = "lblNature";
-            this.lblNature.Size = new System.Drawing.Size(115, 18);
-            this.lblNature.TabIndex = 6;
-            this.lblNature.Text = "NatureSinistre";
+            this.btnTerminer.Location = new System.Drawing.Point(1044, 71);
+            this.btnTerminer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTerminer.Name = "btnTerminer";
+            this.btnTerminer.Size = new System.Drawing.Size(53, 49);
+            this.btnTerminer.TabIndex = 3;
+            this.btnTerminer.UseVisualStyleBackColor = true;
             // 
             // UcMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnTerminer);
+            this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.missionPanel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UcMission";
-            this.Size = new System.Drawing.Size(851, 104);
+            this.Size = new System.Drawing.Size(1105, 128);
             ((System.ComponentModel.ISupportInitialize)(this.picture1)).EndInit();
             this.missionPanel.ResumeLayout(false);
             this.missionPanel.PerformLayout();
@@ -179,8 +173,8 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.PictureBox pic1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.Button btnTerminer;
         private System.Windows.Forms.Label lblNature;
     }
 }
