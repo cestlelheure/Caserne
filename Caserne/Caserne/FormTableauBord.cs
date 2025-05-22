@@ -13,10 +13,6 @@ namespace Caserne
 {
     public partial class FrmTableauBord : Form
     {
-        SQLiteConnection connec = new SQLiteConnection();
-        string chcon = @"Data Source=SDIS67.db";
-        DataSet ds = new DataSet();
-
         public FrmTableauBord()
         {
             InitializeComponent();
@@ -28,14 +24,11 @@ namespace Caserne
             {
                 chkEnCours_CheckedChanged(null, null);
 
-                connec.ConnectionString = chcon;
-                connec.Open();
-
                 ChargerMissions();
 
-                if (ds.Tables.Contains("Mission"))
+                if (MesDatas.DsGlobal.Tables.Contains("Mission"))
                 {
-                    AfficherMissions(ds.Tables["Mission"]);
+                    AfficherMissions(MesDatas.DsGlobal.Tables["Mission"]);
                 }
                 else
                 {
@@ -46,36 +39,44 @@ namespace Caserne
             {
                 MessageBox.Show("Erreur : " + ex.Message);
             }
-            finally
-            {
-                connec.Close();
-            }
         }
 
         private void ChargerMissions(bool enCours = false)
         {
-            string sql = @"
-        SELECT 
-            m.Id, 
-            m.DateHeureDepart, 
-            m.MotifAppel, 
-            c.Nom,
-            s.Libelle
-        FROM 
-            Mission m
-        JOIN Caserne c ON m.IdCaserne = c.Id
-        JOIN NatureSinistre s ON m.IdNatureSinistre = s.Id";
-
-            if (enCours)
+            try
             {
-                sql += " WHERE m.DateHeureRetour IS NULL";
+                string sql = @"
+            SELECT 
+                m.Id, 
+                m.DateHeureDepart, 
+                m.MotifAppel, 
+                c.Nom,
+                s.Libelle
+            FROM 
+                Mission m
+            JOIN Caserne c ON m.IdCaserne = c.Id
+            JOIN NatureSinistre s ON m.IdNatureSinistre = s.Id";
+
+                if (enCours)
+                {
+                    sql += " WHERE m.DateHeureRetour IS NULL";
+                }
+
+                SQLiteDataAdapter da = new SQLiteDataAdapter(sql, Connexion.Connec);
+
+                // Supprimer la table Mission existante si elle existe
+                if (MesDatas.DsGlobal.Tables.Contains("Mission"))
+                {
+                    MesDatas.DsGlobal.Tables.Remove("Mission");
+                }
+
+                da.Fill(MesDatas.DsGlobal, "Mission");
             }
-
-            SQLiteDataAdapter da = new SQLiteDataAdapter(sql, connec);
-            ds.Tables.Clear(); // Réinitialise le DataSet
-            da.Fill(ds, "Mission");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des missions : " + ex.Message);
+            }
         }
-
 
         private void AfficherMissions(DataTable dtMissions)
         {
@@ -83,7 +84,6 @@ namespace Caserne
 
             foreach (DataRow row in dtMissions.Rows)
             {
-                // Vérifiez cette partie dans votre méthode AfficherMissions
                 UcMission uc = new UcMission
                 {
                     IdMission = row["Id"].ToString(),
@@ -94,12 +94,10 @@ namespace Caserne
                     Width = flowMissions.ClientSize.Width - 25
                 };
 
-                // IMPORTANT: Assurez-vous que cette ligne assigne correctement l'ID brut et non pas le texte formaté
-                uc.BtnTerminer.Tag = row["Id"]; // Utilisez directement la valeur de la colonne Id
+                // Assigner l'ID de la mission au Tag du bouton
+                uc.BtnTerminer.Tag = row["Id"];
 
-                // Vous pourriez aussi vérifier la valeur du Tag avec un débogage ici:
-                // Console.WriteLine($"ID assigné au Tag: {uc.BtnTerminer.Tag}");
-
+                // Attacher l'événement Click
                 uc.BtnTerminer.Click += TerminerMission;
 
                 flowMissions.Controls.Add(uc);
@@ -117,6 +115,8 @@ namespace Caserne
 
             if (result == DialogResult.Yes)
             {
+                // Fermer proprement la connexion avant de quitter
+                Connexion.FermerConnexion();
                 Application.Exit();
             }
         }
@@ -125,24 +125,17 @@ namespace Caserne
         {
             try
             {
-                connec.ConnectionString = chcon;
-                connec.Open();
-
                 // Filtrer selon l'état de la checkbox
                 ChargerMissions(chkEnCours.Checked);
 
-                if (ds.Tables.Contains("Mission"))
+                if (MesDatas.DsGlobal.Tables.Contains("Mission"))
                 {
-                    AfficherMissions(ds.Tables["Mission"]);
+                    AfficherMissions(MesDatas.DsGlobal.Tables["Mission"]);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur : " + ex.Message);
-            }
-            finally
-            {
-                connec.Close();
             }
         }
 
@@ -167,13 +160,9 @@ namespace Caserne
 
                 if (result == DialogResult.Yes)
                 {
-                    // Ouvrir la connexion
-                    connec.ConnectionString = chcon;
-                    connec.Open();
-
                     // Vérifier si l'ID existe dans la base de données
                     string checkSql = "SELECT COUNT(*) FROM Mission WHERE Id = @Id";
-                    SQLiteCommand checkCmd = new SQLiteCommand(checkSql, connec);
+                    SQLiteCommand checkCmd = new SQLiteCommand(checkSql, Connexion.Connec);
                     checkCmd.Parameters.AddWithValue("@Id", idMission);
                     int count = Convert.ToInt32(checkCmd.ExecuteScalar());
 
@@ -185,7 +174,7 @@ namespace Caserne
 
                     // Vérifier si la mission n'est pas déjà terminée
                     string checkRetourSql = "SELECT DateHeureRetour FROM Mission WHERE Id = @Id";
-                    SQLiteCommand checkRetourCmd = new SQLiteCommand(checkRetourSql, connec);
+                    SQLiteCommand checkRetourCmd = new SQLiteCommand(checkRetourSql, Connexion.Connec);
                     checkRetourCmd.Parameters.AddWithValue("@Id", idMission);
                     object dateRetour = checkRetourCmd.ExecuteScalar();
 
@@ -197,7 +186,7 @@ namespace Caserne
 
                     // Préparer la commande SQL pour mettre à jour la date de retour
                     string sql = "UPDATE Mission SET DateHeureRetour = @DateHeureRetour WHERE Id = @Id";
-                    SQLiteCommand cmd = new SQLiteCommand(sql, connec);
+                    SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
 
                     // Paramètres
                     cmd.Parameters.AddWithValue("@DateHeureRetour", DateTime.Now);
@@ -212,9 +201,9 @@ namespace Caserne
 
                         // Recharger les missions pour mettre à jour l'affichage
                         ChargerMissions(chkEnCours.Checked);
-                        if (ds.Tables.Contains("Mission"))
+                        if (MesDatas.DsGlobal.Tables.Contains("Mission"))
                         {
-                            AfficherMissions(ds.Tables["Mission"]);
+                            AfficherMissions(MesDatas.DsGlobal.Tables["Mission"]);
                         }
                     }
                     else
@@ -227,21 +216,12 @@ namespace Caserne
             {
                 MessageBox.Show("Erreur lors de la terminaison de la mission : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                // Fermer la connexion
-                if (connec.State == ConnectionState.Open)
-                {
-                    connec.Close();
-                }
-            }
         }
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-
+            // À implémenter
         }
-
 
         private void btnEngins_Click(object sender, EventArgs e)
         {
@@ -252,13 +232,6 @@ namespace Caserne
 
                 // Afficher le formulaire
                 formEngins.Show();
-
-                // Alternative: Si vous voulez que le formulaire principal attende la fermeture du formulaire des engins
-                // formEngins.ShowDialog(this);
-
-                // Note: Utilisez Show() au lieu de ShowDialog() si vous voulez permettre à l'utilisateur
-                // d'interagir avec le formulaire principal pendant que FormParcoursEngins est ouvert
-                // formEngins.Show();
             }
             catch (Exception ex)
             {
@@ -267,6 +240,13 @@ namespace Caserne
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+
+        // Méthode pour nettoyer les ressources lors de la fermeture du formulaire
+        private void FrmTableauBord_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Optionnel : fermer la connexion si c'est le dernier formulaire
+            // Connexion.FermerConnexion();
         }
     }
 }
