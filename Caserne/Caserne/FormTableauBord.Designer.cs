@@ -72,10 +72,11 @@ namespace Caserne
             this.picQuitter.Size = new System.Drawing.Size(80, 80);
             this.picQuitter.TabIndex = 10;
             this.picQuitter.TabStop = false;
+            
             // 
             // picStat
             // 
-            this.picStat.Image = global::Caserne.Properties.Resources.stat;
+            //this.picStat.Image = global::Caserne.Properties.Resources.stat;
             this.picStat.Location = new System.Drawing.Point(12, 273);
             this.picStat.Name = "picStat";
             this.picStat.Size = new System.Drawing.Size(75, 75);

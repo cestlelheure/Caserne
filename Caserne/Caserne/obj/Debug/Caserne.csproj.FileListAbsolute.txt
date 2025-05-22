@@ -1,0 +1,17 @@
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.csproj.AssemblyReference.cache
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormCreationMission.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormGestionPompier.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormParcoursEngins.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FrmTableauBord.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.Properties.Resources.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.UcMission.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.csproj.GenerateResource.cache
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.csproj.CoreCompileInputs.cache
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\Caserne.exe.config
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\Caserne.exe
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\Caserne.pdb
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\System.Data.SQLite.dll
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\System.Data.SQLite.xml
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.csproj.Up2Date
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.exe
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.pdb

@@ -45,7 +45,7 @@
             // 
             // picture1
             // 
-            this.picture1.Image = global::Caserne.Properties.Resources.sirene;
+            //this.picture1.Image = global::Caserne.Properties.Resources.sirene;
             this.picture1.Location = new System.Drawing.Point(-1, -1);
             this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picture1.Name = "picture1";

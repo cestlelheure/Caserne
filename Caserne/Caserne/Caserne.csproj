@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93A3AD11-F964-4A87-8B91-DB1C17817DA5}</ProjectGuid>
+    <ProjectGuid>{14FAEF03-48F0-49D0-8FE2-97360647AB8C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Caserne</RootNamespace>
     <AssemblyName>Caserne</AssemblyName>
@@ -51,11 +51,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connexion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreationMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreationMission.Designer.cs">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGestionPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionPompier.Designer.cs">
+      <DependentUpon>FormGestionPompier.cs</DependentUpon>
     </Compile>
     <Compile Include="FormParcoursEngins.cs">
       <SubType>Form</SubType>
@@ -63,13 +76,33 @@
     <Compile Include="FormParcoursEngins.Designer.cs">
       <DependentUpon>FormParcoursEngins.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTableauBord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTableauBord.Designer.cs">
+      <DependentUpon>FormTableauBord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mesDatas.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UsMission.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsMission.Designer.cs">
+      <DependentUpon>UsMission.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormCreationMission.resx">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGestionPompier.resx">
+      <DependentUpon>FormGestionPompier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormParcoursEngins.resx">
       <DependentUpon>FormParcoursEngins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTableauBord.resx">
+      <DependentUpon>FormTableauBord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +113,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UsMission.resx">
+      <DependentUpon>UsMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\Images\Logo\Logo.webp" />
+    <None Include="obj\Debug\Caserne.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +133,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Images\FormParcoursEngins\Background.jfif" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\Background.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\fleche.jpg" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\fleche2.jpg" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\fleche_gauche.jfif" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\fleche_gauche.jpg" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\fleche_gauche.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\Fond.jfif" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\Fond.jpg" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\BRS.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\CCF.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\EPA.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\FCYN.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\FPT.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\VID.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\VPC.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\VSAV.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\VSR.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\ImagesEngins\VSS.png" />
+    <Content Include="bin\Debug\Images\FormParcoursEngins\Image_pompier.jpg" />
+    <Content Include="bin\Debug\Images\ImagesGrades\ADC.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\ADJ.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\CCH.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\CDT.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\CNE.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\COL.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\CPL.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\Grade Sapeurs pompiers.PNG" />
+    <Content Include="bin\Debug\Images\ImagesGrades\LCL.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\LTN.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\SAP.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\SAP1.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\SCH.png" />
+    <Content Include="bin\Debug\Images\ImagesGrades\SGT.png" />
+    <Content Include="bin\Debug\Images\Logo\Logo.ico" />
+    <Content Include="bin\Debug\Images\Logo\Logo.png" />
+    <Content Include="Resources\Fond.jpg" />
+    <Content Include="Resources\getout.png" />
+    <Content Include="Resources\sirene.jpg" />
+    <Content Include="Resources\stat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
