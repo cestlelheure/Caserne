@@ -21,11 +21,6 @@ namespace Caserne
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTableauBord));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.picQuitter = new System.Windows.Forms.PictureBox();
-            this.picStat = new System.Windows.Forms.PictureBox();
-            this.picPerso = new System.Windows.Forms.PictureBox();
-            this.picEng = new System.Windows.Forms.PictureBox();
-            this.picMenu = new System.Windows.Forms.PictureBox();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
             this.btnPersonnel = new System.Windows.Forms.Button();
@@ -36,13 +31,18 @@ namespace Caserne
             this.lblTitre = new System.Windows.Forms.Label();
             this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.flowMissions = new System.Windows.Forms.FlowLayoutPanel();
+            this.picQuitter = new System.Windows.Forms.PictureBox();
+            this.picStat = new System.Windows.Forms.PictureBox();
+            this.picPerso = new System.Windows.Forms.PictureBox();
+            this.picEng = new System.Windows.Forms.PictureBox();
+            this.picMenu = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
+            this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPerso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEng)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).BeginInit();
-            this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -63,49 +63,6 @@ namespace Caserne
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(380, 673);
             this.panelMenu.TabIndex = 1;
-            // 
-            // picQuitter
-            // 
-            //this.picQuitter.Image = global::Caserne.Properties.Resources.getout;
-            this.picQuitter.Location = new System.Drawing.Point(12, 581);
-            this.picQuitter.Name = "picQuitter";
-            this.picQuitter.Size = new System.Drawing.Size(80, 80);
-            this.picQuitter.TabIndex = 10;
-            this.picQuitter.TabStop = false;
-            
-            // 
-            // picStat
-            // 
-            //this.picStat.Image = global::Caserne.Properties.Resources.stat;
-            this.picStat.Location = new System.Drawing.Point(12, 273);
-            this.picStat.Name = "picStat";
-            this.picStat.Size = new System.Drawing.Size(75, 75);
-            this.picStat.TabIndex = 9;
-            this.picStat.TabStop = false;
-            // 
-            // picPerso
-            // 
-            this.picPerso.Location = new System.Drawing.Point(12, 186);
-            this.picPerso.Name = "picPerso";
-            this.picPerso.Size = new System.Drawing.Size(75, 75);
-            this.picPerso.TabIndex = 8;
-            this.picPerso.TabStop = false;
-            // 
-            // picEng
-            // 
-            this.picEng.Location = new System.Drawing.Point(12, 97);
-            this.picEng.Name = "picEng";
-            this.picEng.Size = new System.Drawing.Size(75, 75);
-            this.picEng.TabIndex = 7;
-            this.picEng.TabStop = false;
-            // 
-            // picMenu
-            // 
-            this.picMenu.Location = new System.Drawing.Point(12, 8);
-            this.picMenu.Name = "picMenu";
-            this.picMenu.Size = new System.Drawing.Size(75, 75);
-            this.picMenu.TabIndex = 6;
-            this.picMenu.TabStop = false;
             // 
             // btnQuitter
             // 
@@ -219,6 +176,48 @@ namespace Caserne
             this.flowMissions.TabIndex = 2;
             this.flowMissions.WrapContents = false;
             // 
+            // picQuitter
+            // 
+            this.picQuitter.Image = global::Caserne.Properties.Resources.getout;
+            this.picQuitter.Location = new System.Drawing.Point(12, 581);
+            this.picQuitter.Name = "picQuitter";
+            this.picQuitter.Size = new System.Drawing.Size(80, 80);
+            this.picQuitter.TabIndex = 10;
+            this.picQuitter.TabStop = false;
+            // 
+            // picStat
+            // 
+            this.picStat.Image = global::Caserne.Properties.Resources.stat;
+            this.picStat.Location = new System.Drawing.Point(12, 273);
+            this.picStat.Name = "picStat";
+            this.picStat.Size = new System.Drawing.Size(75, 75);
+            this.picStat.TabIndex = 9;
+            this.picStat.TabStop = false;
+            // 
+            // picPerso
+            // 
+            this.picPerso.Location = new System.Drawing.Point(12, 186);
+            this.picPerso.Name = "picPerso";
+            this.picPerso.Size = new System.Drawing.Size(75, 75);
+            this.picPerso.TabIndex = 8;
+            this.picPerso.TabStop = false;
+            // 
+            // picEng
+            // 
+            this.picEng.Location = new System.Drawing.Point(12, 97);
+            this.picEng.Name = "picEng";
+            this.picEng.Size = new System.Drawing.Size(75, 75);
+            this.picEng.TabIndex = 7;
+            this.picEng.TabStop = false;
+            // 
+            // picMenu
+            // 
+            this.picMenu.Location = new System.Drawing.Point(12, 8);
+            this.picMenu.Name = "picMenu";
+            this.picMenu.Size = new System.Drawing.Size(75, 75);
+            this.picMenu.TabIndex = 6;
+            this.picMenu.TabStop = false;
+            // 
             // FrmTableauBord
             // 
             this.ClientSize = new System.Drawing.Size(1262, 673);
@@ -229,13 +228,13 @@ namespace Caserne
             this.Text = "Les soldats du feu";
             this.Load += new System.EventHandler(this.FrmTableauBord_Load);
             this.panelMenu.ResumeLayout(false);
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQuitter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPerso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEng)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMenu)).EndInit();
-            this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
             this.ResumeLayout(false);
 
         }

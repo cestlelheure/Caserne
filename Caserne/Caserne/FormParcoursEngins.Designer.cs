@@ -191,7 +191,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Caserne.Properties.Resources.Fond;
-            //this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 611);
             this.Controls.Add(this.pnlInfosEngins);
             this.Controls.Add(this.pnlChoixCaserne);

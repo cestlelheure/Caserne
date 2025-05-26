@@ -110,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UsMission.resx">
       <DependentUpon>UsMission.cs</DependentUpon>
@@ -169,6 +170,10 @@
     <Content Include="bin\Debug\Images\ImagesGrades\SGT.png" />
     <Content Include="bin\Debug\Images\Logo\Logo.ico" />
     <Content Include="bin\Debug\Images\Logo\Logo.png" />
+    <None Include="Properties\Resources\Fond.jpg" />
+    <None Include="Properties\Resources\sirene.jpg" />
+    <None Include="Properties\Resources\stat.jpg" />
+    <None Include="Properties\Resources\getout.png" />
     <Content Include="Resources\Fond.jpg" />
     <Content Include="Resources\getout.png" />
     <Content Include="Resources\sirene.jpg" />
