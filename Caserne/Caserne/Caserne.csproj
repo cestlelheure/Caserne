@@ -64,9 +64,7 @@
     <Compile Include="FormCreationMission.Designer.cs">
       <DependentUpon>FormCreationMission.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGestionPompier.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormGestionPompier.cs" />
     <Compile Include="FormGestionPompier.Designer.cs">
       <DependentUpon>FormGestionPompier.cs</DependentUpon>
     </Compile>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,6 @@ namespace Caserne
     public partial class FormGestionPompier : Form
     {
         SQLiteConnection connec = new SQLiteConnection();
-        string chcon = @"Data Source=SDIS67.db";
         DataSet ds = new DataSet();
         public FormGestionPompier()
         {
@@ -26,7 +25,7 @@ namespace Caserne
         private void Form1_Load(object sender, EventArgs e)
         {
             string requete = "SELECT nom FROM Caserne;";
-            RemplirComboBoxDepuisSQLite(comboBox1, chcon, requete, "nom");
+            RemplirComboBoxDepuisSQLite(comboBox1, connec, requete, "nom");
         }
 
         private void RemplirComboBoxDepuisSQLite(ComboBox combo, string chaineConnexion, string requeteSQL, string colonneAffichage)
@@ -135,31 +134,30 @@ namespace Caserne
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string requete = "SELECT * FROM Pompier p JOIN Affectation a ON p.matricule = a.matriculePompier " +
-                "JOIN Caserne c ON a.idCaserne = c.id WHERE c.id = '"+ comboBox1.SelectedIndex.ToString() + "';";
+                "JOIN Caserne c ON a.idCaserne = c.id WHERE c.id = '" + comboBox1.SelectedIndex.ToString() + "';";
             string[] nomPrenom = { "nom", "prenom" };
-            RemplirComboBoxDepuisSQLite(comboBox2, chcon, requete, nomPrenom);
+            RemplirComboBoxDepuisSQLite(comboBox2, connec, requete, nomPrenom);
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Sécurité : si rien n’est sélectionné on sort
             if (comboBox2.SelectedItem == null) return;
 
             grpBoxInfoPompier.Visible = true;
             btnAfficherPlus.Visible = true;
 
-            // ⇢ Supposons "Nom Prénom" dans la ComboBox
             string[] nomPrenom = comboBox2.SelectedItem.ToString().Split(' ');
             if (nomPrenom.Length == 0) return;
             string nom = nomPrenom[0].Trim();
 
             string requete =
-                "SELECT matricule, nom, prenom, sexe, dateNaissance, type " +
+                "SELECT * " +
                 "FROM   Pompier " +
                 "WHERE  nom = @nom;";
 
-            SQLiteConnection conn = new SQLiteConnection(chcon);
+            SQLiteConnection conn = new SQLiteConnection(connec);
             conn.Open();
+
             SQLiteCommand cmd = new SQLiteCommand(requete, conn);
             cmd.Parameters.AddWithValue("@nom", nom);
 
@@ -170,7 +168,9 @@ namespace Caserne
                 lblMatricule.Text = $"Matricule : {reader["matricule"]}";
                 lblNom.Text = $"Nom : {reader["nom"]}";
                 lblPrenom.Text = $"Prénom : {reader["prenom"]}";
-
+                txtBoxGrade.Text = $"{reader["codeGrade"]}";
+                lblBip.Text = $"Bip : {reader["bip"]}";
+                lblTel.Text = $"Téléphone : {reader["portable"]}";
                 DateTime dateN = reader.GetDateTime(reader.GetOrdinal("dateNaissance"));
                 lblBD.Text = $"Date de naissance : {dateN:dd/MM/yyyy}";
 
@@ -179,24 +179,52 @@ namespace Caserne
                 bool professionnel = reader["type"].ToString() == "p";
                 rdbProfessionnel.Checked = professionnel;
                 rdbVolontaire.Checked = !professionnel;
+
+
             }
+            reader.Close();
+            cmd.Dispose();
+
+            requete =
+                "SELECT libelle " +
+                "FROM Grade " +
+                "WHERE code = '" + txtBoxGrade.Text + "'";
+
+
+            cmd = new SQLiteCommand(requete, conn);
+            cmd.Parameters.AddWithValue("@nom", nom);
+
+
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                comboBox3.Text = $"{reader["libelle"]}";
+            }
+
             else
             {
                 MessageBox.Show("Pompier non trouvé !");
             }
-
-            // --- Libération des ressources ---
-            reader.Close();   // ferme le DataReader
-            cmd.Dispose();    // libère la commande
-            conn.Close();     // ferme la connexion
-            conn.Dispose();   // libère la connexion
+            reader.Close();
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
         }
 
         private void btnAfficherPlus_Click(object sender, EventArgs e)
         {
-            grpBoxCarriere.Visible = true;
+            grpBoxInfoCarriere.Visible = true;
+            string requete = "SELECT nom FROM Caserne;";
+            RemplirComboBoxDepuisSQLite(comboBox4, connec, requete, "nom");
+        }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Vos modifications ne seront pas enregistrées");
+            Application.Exit();
         }
     }
 }
 
 
+*/

@@ -1,4 +1,4 @@
-﻿namespace Caserne
+﻿/*namespace Caserne
 {
     partial class FormGestionPompier
     {
@@ -35,38 +35,38 @@
             this.lblSexe = new System.Windows.Forms.Label();
             this.lblBD = new System.Windows.Forms.Label();
             this.grpBoxInfoPompier = new System.Windows.Forms.GroupBox();
+            this.grpBoxCarriere = new System.Windows.Forms.GroupBox();
+            this.lblBip = new System.Windows.Forms.Label();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.btnChanger = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.txtBoxGrade = new System.Windows.Forms.TextBox();
+            this.lblGrade = new System.Windows.Forms.Label();
+            this.lblED = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rdbVolontaire = new System.Windows.Forms.RadioButton();
             this.rdbProfessionnel = new System.Windows.Forms.RadioButton();
             this.lblMatricule = new System.Windows.Forms.Label();
             this.btnAfficherPlus = new System.Windows.Forms.Button();
             this.grpBoxInfoCarriere = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblED = new System.Windows.Forms.Label();
-            this.grpBoxCarriere = new System.Windows.Forms.GroupBox();
-            this.lblGrade = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.btnChanger = new System.Windows.Forms.Button();
+            this.grpBoxCarriere2 = new System.Windows.Forms.GroupBox();
+            this.lstBoxAffectations = new System.Windows.Forms.ListBox();
+            this.lblAffectations = new System.Windows.Forms.Label();
+            this.lstBoxHabilitations = new System.Windows.Forms.ListBox();
+            this.lblHabilitations = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.lblCaserne = new System.Windows.Forms.Label();
+            this.cBoxConge = new System.Windows.Forms.CheckBox();
+            this.btnMaj = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.lblTel = new System.Windows.Forms.Label();
-            this.lblBip = new System.Windows.Forms.Label();
-            this.grpBoxCarriere2 = new System.Windows.Forms.GroupBox();
             this.btnQuitter = new System.Windows.Forms.Button();
-            this.btnMaj = new System.Windows.Forms.Button();
-            this.cBoxConge = new System.Windows.Forms.CheckBox();
-            this.lblCaserne = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.lblHabilitations = new System.Windows.Forms.Label();
-            this.lstBoxHabilitations = new System.Windows.Forms.ListBox();
-            this.lblAffectations = new System.Windows.Forms.Label();
-            this.lstBoxAffectations = new System.Windows.Forms.ListBox();
             this.grpBoxInfoPompier.SuspendLayout();
-            this.grpBoxInfoCarriere.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxCarriere.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpBoxInfoCarriere.SuspendLayout();
             this.grpBoxCarriere2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -150,6 +150,89 @@
             this.grpBoxInfoPompier.TabStop = false;
             this.grpBoxInfoPompier.Visible = false;
             // 
+            // grpBoxCarriere
+            // 
+            this.grpBoxCarriere.Controls.Add(this.lblBip);
+            this.grpBoxCarriere.Controls.Add(this.lblTel);
+            this.grpBoxCarriere.Controls.Add(this.btnChanger);
+            this.grpBoxCarriere.Controls.Add(this.comboBox3);
+            this.grpBoxCarriere.Controls.Add(this.txtBoxGrade);
+            this.grpBoxCarriere.Controls.Add(this.lblGrade);
+            this.grpBoxCarriere.Location = new System.Drawing.Point(61, 261);
+            this.grpBoxCarriere.Name = "grpBoxCarriere";
+            this.grpBoxCarriere.Size = new System.Drawing.Size(479, 100);
+            this.grpBoxCarriere.TabIndex = 11;
+            this.grpBoxCarriere.TabStop = false;
+            this.grpBoxCarriere.Text = "Carrière";
+            // 
+            // lblBip
+            // 
+            this.lblBip.AutoSize = true;
+            this.lblBip.Location = new System.Drawing.Point(220, 65);
+            this.lblBip.Name = "lblBip";
+            this.lblBip.Size = new System.Drawing.Size(39, 19);
+            this.lblBip.TabIndex = 5;
+            this.lblBip.Text = "Bip : ";
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(22, 65);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(83, 19);
+            this.lblTel.TabIndex = 4;
+            this.lblTel.Text = "Téléphone : ";
+            // 
+            // btnChanger
+            // 
+            this.btnChanger.Location = new System.Drawing.Point(364, 24);
+            this.btnChanger.Name = "btnChanger";
+            this.btnChanger.Size = new System.Drawing.Size(85, 27);
+            this.btnChanger.TabIndex = 3;
+            this.btnChanger.Text = "Changer";
+            this.btnChanger.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(224, 24);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 27);
+            this.comboBox3.TabIndex = 2;
+            // 
+            // txtBoxGrade
+            // 
+            this.txtBoxGrade.Location = new System.Drawing.Point(74, 27);
+            this.txtBoxGrade.Name = "txtBoxGrade";
+            this.txtBoxGrade.Size = new System.Drawing.Size(75, 24);
+            this.txtBoxGrade.TabIndex = 1;
+            // 
+            // lblGrade
+            // 
+            this.lblGrade.AutoSize = true;
+            this.lblGrade.Location = new System.Drawing.Point(22, 30);
+            this.lblGrade.Name = "lblGrade";
+            this.lblGrade.Size = new System.Drawing.Size(46, 19);
+            this.lblGrade.TabIndex = 0;
+            this.lblGrade.Text = "Grade";
+            // 
+            // lblED
+            // 
+            this.lblED.AutoSize = true;
+            this.lblED.Location = new System.Drawing.Point(18, 229);
+            this.lblED.Name = "lblED";
+            this.lblED.Size = new System.Drawing.Size(128, 19);
+            this.lblED.TabIndex = 10;
+            this.lblED.Text = "Date d\'embauche : ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(394, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(116, 84);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // rdbVolontaire
             // 
             this.rdbVolontaire.AutoSize = true;
@@ -206,70 +289,94 @@
             this.grpBoxInfoCarriere.TabStop = false;
             this.grpBoxInfoCarriere.Visible = false;
             // 
-            // pictureBox1
+            // grpBoxCarriere2
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(394, 39);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 84);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.grpBoxCarriere2.Controls.Add(this.lstBoxAffectations);
+            this.grpBoxCarriere2.Controls.Add(this.lblAffectations);
+            this.grpBoxCarriere2.Controls.Add(this.lstBoxHabilitations);
+            this.grpBoxCarriere2.Controls.Add(this.lblHabilitations);
+            this.grpBoxCarriere2.Controls.Add(this.comboBox4);
+            this.grpBoxCarriere2.Controls.Add(this.lblCaserne);
+            this.grpBoxCarriere2.Controls.Add(this.cBoxConge);
+            this.grpBoxCarriere2.Controls.Add(this.btnMaj);
+            this.grpBoxCarriere2.Location = new System.Drawing.Point(6, 23);
+            this.grpBoxCarriere2.Name = "grpBoxCarriere2";
+            this.grpBoxCarriere2.Size = new System.Drawing.Size(580, 300);
+            this.grpBoxCarriere2.TabIndex = 0;
+            this.grpBoxCarriere2.TabStop = false;
+            this.grpBoxCarriere2.Text = "Informations carrière";
             // 
-            // lblED
+            // lstBoxAffectations
             // 
-            this.lblED.AutoSize = true;
-            this.lblED.Location = new System.Drawing.Point(18, 229);
-            this.lblED.Name = "lblED";
-            this.lblED.Size = new System.Drawing.Size(128, 19);
-            this.lblED.TabIndex = 10;
-            this.lblED.Text = "Date d\'embauche : ";
+            this.lstBoxAffectations.FormattingEnabled = true;
+            this.lstBoxAffectations.ItemHeight = 19;
+            this.lstBoxAffectations.Location = new System.Drawing.Point(55, 192);
+            this.lstBoxAffectations.Name = "lstBoxAffectations";
+            this.lstBoxAffectations.Size = new System.Drawing.Size(449, 42);
+            this.lstBoxAffectations.TabIndex = 7;
             // 
-            // grpBoxCarriere
+            // lblAffectations
             // 
-            this.grpBoxCarriere.Controls.Add(this.lblBip);
-            this.grpBoxCarriere.Controls.Add(this.lblTel);
-            this.grpBoxCarriere.Controls.Add(this.btnChanger);
-            this.grpBoxCarriere.Controls.Add(this.comboBox3);
-            this.grpBoxCarriere.Controls.Add(this.textBox1);
-            this.grpBoxCarriere.Controls.Add(this.lblGrade);
-            this.grpBoxCarriere.Location = new System.Drawing.Point(61, 261);
-            this.grpBoxCarriere.Name = "grpBoxCarriere";
-            this.grpBoxCarriere.Size = new System.Drawing.Size(479, 100);
-            this.grpBoxCarriere.TabIndex = 11;
-            this.grpBoxCarriere.TabStop = false;
-            this.grpBoxCarriere.Text = "Carrière";
+            this.lblAffectations.AutoSize = true;
+            this.lblAffectations.Location = new System.Drawing.Point(51, 170);
+            this.lblAffectations.Name = "lblAffectations";
+            this.lblAffectations.Size = new System.Drawing.Size(135, 19);
+            this.lblAffectations.TabIndex = 6;
+            this.lblAffectations.Text = "Affectations passées";
             // 
-            // lblGrade
+            // lstBoxHabilitations
             // 
-            this.lblGrade.AutoSize = true;
-            this.lblGrade.Location = new System.Drawing.Point(22, 30);
-            this.lblGrade.Name = "lblGrade";
-            this.lblGrade.Size = new System.Drawing.Size(46, 19);
-            this.lblGrade.TabIndex = 0;
-            this.lblGrade.Text = "Grade";
+            this.lstBoxHabilitations.FormattingEnabled = true;
+            this.lstBoxHabilitations.ItemHeight = 19;
+            this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 102);
+            this.lstBoxHabilitations.Name = "lstBoxHabilitations";
+            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 42);
+            this.lstBoxHabilitations.TabIndex = 5;
             // 
-            // textBox1
+            // lblHabilitations
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 24);
-            this.textBox1.TabIndex = 1;
+            this.lblHabilitations.AutoSize = true;
+            this.lblHabilitations.Location = new System.Drawing.Point(51, 80);
+            this.lblHabilitations.Name = "lblHabilitations";
+            this.lblHabilitations.Size = new System.Drawing.Size(85, 19);
+            this.lblHabilitations.TabIndex = 4;
+            this.lblHabilitations.Text = "Habilitations";
             // 
-            // comboBox3
+            // comboBox4
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(224, 24);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 27);
-            this.comboBox3.TabIndex = 2;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(240, 30);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(264, 27);
+            this.comboBox4.TabIndex = 3;
             // 
-            // btnChanger
+            // lblCaserne
             // 
-            this.btnChanger.Location = new System.Drawing.Point(364, 24);
-            this.btnChanger.Name = "btnChanger";
-            this.btnChanger.Size = new System.Drawing.Size(85, 27);
-            this.btnChanger.TabIndex = 3;
-            this.btnChanger.Text = "Changer";
-            this.btnChanger.UseVisualStyleBackColor = true;
+            this.lblCaserne.AutoSize = true;
+            this.lblCaserne.Location = new System.Drawing.Point(51, 33);
+            this.lblCaserne.Name = "lblCaserne";
+            this.lblCaserne.Size = new System.Drawing.Size(171, 19);
+            this.lblCaserne.TabIndex = 2;
+            this.lblCaserne.Text = "Caserne de rattachement :";
+            // 
+            // cBoxConge
+            // 
+            this.cBoxConge.AutoSize = true;
+            this.cBoxConge.Location = new System.Drawing.Point(29, 253);
+            this.cBoxConge.Name = "cBoxConge";
+            this.cBoxConge.Size = new System.Drawing.Size(85, 23);
+            this.cBoxConge.TabIndex = 1;
+            this.cBoxConge.Text = "En congé";
+            this.cBoxConge.UseVisualStyleBackColor = true;
+            // 
+            // btnMaj
+            // 
+            this.btnMaj.Location = new System.Drawing.Point(419, 253);
+            this.btnMaj.Name = "btnMaj";
+            this.btnMaj.Size = new System.Drawing.Size(145, 26);
+            this.btnMaj.TabIndex = 0;
+            this.btnMaj.Text = "Mettre à jour";
+            this.btnMaj.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -288,41 +395,6 @@
             this.btnNouveau.Text = "Ajouter un pompier";
             this.btnNouveau.UseVisualStyleBackColor = true;
             // 
-            // lblTel
-            // 
-            this.lblTel.AutoSize = true;
-            this.lblTel.Location = new System.Drawing.Point(22, 65);
-            this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(83, 19);
-            this.lblTel.TabIndex = 4;
-            this.lblTel.Text = "Téléphone : ";
-            // 
-            // lblBip
-            // 
-            this.lblBip.AutoSize = true;
-            this.lblBip.Location = new System.Drawing.Point(220, 65);
-            this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(39, 19);
-            this.lblBip.TabIndex = 5;
-            this.lblBip.Text = "Bip : ";
-            // 
-            // grpBoxCarriere2
-            // 
-            this.grpBoxCarriere2.Controls.Add(this.lstBoxAffectations);
-            this.grpBoxCarriere2.Controls.Add(this.lblAffectations);
-            this.grpBoxCarriere2.Controls.Add(this.lstBoxHabilitations);
-            this.grpBoxCarriere2.Controls.Add(this.lblHabilitations);
-            this.grpBoxCarriere2.Controls.Add(this.comboBox4);
-            this.grpBoxCarriere2.Controls.Add(this.lblCaserne);
-            this.grpBoxCarriere2.Controls.Add(this.cBoxConge);
-            this.grpBoxCarriere2.Controls.Add(this.btnMaj);
-            this.grpBoxCarriere2.Location = new System.Drawing.Point(6, 23);
-            this.grpBoxCarriere2.Name = "grpBoxCarriere2";
-            this.grpBoxCarriere2.Size = new System.Drawing.Size(580, 300);
-            this.grpBoxCarriere2.TabIndex = 0;
-            this.grpBoxCarriere2.TabStop = false;
-            this.grpBoxCarriere2.Text = "Informations carrière";
-            // 
             // btnQuitter
             // 
             this.btnQuitter.Location = new System.Drawing.Point(12, 721);
@@ -331,78 +403,7 @@
             this.btnQuitter.TabIndex = 11;
             this.btnQuitter.Text = "Retour";
             this.btnQuitter.UseVisualStyleBackColor = true;
-            // 
-            // btnMaj
-            // 
-            this.btnMaj.Location = new System.Drawing.Point(419, 253);
-            this.btnMaj.Name = "btnMaj";
-            this.btnMaj.Size = new System.Drawing.Size(145, 26);
-            this.btnMaj.TabIndex = 0;
-            this.btnMaj.Text = "Mettre à jour";
-            this.btnMaj.UseVisualStyleBackColor = true;
-            // 
-            // cBoxConge
-            // 
-            this.cBoxConge.AutoSize = true;
-            this.cBoxConge.Location = new System.Drawing.Point(29, 253);
-            this.cBoxConge.Name = "cBoxConge";
-            this.cBoxConge.Size = new System.Drawing.Size(85, 23);
-            this.cBoxConge.TabIndex = 1;
-            this.cBoxConge.Text = "En congé";
-            this.cBoxConge.UseVisualStyleBackColor = true;
-            // 
-            // lblCaserne
-            // 
-            this.lblCaserne.AutoSize = true;
-            this.lblCaserne.Location = new System.Drawing.Point(51, 33);
-            this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(171, 19);
-            this.lblCaserne.TabIndex = 2;
-            this.lblCaserne.Text = "Caserne de rattachement :";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(240, 30);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(264, 27);
-            this.comboBox4.TabIndex = 3;
-            // 
-            // lblHabilitations
-            // 
-            this.lblHabilitations.AutoSize = true;
-            this.lblHabilitations.Location = new System.Drawing.Point(51, 80);
-            this.lblHabilitations.Name = "lblHabilitations";
-            this.lblHabilitations.Size = new System.Drawing.Size(85, 19);
-            this.lblHabilitations.TabIndex = 4;
-            this.lblHabilitations.Text = "Habilitations";
-            // 
-            // lstBoxHabilitations
-            // 
-            this.lstBoxHabilitations.FormattingEnabled = true;
-            this.lstBoxHabilitations.ItemHeight = 19;
-            this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 102);
-            this.lstBoxHabilitations.Name = "lstBoxHabilitations";
-            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 42);
-            this.lstBoxHabilitations.TabIndex = 5;
-            // 
-            // lblAffectations
-            // 
-            this.lblAffectations.AutoSize = true;
-            this.lblAffectations.Location = new System.Drawing.Point(51, 170);
-            this.lblAffectations.Name = "lblAffectations";
-            this.lblAffectations.Size = new System.Drawing.Size(135, 19);
-            this.lblAffectations.TabIndex = 6;
-            this.lblAffectations.Text = "Affectations passées";
-            // 
-            // lstBoxAffectations
-            // 
-            this.lstBoxAffectations.FormattingEnabled = true;
-            this.lstBoxAffectations.ItemHeight = 19;
-            this.lstBoxAffectations.Location = new System.Drawing.Point(55, 192);
-            this.lstBoxAffectations.Name = "lstBoxAffectations";
-            this.lstBoxAffectations.Size = new System.Drawing.Size(449, 42);
-            this.lstBoxAffectations.TabIndex = 7;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // FormGestionPompier
             // 
@@ -424,13 +425,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpBoxInfoPompier.ResumeLayout(false);
             this.grpBoxInfoPompier.PerformLayout();
-            this.grpBoxInfoCarriere.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxCarriere.ResumeLayout(false);
             this.grpBoxCarriere.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpBoxInfoCarriere.ResumeLayout(false);
             this.grpBoxCarriere2.ResumeLayout(false);
             this.grpBoxCarriere2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,7 +455,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnChanger;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxGrade;
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnNouveau;
@@ -472,4 +473,4 @@
         private System.Windows.Forms.Label lblAffectations;
     }
 }
-
+*/

@@ -66,7 +66,7 @@ namespace Caserne
             // 
             // picQuitter
             // 
-            this.picQuitter.Image = global::Caserne.Properties.Resources.getout;
+            //this.picQuitter.Image = global::Caserne.Properties.Resources.getout;
             this.picQuitter.Location = new System.Drawing.Point(12, 581);
             this.picQuitter.Name = "picQuitter";
             this.picQuitter.Size = new System.Drawing.Size(80, 80);
