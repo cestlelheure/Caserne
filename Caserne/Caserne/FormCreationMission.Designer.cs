@@ -42,20 +42,22 @@
             this.lblRueSinistre = new System.Windows.Forms.Label();
             this.lblCodePostalSinistre = new System.Windows.Forms.Label();
             this.grpDecisionRegulateur = new System.Windows.Forms.GroupBox();
-            this.bttnValider = new System.Windows.Forms.Button();
-            this.bttnAnnuler = new System.Windows.Forms.Button();
+            this.bttnEffacerInfos = new System.Windows.Forms.Button();
+            this.bttnValiderInfos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCaserneMobiliser = new System.Windows.Forms.ComboBox();
             this.cmbNatureSinistre = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bttnCréerMission = new System.Windows.Forms.Button();
+            this.bttnAnnuler = new System.Windows.Forms.Button();
+            this.grp = new System.Windows.Forms.GroupBox();
             this.dgvPompier = new System.Windows.Forms.DataGridView();
             this.dgvEngins = new System.Windows.Forms.DataGridView();
             this.lblPompiersMobilise = new System.Windows.Forms.Label();
             this.lblEnginMobilise = new System.Windows.Forms.Label();
             this.gpInfosUsager.SuspendLayout();
             this.grpDecisionRegulateur.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPompier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEngins)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +65,7 @@
             // lblNumMission
             // 
             this.lblNumMission.AutoSize = true;
+            this.lblNumMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblNumMission.Location = new System.Drawing.Point(329, 36);
             this.lblNumMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumMission.Name = "lblNumMission";
@@ -188,8 +191,8 @@
             // 
             // grpDecisionRegulateur
             // 
-            this.grpDecisionRegulateur.Controls.Add(this.bttnValider);
-            this.grpDecisionRegulateur.Controls.Add(this.bttnAnnuler);
+            this.grpDecisionRegulateur.Controls.Add(this.bttnEffacerInfos);
+            this.grpDecisionRegulateur.Controls.Add(this.bttnValiderInfos);
             this.grpDecisionRegulateur.Controls.Add(this.label1);
             this.grpDecisionRegulateur.Controls.Add(this.cmbCaserneMobiliser);
             this.grpDecisionRegulateur.Controls.Add(this.cmbNatureSinistre);
@@ -203,26 +206,25 @@
             this.grpDecisionRegulateur.TabStop = false;
             this.grpDecisionRegulateur.Text = " Décision du régulateur ";
             // 
-            // bttnValider
+            // bttnEffacerInfos
             // 
-            this.bttnValider.Location = new System.Drawing.Point(755, 85);
-            this.bttnValider.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnValider.Name = "bttnValider";
-            this.bttnValider.Size = new System.Drawing.Size(124, 32);
-            this.bttnValider.TabIndex = 11;
-            this.bttnValider.Text = "Valider";
-            this.bttnValider.UseVisualStyleBackColor = true;
-            this.bttnValider.Click += new System.EventHandler(this.bttnValider_Click);
+            this.bttnEffacerInfos.Location = new System.Drawing.Point(604, 85);
+            this.bttnEffacerInfos.Name = "bttnEffacerInfos";
+            this.bttnEffacerInfos.Size = new System.Drawing.Size(98, 40);
+            this.bttnEffacerInfos.TabIndex = 11;
+            this.bttnEffacerInfos.Text = "Effacer";
+            this.bttnEffacerInfos.UseVisualStyleBackColor = true;
+            this.bttnEffacerInfos.Click += new System.EventHandler(this.bttnEffacerInfos_Click);
             // 
-            // bttnAnnuler
+            // bttnValiderInfos
             // 
-            this.bttnAnnuler.Location = new System.Drawing.Point(600, 85);
-            this.bttnAnnuler.Margin = new System.Windows.Forms.Padding(4);
-            this.bttnAnnuler.Name = "bttnAnnuler";
-            this.bttnAnnuler.Size = new System.Drawing.Size(124, 32);
-            this.bttnAnnuler.TabIndex = 10;
-            this.bttnAnnuler.Text = "Annuler";
-            this.bttnAnnuler.UseVisualStyleBackColor = true;
+            this.bttnValiderInfos.Location = new System.Drawing.Point(717, 85);
+            this.bttnValiderInfos.Name = "bttnValiderInfos";
+            this.bttnValiderInfos.Size = new System.Drawing.Size(172, 40);
+            this.bttnValiderInfos.TabIndex = 10;
+            this.bttnValiderInfos.Text = "Valider les infos";
+            this.bttnValiderInfos.UseVisualStyleBackColor = true;
+            this.bttnValiderInfos.Click += new System.EventHandler(this.bttnValiderInfos_Click);
             // 
             // label1
             // 
@@ -264,20 +266,42 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Caserne à mobiliser ";
             // 
-            // groupBox1
+            // bttnCréerMission
             // 
-            this.groupBox1.Controls.Add(this.dgvPompier);
-            this.groupBox1.Controls.Add(this.dgvEngins);
-            this.groupBox1.Controls.Add(this.lblPompiersMobilise);
-            this.groupBox1.Controls.Add(this.lblEnginMobilise);
-            this.groupBox1.Location = new System.Drawing.Point(55, 433);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(904, 227);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = " Pompiers et engins mobilisés ";
+            this.bttnCréerMission.Location = new System.Drawing.Point(789, 668);
+            this.bttnCréerMission.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnCréerMission.Name = "bttnCréerMission";
+            this.bttnCréerMission.Size = new System.Drawing.Size(171, 41);
+            this.bttnCréerMission.TabIndex = 11;
+            this.bttnCréerMission.Text = "Créer la mission";
+            this.bttnCréerMission.UseVisualStyleBackColor = true;
+            this.bttnCréerMission.Click += new System.EventHandler(this.bttnValider_Click);
+            // 
+            // bttnAnnuler
+            // 
+            this.bttnAnnuler.Location = new System.Drawing.Point(637, 668);
+            this.bttnAnnuler.Margin = new System.Windows.Forms.Padding(4);
+            this.bttnAnnuler.Name = "bttnAnnuler";
+            this.bttnAnnuler.Size = new System.Drawing.Size(144, 41);
+            this.bttnAnnuler.TabIndex = 10;
+            this.bttnAnnuler.Text = "Annuler";
+            this.bttnAnnuler.UseVisualStyleBackColor = true;
+            this.bttnAnnuler.Click += new System.EventHandler(this.bttnAnnuler_Click);
+            // 
+            // grp
+            // 
+            this.grp.Controls.Add(this.dgvPompier);
+            this.grp.Controls.Add(this.dgvEngins);
+            this.grp.Controls.Add(this.lblPompiersMobilise);
+            this.grp.Controls.Add(this.lblEnginMobilise);
+            this.grp.Location = new System.Drawing.Point(55, 433);
+            this.grp.Margin = new System.Windows.Forms.Padding(4);
+            this.grp.Name = "grp";
+            this.grp.Padding = new System.Windows.Forms.Padding(4);
+            this.grp.Size = new System.Drawing.Size(904, 227);
+            this.grp.TabIndex = 14;
+            this.grp.TabStop = false;
+            this.grp.Text = " Pompiers et engins mobilisés ";
             // 
             // dgvPompier
             // 
@@ -325,8 +349,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 673);
-            this.Controls.Add(this.groupBox1);
+            this.BackgroundImage = global::Caserne.Properties.Resources.Fond;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1022, 722);
+            this.Controls.Add(this.bttnAnnuler);
+            this.Controls.Add(this.bttnCréerMission);
+            this.Controls.Add(this.grp);
             this.Controls.Add(this.grpDecisionRegulateur);
             this.Controls.Add(this.gpInfosUsager);
             this.Controls.Add(this.lblDateDebut);
@@ -337,12 +365,13 @@
             this.Name = "FormCreationMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Création d\'une mission";
+            this.Load += new System.EventHandler(this.FormCreationMission_Load);
             this.gpInfosUsager.ResumeLayout(false);
             this.gpInfosUsager.PerformLayout();
             this.grpDecisionRegulateur.ResumeLayout(false);
             this.grpDecisionRegulateur.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grp.ResumeLayout(false);
+            this.grp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPompier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEngins)).EndInit();
             this.ResumeLayout(false);
@@ -365,16 +394,18 @@
         private System.Windows.Forms.Label lblAdSinistre;
         private System.Windows.Forms.Label lblRueSinistre;
         private System.Windows.Forms.Label lblCodePostalSinistre;
-        private System.Windows.Forms.Button bttnValider;
+        private System.Windows.Forms.Button bttnCréerMission;
         private System.Windows.Forms.Button bttnAnnuler;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbCaserneMobiliser;
         private System.Windows.Forms.ComboBox cmbNatureSinistre;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grp;
         private System.Windows.Forms.Label lblPompiersMobilise;
         private System.Windows.Forms.Label lblEnginMobilise;
         private System.Windows.Forms.DataGridView dgvPompier;
         private System.Windows.Forms.DataGridView dgvEngins;
+        private System.Windows.Forms.Button bttnEffacerInfos;
+        private System.Windows.Forms.Button bttnValiderInfos;
     }
 }

@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.IO;
 
@@ -15,26 +9,22 @@ namespace Caserne
 {
     public partial class FormParcoursEngins : Form
     {
-        // Ajout du BindingSource pour la liaison de données
+        #region Variables privées
         private BindingSource bindingSourceEngins = new BindingSource();
+        private const string OPTION_DEFAUT_CASERNE = "-- Veuillez sélectionner une caserne --";
+        private const string DOSSIER_IMAGES = "Images\\FormParcoursEngins\\ImagesEngins";
+        private const string IMAGE_DEFAUT = "default.png";
+        #endregion
 
+        #region Constructeur
         public FormParcoursEngins()
         {
             InitializeComponent();
-
-            // Configurer les événements du BindingSource
-            bindingSourceEngins.CurrentChanged += BindingSourceEngins_CurrentChanged;
-
-            // Masquer le panneau d'informations au démarrage
-            pnlInfosEngins.Visible = false;
-
-            // Masquer les boutons de navigation au démarrage
-            bttnPrecedent.Visible = false;
-            bttnSuivant.Visible = false;
-
-            ChargerCasernes();
+            InitialiserFormulaire();
         }
+        #endregion
 
+        #region Classe interne
         private class Engin
         {
             public string CodeTypeEngin { get; set; }
@@ -44,224 +34,287 @@ namespace Caserne
             public bool EnMission { get; set; }
             public bool EnPanne { get; set; }
         }
+        #endregion
 
-        private void ChargerCasernes()
+        #region Initialisation
+        private void InitialiserFormulaire()
+        {
+            // Configurer les événements du BindingSource
+            bindingSourceEngins.CurrentChanged += BindingSourceEngins_CurrentChanged;
+
+            // État initial de l'interface
+            MasquerPanneauInfos();
+            MasquerBoutonsNavigation();
+
+            // Charger les données initiales
+            ChargerCasernes();
+        }
+
+        private void MasquerPanneauInfos()
+        {
+            pnlInfosEngins.Visible = false;
+        }
+
+        private void MasquerBoutonsNavigation()
+        {
+            bttnDebut.Visible = false;
+            bttnPrecedent.Visible = false;
+            bttnSuivant.Visible = false;
+            bttnFin.Visible = false;
+        }
+
+        private void AfficherBoutonsNavigation()
+        {
+            bttnDebut.Visible = true;
+            bttnPrecedent.Visible = true;
+            bttnSuivant.Visible = true;
+            bttnFin.Visible = true;
+        }
+        #endregion
+
+        #region Méthodes utilitaires réutilisables
+        private void RemplirComboBox(ComboBox comboBox, string requete, string champAffichage, string optionDefaut = null)
         {
             try
             {
-                // Ajouter l'option par défaut
-                cmbChoixCaserne.Items.Add("-- Veuillez sélectionner une caserne --");
+                comboBox.Items.Clear();
 
-                // Récupération de la connexion via le Singleton
-                SQLiteConnection connection = Connexion.Connec;
-
-                string requete = "SELECT nom FROM Caserne";
-                SQLiteCommand command = new SQLiteCommand(requete, connection);
-                SQLiteDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                if (!string.IsNullOrEmpty(optionDefaut))
                 {
-                    cmbChoixCaserne.Items.Add(reader["nom"].ToString());
+                    comboBox.Items.Add(optionDefaut);
                 }
 
-                reader.Close();
+                using (SQLiteCommand command = new SQLiteCommand(requete, Connexion.Connec))
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        comboBox.Items.Add(reader[champAffichage].ToString());
+                    }
+                }
 
-                // Sélectionner l'option par défaut
-                cmbChoixCaserne.SelectedIndex = 0;
-
-                // Masquer le panneau des infos au démarrage
-                pnlInfosEngins.Visible = false;
+                if (comboBox.Items.Count > 0)
+                {
+                    comboBox.SelectedIndex = 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors du chargement des casernes : " + ex.Message);
+                AfficherErreur($"Erreur lors du remplissage de la ComboBox : {ex.Message}");
             }
+        }
+
+        private void AfficherErreur(string message)
+        {
+            MessageBox.Show(message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void AfficherInfo(string message)
+        {
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void LibererImagePictureBox(PictureBox pictureBox)
+        {
+            if (pictureBox.Image != null)
+            {
+                pictureBox.Image.Dispose();
+                pictureBox.Image = null;
+            }
+        }
+
+        private void ChargerImageEngin(PictureBox pictureBox, string nomImage)
+        {
+            LibererImagePictureBox(pictureBox);
+
+            string dossierImages = Path.Combine(Application.StartupPath, DOSSIER_IMAGES);
+            string cheminImage = Path.Combine(dossierImages, $"{nomImage}.png");
+
+            if (File.Exists(cheminImage))
+            {
+                pictureBox.Image = Image.FromFile(cheminImage);
+            }
+            else
+            {
+                string cheminImageDefaut = Path.Combine(dossierImages, IMAGE_DEFAUT);
+                if (File.Exists(cheminImageDefaut))
+                {
+                    pictureBox.Image = Image.FromFile(cheminImageDefaut);
+                }
+            }
+        }
+        #endregion
+
+        #region Chargement des données
+        private void ChargerCasernes()
+        {
+            string requete = "SELECT nom FROM Caserne ORDER BY nom";
+            RemplirComboBox(cmbChoixCaserne, requete, "nom", OPTION_DEFAUT_CASERNE);
         }
 
         private void ChargerEnginsParCaserne(string caserneNom)
         {
             try
             {
-                List<Engin> engins = new List<Engin>();
+                List<Engin> engins = RecupererEnginsParCaserne(caserneNom);
 
-                SQLiteConnection connection = Connexion.Connec;
-
-                string requete = @"
-                    SELECT e.codeTypeEngin, e.numero, e.dateReception, e.idCaserne, e.enMission, e.enPanne
-                    FROM Engin e
-                    INNER JOIN Caserne c ON e.idCaserne = c.id
-                    WHERE c.nom = @caserneNom;
-                ";
-
-                SQLiteCommand command = new SQLiteCommand(requete, connection);
-                command.Parameters.AddWithValue("@caserneNom", caserneNom);
-
-                SQLiteDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    engins.Add(new Engin
-                    {
-                        CodeTypeEngin = reader["codeTypeEngin"].ToString(),
-                        Numero = reader["numero"].ToString(),
-                        DateReception = Convert.ToDateTime(reader["dateReception"]),
-                        IdCaserne = Convert.ToInt32(reader["idCaserne"]),
-                        EnMission = Convert.ToBoolean(reader["enMission"]),
-                        EnPanne = Convert.ToBoolean(reader["enPanne"])
-                    });
-                }
-
-                reader.Close();
-
-                // Associer la liste d'engins au BindingSource
                 bindingSourceEngins.DataSource = engins;
 
-                // Remettre l'index à zéro
                 if (engins.Count > 0)
                 {
                     bindingSourceEngins.Position = 0;
-                }
-
-                if (engins.Count > 0)
-                {
-                    // Le CurrentChanged event du BindingSource va déclencher l'affichage
-                    MettreAJourBoutonsNavigation();
+                    AfficherBoutonsNavigation();
                 }
                 else
                 {
-                    MessageBox.Show("Aucun engin trouvé pour la caserne spécifiée.");
-                    // Vider l'affichage
+                    AfficherInfo("Aucun engin trouvé pour la caserne spécifiée.");
                     ViderAffichage();
-                    // Masquer les boutons de navigation
-                    bttnPrecedent.Visible = false;
-                    bttnSuivant.Visible = false;
+                    MasquerBoutonsNavigation();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors de la récupération des engins : " + ex.Message);
+                AfficherErreur($"Erreur lors de la récupération des engins : {ex.Message}");
             }
         }
 
+        private List<Engin> RecupererEnginsParCaserne(string caserneNom)
+        {
+            List<Engin> engins = new List<Engin>();
+
+            string requete = @"
+                SELECT e.codeTypeEngin, e.numero, e.dateReception, e.idCaserne, e.enMission, e.enPanne
+                FROM Engin e
+                INNER JOIN Caserne c ON e.idCaserne = c.id
+                WHERE c.nom = @caserneNom
+                ORDER BY e.codeTypeEngin, e.numero;
+            ";
+
+            using (SQLiteCommand command = new SQLiteCommand(requete, Connexion.Connec))
+            {
+                command.Parameters.AddWithValue("@caserneNom", caserneNom);
+
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        engins.Add(CreerEnginDepuisReader(reader));
+                    }
+                }
+            }
+
+            return engins;
+        }
+
+        private Engin CreerEnginDepuisReader(SQLiteDataReader reader)
+        {
+            return new Engin
+            {
+                CodeTypeEngin = reader["codeTypeEngin"].ToString(),
+                Numero = reader["numero"].ToString(),
+                DateReception = Convert.ToDateTime(reader["dateReception"]),
+                IdCaserne = Convert.ToInt32(reader["idCaserne"]),
+                EnMission = Convert.ToBoolean(reader["enMission"]),
+                EnPanne = Convert.ToBoolean(reader["enPanne"])
+            };
+        }
+        #endregion
+
+        #region Affichage
         private void ViderAffichage()
         {
             lblNumeroEngin.Text = "Numéro  :  ";
             lblDateRCP.Text = "Date de Réception  :  ";
-            cbEnMission.Checked = false;
-            cbEnPanne.Checked = false;
-
-            if (pbEngin.Image != null)
-            {
-                pbEngin.Image.Dispose();
-                pbEngin.Image = null;
-            }
-        }
-
-        // Gestionnaire d'événement pour le changement d'élément courant dans le BindingSource
-        private void BindingSourceEngins_CurrentChanged(object sender, EventArgs e)
-        {
-            AfficherEnginCourant();
-            MettreAJourBoutonsNavigation();
-        }
-
-        // Nouvelle méthode pour mettre à jour la visibilité des boutons de navigation
-        private void MettreAJourBoutonsNavigation()
-        {
-            if (bindingSourceEngins.Count > 0)
-            {
-                // Bouton Précédent visible seulement si on n'est pas au premier élément
-                bttnPrecedent.Visible = (bindingSourceEngins.Position > 0);
-
-                // Bouton Suivant visible seulement si on n'est pas au dernier élément
-                bttnSuivant.Visible = (bindingSourceEngins.Position < bindingSourceEngins.Count - 1);
-            }
-            else
-            {
-                // Aucun engin à afficher, masquer les deux boutons
-                bttnPrecedent.Visible = false;
-                bttnSuivant.Visible = false;
-            }
+            lblEnMission.Text = "En Mission  :  ";
+            lblEnPanne.Text = "État  :  ";
+            LibererImagePictureBox(pbEngin);
         }
 
         private void AfficherEnginCourant()
         {
-            if (bindingSourceEngins.Current != null)
+            if (bindingSourceEngins.Current is Engin engin)
             {
-                var engin = (Engin)bindingSourceEngins.Current;
-
                 lblNumeroEngin.Text = $"Numéro  :  {engin.IdCaserne} - {engin.CodeTypeEngin} - {engin.Numero}";
                 lblDateRCP.Text = $"Date de Réception  :  {engin.DateReception:dd/MM/yyyy}";
-                cbEnMission.Checked = engin.EnMission;
-                cbEnPanne.Checked = engin.EnPanne;
+                lblEnMission.Text = $"En Mission  :  {(engin.EnMission ? "En mission" : "Disponible")}";
+                lblEnPanne.Text = $"État  :  {(engin.EnPanne ? "En panne" : "Opérationnel")}";
 
-                // Chargement de l'image
-
-                string dossierImages = Path.Combine(Application.StartupPath, "Images", "FormParcoursEngins", "ImagesEngins");
-                string cheminImage = Path.Combine(dossierImages, engin.CodeTypeEngin + ".png");
-
-                if (pbEngin.Image != null)
-                {
-                    pbEngin.Image.Dispose();
-                    pbEngin.Image = null;
-                }
-
-                if (File.Exists(cheminImage))
-                {
-                    pbEngin.Image = Image.FromFile(cheminImage);
-                }
-                else
-                {
-                    // Image par défaut
-                    string defaultPath = Path.Combine(dossierImages, "default.png");
-                    if (File.Exists(defaultPath))
-                    {
-                        pbEngin.Image = Image.FromFile(defaultPath);
-                    }
-                }
+                ChargerImageEngin(pbEngin, engin.CodeTypeEngin);
             }
+        }
+        #endregion
+
+        #region Navigation
+        private void NaviguerVers(int position)
+        {
+            if (bindingSourceEngins.Count > 0)
+            {
+                bindingSourceEngins.Position = position;
+            }
+        }
+
+        private void NaviguerCirculaire(bool versSuivant)
+        {
+            if (bindingSourceEngins.Count == 0) return;
+
+            if (versSuivant)
+            {
+                int nouvellePosition = (bindingSourceEngins.Position + 1) % bindingSourceEngins.Count;
+                bindingSourceEngins.Position = nouvellePosition;
+            }
+            else
+            {
+                int nouvellePosition = bindingSourceEngins.Position - 1;
+                if (nouvellePosition < 0)
+                    nouvellePosition = bindingSourceEngins.Count - 1;
+                bindingSourceEngins.Position = nouvellePosition;
+            }
+        }
+        #endregion
+
+        #region Gestionnaires d'événements
+        private void BindingSourceEngins_CurrentChanged(object sender, EventArgs e)
+        {
+            AfficherEnginCourant();
+        }
+
+        private void bttnDebut_Click(object sender, EventArgs e)
+        {
+            NaviguerVers(0);
         }
 
         private void bttnPrecedent_Click(object sender, EventArgs e)
         {
-            // Utilisation du BindingSource pour la navigation
-            bindingSourceEngins.MovePrevious();
+            NaviguerCirculaire(false);
         }
 
         private void bttnSuivant_Click(object sender, EventArgs e)
         {
-            // Utilisation du BindingSource pour la navigation
-            bindingSourceEngins.MoveNext();
+            NaviguerCirculaire(true);
+        }
+
+        private void bttnFin_Click(object sender, EventArgs e)
+        {
+            NaviguerVers(bindingSourceEngins.Count - 1);
         }
 
         private void cmbChoixCaserne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Récupérer le nom de la caserne sélectionnée
-            string caserneNom = cmbChoixCaserne.SelectedItem.ToString();
+            string caserneNom = cmbChoixCaserne.SelectedItem?.ToString();
 
-            // Vérifier si c'est l'option par défaut
-            if (caserneNom == "-- Veuillez sélectionner une caserne --")
+            if (string.IsNullOrEmpty(caserneNom) || caserneNom == OPTION_DEFAUT_CASERNE)
             {
-                // Masquer le panneau d'informations
-                pnlInfosEngins.Visible = false;
-
-                // Vider le BindingSource
+                MasquerPanneauInfos();
                 bindingSourceEngins.DataSource = null;
-
-                // Vider l'affichage
                 ViderAffichage();
-
-                // Masquer les boutons de navigation
-                bttnPrecedent.Visible = false;
-                bttnSuivant.Visible = false;
+                MasquerBoutonsNavigation();
             }
             else
             {
-                // Afficher le panneau d'informations
                 pnlInfosEngins.Visible = true;
-
-                // Charger les engins associés à cette caserne
                 ChargerEnginsParCaserne(caserneNom);
             }
         }
+        #endregion
     }
 }
