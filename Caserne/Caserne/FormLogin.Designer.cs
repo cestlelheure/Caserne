@@ -33,6 +33,7 @@
             this.txtBoxID = new System.Windows.Forms.TextBox();
             this.txtBoxMDP = new System.Windows.Forms.TextBox();
             this.btnConfirmer = new System.Windows.Forms.Button();
+            this.btnOeil = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblID
@@ -66,6 +67,8 @@
             this.txtBoxMDP.Name = "txtBoxMDP";
             this.txtBoxMDP.Size = new System.Drawing.Size(152, 24);
             this.txtBoxMDP.TabIndex = 3;
+            this.txtBoxMDP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxMDP_KeyDown);
+            this.txtBoxMDP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBoxMDP_MouseDown);
             // 
             // btnConfirmer
             // 
@@ -77,18 +80,29 @@
             this.btnConfirmer.UseVisualStyleBackColor = true;
             this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
             // 
+            // btnOeil
+            // 
+            this.btnOeil.Location = new System.Drawing.Point(351, 112);
+            this.btnOeil.Name = "btnOeil";
+            this.btnOeil.Size = new System.Drawing.Size(35, 24);
+            this.btnOeil.TabIndex = 5;
+            this.btnOeil.Text = "👁";
+            this.btnOeil.UseVisualStyleBackColor = true;
+            this.btnOeil.Click += new System.EventHandler(this.btnOeil_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 248);
+            this.Controls.Add(this.btnOeil);
             this.Controls.Add(this.btnConfirmer);
             this.Controls.Add(this.txtBoxMDP);
             this.Controls.Add(this.txtBoxID);
             this.Controls.Add(this.lblMDP);
             this.Controls.Add(this.lblID);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormLogin";
             this.Text = "FormLogin";
             this.ResumeLayout(false);
@@ -103,5 +117,6 @@
         private System.Windows.Forms.TextBox txtBoxID;
         private System.Windows.Forms.TextBox txtBoxMDP;
         private System.Windows.Forms.Button btnConfirmer;
+        private System.Windows.Forms.Button btnOeil;
     }
 }

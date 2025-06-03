@@ -58,11 +58,10 @@
             this.lblCaserne = new System.Windows.Forms.Label();
             this.cBoxConge = new System.Windows.Forms.CheckBox();
             this.btnMaj = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnNouveau = new System.Windows.Forms.Button();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnAfficherMoins = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.grpBoxInfoPompier.SuspendLayout();
             this.grpBoxCarriere.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,20 +73,20 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(62, 193);
+            this.comboBox1.Location = new System.Drawing.Point(302, 193);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(404, 27);
+            this.comboBox1.Size = new System.Drawing.Size(181, 27);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(62, 262);
+            this.comboBox2.Location = new System.Drawing.Point(302, 262);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(404, 27);
+            this.comboBox2.Size = new System.Drawing.Size(181, 27);
             this.comboBox2.TabIndex = 0;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -385,17 +384,9 @@
             this.btnMaj.UseVisualStyleBackColor = true;
             this.btnMaj.Click += new System.EventHandler(this.btnMaj_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(62, 43);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(404, 135);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnNouveau
             // 
-            this.btnNouveau.Location = new System.Drawing.Point(1151, 678);
+            this.btnNouveau.Location = new System.Drawing.Point(302, 445);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(181, 90);
             this.btnNouveau.TabIndex = 10;
@@ -403,21 +394,11 @@
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
             // 
-            // btnQuitter
-            // 
-            this.btnQuitter.Location = new System.Drawing.Point(24, 752);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(144, 45);
-            this.btnQuitter.TabIndex = 11;
-            this.btnQuitter.Text = "Retour";
-            this.btnQuitter.UseVisualStyleBackColor = true;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(1151, 22);
+            this.btnLogin.Location = new System.Drawing.Point(302, 323);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(181, 80);
+            this.btnLogin.Size = new System.Drawing.Size(181, 90);
             this.btnLogin.TabIndex = 12;
             this.btnLogin.Text = "S\'identifier";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -434,14 +415,22 @@
             this.btnAfficherMoins.Visible = false;
             this.btnAfficherMoins.Click += new System.EventHandler(this.btnAfficherMoins_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(302, 43);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(181, 135);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // FormGestionPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 809);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1151, 809);
             this.Controls.Add(this.btnAfficherMoins);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnNouveau);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.grpBoxInfoCarriere);
@@ -452,6 +441,7 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormGestionPompier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion du personnel";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpBoxInfoPompier.ResumeLayout(false);
@@ -493,7 +483,6 @@
         private System.Windows.Forms.Label lblBip;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.GroupBox grpBoxCarriere2;
-        private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.ListBox lstBoxHabilitations;
         private System.Windows.Forms.Label lblHabilitations;
         private System.Windows.Forms.ComboBox comboBox4;

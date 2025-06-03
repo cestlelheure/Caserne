@@ -28,9 +28,9 @@ namespace Caserne
 
         public bool EstConnecte
         {
-            get 
-            { 
-                return _estConnecte; 
+            get
+            {
+                return _estConnecte;
             }
             set
             {
@@ -43,7 +43,9 @@ namespace Caserne
         {
             string requete = "SELECT nom FROM Caserne;";
             RemplirComboBoxDepuisSQLite(comboBox1, requete, "nom");
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            pictureBox2.Image = Image.FromFile(@"Images/Logo/Logo.png");
 
         }
 
@@ -140,6 +142,8 @@ namespace Caserne
         {
             comboBox2.Text = null;
             grpBoxInfoPompier.Visible = false;
+            grpBoxInfoCarriere.Visible = false;
+            btnAfficherMoins.Visible = false;
             int caserneI = comboBox1.SelectedIndex + 1;
             string requete = "SELECT * FROM Pompier p JOIN Affectation a ON p.matricule = a.matriculePompier " +
                 "JOIN Caserne c ON a.idCaserne = c.id WHERE c.id = '" + caserneI.ToString() + "';";
@@ -189,6 +193,8 @@ namespace Caserne
                 bool professionnel = reader["type"].ToString() == "p";
                 rdbProfessionnel.Checked = professionnel;
                 rdbVolontaire.Checked = !professionnel;
+                bool Conge = reader["enConge"].ToString() == "0";
+                cBoxConge.Checked = !Conge;
             }
             reader.Close();
             cmd.Dispose();
@@ -294,6 +300,8 @@ namespace Caserne
             {
                 try
                 {
+                    grade = grade2;
+                    btnChanger.Visible = false;
                     SQLiteConnection connec = Connexion.Connec;
                     string requete = "UPDATE Pompier SET codeGrade = @codeGrade WHERE matricule = @matricule;";
                     SQLiteCommand cmd = new SQLiteCommand(requete, connec);
@@ -320,8 +328,36 @@ namespace Caserne
                     EstConnecte = true;
                 }
             }
+            else
+            {
+                try
+                {
+
+                    int caserneI = comboBox4.SelectedIndex + 1;
+                    SQLiteConnection connec = Connexion.Connec;
+                    string requete = "UPDATE Affectation SET idCaserne = @idCaserne WHERE matriculePompier = @matricule;";
+                    SQLiteCommand cmd = new SQLiteCommand(requete, connec);
+                    cmd.Parameters.AddWithValue("@idCaserne", caserneI);
+                    cmd.Parameters.AddWithValue("@matricule", matricule);
+                    cmd.ExecuteNonQuery();
+                    if (cBoxConge.Checked)
+                    {
+                        string requete1 = "UPDATE Pompier SET enConge = 1";
+                        SQLiteCommand cmd1 = new SQLiteCommand(requete1, connec);
+
+                        cmd1.ExecuteNonQuery();
+                    }
+
+
+                    MessageBox.Show("Grade mis à jour avec succès !");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la mise à jour du grade : " + ex.Message);
+                }
+            }
         }
-        
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (!EstConnecte)
@@ -336,5 +372,3 @@ namespace Caserne
         }
     }
 }
-
-
