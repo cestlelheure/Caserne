@@ -20,6 +20,8 @@ namespace Caserne
             //Application.Run(new FormGestionPompier());
             Application.Run(new FormParcoursEngins());
             //Application.Run(new FrmTableauBord());
+            Application.Run(new FormLogin());
+            Application.Run(new FormGestionPompier());
 
         }
     }

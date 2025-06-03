@@ -58,27 +58,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAjoutPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjoutPompier.Designer.cs">
+      <DependentUpon>FormAjoutPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompteRendu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompteRendu.Designer.cs">
+      <DependentUpon>FormCompteRendu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCreationMission.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormCreationMission.Designer.cs">
       <DependentUpon>FormCreationMission.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGestionPompier.cs" />
+    <Compile Include="FormGestionPompier.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormGestionPompier.Designer.cs">
       <DependentUpon>FormGestionPompier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormParcoursEngins.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormParcoursEngins.Designer.cs">
       <DependentUpon>FormParcoursEngins.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTableauBord.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTableauBord.Designer.cs">
-      <DependentUpon>FormTableauBord.cs</DependentUpon>
     </Compile>
     <Compile Include="mesDatas.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
@@ -90,17 +104,20 @@
     <Compile Include="UsMission.Designer.cs">
       <DependentUpon>UsMission.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormCompteRendu.resx">
+      <DependentUpon>FormCompteRendu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCreationMission.resx">
       <DependentUpon>FormCreationMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGestionPompier.resx">
       <DependentUpon>FormGestionPompier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormParcoursEngins.resx">
       <DependentUpon>FormParcoursEngins.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTableauBord.resx">
-      <DependentUpon>FormTableauBord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
