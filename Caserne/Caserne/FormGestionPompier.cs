@@ -42,10 +42,10 @@ namespace Caserne
         private void Form1_Load(object sender, EventArgs e)
         {
             string requete = "SELECT nom FROM Caserne;";
+            comboBox1.Focus();
             RemplirComboBoxDepuisSQLite(comboBox1, requete, "nom");
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             pictureBox2.Image = Image.FromFile(@"Images/Logo/Logo.png");
+
 
         }
 
@@ -54,7 +54,6 @@ namespace Caserne
             try
             {
                 SQLiteConnection connec = Connexion.Connec;
-
                 SQLiteCommand commande = new SQLiteCommand(requeteSQL, connec);
                 SQLiteDataReader lecteur = commande.ExecuteReader();
 
@@ -74,7 +73,6 @@ namespace Caserne
         public void chargerListBox(ListBox lstBox, string requete, string[] colonnes)
         {
             SQLiteConnection connec = Connexion.Connec;
-
             SQLiteCommand commande = new SQLiteCommand(requete, connec);
             SQLiteDataReader reader = commande.ExecuteReader();
 
@@ -96,16 +94,17 @@ namespace Caserne
             reader.Close();
         }
 
-        public void chargerListBox(ListBox lstBox, string requete, string colonne)
+        public void chargerCheckedListBox(CheckedListBox lstBox, string requete, string colonne)
         {
             SQLiteConnection connec = Connexion.Connec;
-
             SQLiteCommand commande = new SQLiteCommand(requete, connec);
             SQLiteDataReader reader = commande.ExecuteReader();
-            if (reader.Read())
+            lstBox.Items.Clear();
+            while (reader.Read())
             {
                 lstBox.Items.Add(reader[colonne].ToString());
             }
+            reader.Close();
         }
 
         private void RemplirComboBoxDepuisSQLite(ComboBox combo, string requeteSQL, string[] colonnesAffichage)
@@ -113,7 +112,6 @@ namespace Caserne
             try
             {
                 SQLiteConnection connec = Connexion.Connec;
-
                 SQLiteCommand commande = new SQLiteCommand(requeteSQL, connec);
                 SQLiteDataReader lecteur = commande.ExecuteReader();
 
@@ -121,14 +119,19 @@ namespace Caserne
 
                 while (lecteur.Read())
                 {
-                    List<string> valeurs = new List<string>();
-
-                    foreach (string colonne in colonnesAffichage)
+                    if (colonnesAffichage.Length == 2 && colonnesAffichage[0] == "nom" && colonnesAffichage[1] == "prenom")
                     {
-                        valeurs.Add(lecteur[colonne].ToString());
+                        combo.Items.Add(lecteur["nom"].ToString() + "  " + lecteur["prenom"].ToString());
                     }
-
-                    combo.Items.Add(string.Join(" ", valeurs));
+                    else
+                    {
+                        List<string> valeurs = new List<string>();
+                        foreach (string colonne in colonnesAffichage)
+                        {
+                            valeurs.Add(lecteur[colonne].ToString());
+                        }
+                        combo.Items.Add(string.Join(" ", valeurs));
+                    }
                 }
             }
             catch (Exception ex)
@@ -149,20 +152,23 @@ namespace Caserne
                 "JOIN Caserne c ON a.idCaserne = c.id WHERE c.id = '" + caserneI.ToString() + "';";
             string[] nomPrenom = { "nom", "prenom" };
             RemplirComboBoxDepuisSQLite(comboBox2, requete, nomPrenom);
+            btnVeuillez.Visible = true;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnVeuillez.Visible = false;
             if (comboBox2.SelectedItem == null) return;
             btnChanger.Visible = false;
             grpBoxInfoPompier.Visible = true;
             btnAfficherPlus.Visible = true;
 
-            string[] nomPrenom = comboBox2.SelectedItem.ToString().Trim().Split(' ');
-            if (nomPrenom.Length < 2) return;
+            string selected = comboBox2.SelectedItem.ToString();
+            string[] nomPrenom = selected.Split(new[] { "  " }, StringSplitOptions.None);
+            if (nomPrenom.Length != 2) return;
 
-            string prenom = nomPrenom[nomPrenom.Length - 1];
-            string nom = string.Join(" ", nomPrenom.Take(nomPrenom.Length - 1));
+            string nom = nomPrenom[0];
+            string prenom = nomPrenom[1];
             string requete =
                 "SELECT * " +
                 "FROM   Pompier " +
@@ -223,10 +229,11 @@ namespace Caserne
             RemplirComboBoxDepuisSQLite(comboBox3, requete, "libelle");
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.Image = Image.FromFile(@"Images/ImagesGrades/" + txtBoxGrade.Text + ".png");
-            lstBoxHabilitations.Items.Clear();
             lstBoxAffectations.Items.Clear();
+            requete = "SELECT libelle FROM Habilitation";
+            chargerCheckedListBox(clbHabilitations, requete, "libelle");
             requete = "SELECT h.libelle FROM Habilitation h JOIN Passer s ON h.id = s.idHabilitation JOIN Pompier p ON s.matriculePompier = p.matricule WHERE p.matricule = '" + matricule + "';";
-            chargerListBox(lstBoxHabilitations, requete, "libelle");
+            CocherHabilitationsConnues(clbHabilitations, requete, "libelle", matricule);
             requete = "SELECT a.dateA , c.nom FROM Affectation a JOIN Caserne c ON c.id = a.idCaserne JOIN Pompier p on a.matriculePompier = p.matricule WHERE p.matricule = '" + matricule + "' AND a.dateFin IS NOT NULL";
             string[] colonnes = { "dateA", "nom" };
             chargerListBox(lstBoxAffectations, requete, colonnes);
@@ -281,8 +288,29 @@ namespace Caserne
 
         private void btnNouveau_Click(object sender, EventArgs e)
         {
-            FormAjoutPompier form2 = new FormAjoutPompier();
-            form2.ShowDialog();
+            if (!EstConnecte)
+            {
+                FormLogin login = new FormLogin();
+                login.ShowDialog();
+                if (login.DialogResult == DialogResult.OK)
+                {
+                    EstConnecte = true;
+                    btnNouveau_Click(sender, e);
+                }
+            }
+            else
+            {
+                try
+                {
+
+                    FormAjoutPompier form2 = new FormAjoutPompier();
+                    form2.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors du lancement de l'ajout de pompier : " + ex.Message);
+                }
+            }
         }
 
         private void btnChanger_Click(object sender, EventArgs e)
@@ -294,6 +322,7 @@ namespace Caserne
                 if (login.DialogResult == DialogResult.OK)
                 {
                     EstConnecte = true;
+                    btnMaj_Click(sender, e);
                 }
             }
             else
@@ -326,13 +355,13 @@ namespace Caserne
                 if (login.DialogResult == DialogResult.OK)
                 {
                     EstConnecte = true;
+                    btnMaj_Click(sender, e);
                 }
             }
             else
             {
                 try
                 {
-
                     int caserneI = comboBox4.SelectedIndex + 1;
                     SQLiteConnection connec = Connexion.Connec;
                     string requete = "UPDATE Affectation SET idCaserne = @idCaserne WHERE matriculePompier = @matricule;";
@@ -342,18 +371,16 @@ namespace Caserne
                     cmd.ExecuteNonQuery();
                     if (cBoxConge.Checked)
                     {
-                        string requete1 = "UPDATE Pompier SET enConge = 1";
+                        string requete1 = "UPDATE Pompier SET enConge = 1 WHERE matricule = '" + matricule +"'";
                         SQLiteCommand cmd1 = new SQLiteCommand(requete1, connec);
 
                         cmd1.ExecuteNonQuery();
                     }
-
-
-                    MessageBox.Show("Grade mis à jour avec succès !");
+                    MessageBox.Show("Informations mises à jour avec succès !");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur lors de la mise à jour du grade : " + ex.Message);
+                    MessageBox.Show("Erreur lors de la mise à jour des informations du pompier : " + ex.Message);
                 }
             }
         }
@@ -370,5 +397,35 @@ namespace Caserne
                 }
             }
         }
+
+        private void CocherHabilitationsConnues(CheckedListBox clb, string requete, string colonne, string matricule)
+        {
+            try
+            {
+                SQLiteConnection connec = Connexion.Connec;
+                SQLiteCommand cmd = new SQLiteCommand(requete, connec);
+                cmd.Parameters.AddWithValue("@matricule", matricule);
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string habilitation = reader[colonne].ToString();
+                    for (int i = 0; i < clb.Items.Count; i++)
+                    {
+                        if (clb.Items[i].ToString() == habilitation)
+                        {
+                            clb.SetItemChecked(i, true);
+                        }
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des habilitations : " + ex.Message);
+            }
+        }
+
+
     }
 }

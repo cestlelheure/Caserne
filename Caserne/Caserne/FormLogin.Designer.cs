@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.lblID = new System.Windows.Forms.Label();
             this.lblMDP = new System.Windows.Forms.Label();
             this.txtBoxID = new System.Windows.Forms.TextBox();
@@ -59,14 +60,14 @@
             this.txtBoxID.Location = new System.Drawing.Point(184, 58);
             this.txtBoxID.Name = "txtBoxID";
             this.txtBoxID.Size = new System.Drawing.Size(152, 24);
-            this.txtBoxID.TabIndex = 2;
+            this.txtBoxID.TabIndex = 1;
             // 
             // txtBoxMDP
             // 
             this.txtBoxMDP.Location = new System.Drawing.Point(184, 112);
             this.txtBoxMDP.Name = "txtBoxMDP";
             this.txtBoxMDP.Size = new System.Drawing.Size(152, 24);
-            this.txtBoxMDP.TabIndex = 3;
+            this.txtBoxMDP.TabIndex = 2;
             this.txtBoxMDP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxMDP_KeyDown);
             this.txtBoxMDP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBoxMDP_MouseDown);
             // 
@@ -82,10 +83,10 @@
             // 
             // btnOeil
             // 
-            this.btnOeil.Location = new System.Drawing.Point(351, 112);
+            this.btnOeil.Location = new System.Drawing.Point(342, 112);
             this.btnOeil.Name = "btnOeil";
             this.btnOeil.Size = new System.Drawing.Size(35, 24);
-            this.btnOeil.TabIndex = 5;
+            this.btnOeil.TabIndex = 3;
             this.btnOeil.Text = "👁";
             this.btnOeil.UseVisualStyleBackColor = true;
             this.btnOeil.Click += new System.EventHandler(this.btnOeil_Click);
@@ -102,9 +103,13 @@
             this.Controls.Add(this.lblMDP);
             this.Controls.Add(this.lblID);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "FormLogin";
-            this.Text = "FormLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "S\'identifier";
             this.ResumeLayout(false);
             this.PerformLayout();
 
