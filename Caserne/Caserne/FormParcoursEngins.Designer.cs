@@ -54,24 +54,28 @@
             // 
             // bttnPrecedent
             // 
-            this.bttnPrecedent.Location = new System.Drawing.Point(382, 558);
+            this.bttnPrecedent.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnPrecedent.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnPrecedent.Location = new System.Drawing.Point(610, 626);
             this.bttnPrecedent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnPrecedent.Name = "bttnPrecedent";
             this.bttnPrecedent.Size = new System.Drawing.Size(94, 30);
             this.bttnPrecedent.TabIndex = 2;
             this.bttnPrecedent.Text = "<--";
-            this.bttnPrecedent.UseVisualStyleBackColor = true;
+            this.bttnPrecedent.UseVisualStyleBackColor = false;
             this.bttnPrecedent.Click += new System.EventHandler(this.bttnPrecedent_Click);
             // 
             // bttnSuivant
             // 
-            this.bttnSuivant.Location = new System.Drawing.Point(534, 558);
+            this.bttnSuivant.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnSuivant.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnSuivant.Location = new System.Drawing.Point(762, 626);
             this.bttnSuivant.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnSuivant.Name = "bttnSuivant";
             this.bttnSuivant.Size = new System.Drawing.Size(94, 30);
             this.bttnSuivant.TabIndex = 3;
             this.bttnSuivant.Text = "-->";
-            this.bttnSuivant.UseVisualStyleBackColor = true;
+            this.bttnSuivant.UseVisualStyleBackColor = false;
             this.bttnSuivant.Click += new System.EventHandler(this.bttnSuivant_Click);
             // 
             // pnlChoixCaserne
@@ -79,7 +83,7 @@
             this.pnlChoixCaserne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlChoixCaserne.Controls.Add(this.lblChoixCaserne);
             this.pnlChoixCaserne.Controls.Add(this.cmbChoixCaserne);
-            this.pnlChoixCaserne.Location = new System.Drawing.Point(34, 55);
+            this.pnlChoixCaserne.Location = new System.Drawing.Point(262, 123);
             this.pnlChoixCaserne.Name = "pnlChoixCaserne";
             this.pnlChoixCaserne.Size = new System.Drawing.Size(954, 68);
             this.pnlChoixCaserne.TabIndex = 4;
@@ -111,7 +115,7 @@
             this.pnlInfosEngins.Controls.Add(this.grpEtat);
             this.pnlInfosEngins.Controls.Add(this.grpInfos);
             this.pnlInfosEngins.Controls.Add(this.pbEngin);
-            this.pnlInfosEngins.Location = new System.Drawing.Point(34, 169);
+            this.pnlInfosEngins.Location = new System.Drawing.Point(262, 237);
             this.pnlInfosEngins.Name = "pnlInfosEngins";
             this.pnlInfosEngins.Size = new System.Drawing.Size(950, 351);
             this.pnlInfosEngins.TabIndex = 5;
@@ -189,43 +193,48 @@
             // 
             // bttnFin
             // 
-            this.bttnFin.Location = new System.Drawing.Point(636, 558);
+            this.bttnFin.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnFin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnFin.Location = new System.Drawing.Point(864, 626);
             this.bttnFin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnFin.Name = "bttnFin";
             this.bttnFin.Size = new System.Drawing.Size(94, 30);
             this.bttnFin.TabIndex = 6;
             this.bttnFin.Text = "-->";
-            this.bttnFin.UseVisualStyleBackColor = true;
+            this.bttnFin.UseVisualStyleBackColor = false;
             this.bttnFin.Click += new System.EventHandler(this.bttnFin_Click);
             // 
             // bttnDebut
             // 
-            this.bttnDebut.Location = new System.Drawing.Point(280, 558);
+            this.bttnDebut.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnDebut.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnDebut.Location = new System.Drawing.Point(508, 626);
             this.bttnDebut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnDebut.Name = "bttnDebut";
             this.bttnDebut.Size = new System.Drawing.Size(94, 30);
             this.bttnDebut.TabIndex = 7;
             this.bttnDebut.Text = "<--";
-            this.bttnDebut.UseVisualStyleBackColor = true;
+            this.bttnDebut.UseVisualStyleBackColor = false;
             this.bttnDebut.Click += new System.EventHandler(this.bttnDebut_Click);
             // 
             // bttnQuitter
             // 
-            this.bttnQuitter.Location = new System.Drawing.Point(874, 549);
+            this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnQuitter.Location = new System.Drawing.Point(1102, 617);
             this.bttnQuitter.Name = "bttnQuitter";
             this.bttnQuitter.Size = new System.Drawing.Size(113, 49);
             this.bttnQuitter.TabIndex = 8;
             this.bttnQuitter.Text = "Quitter";
-            this.bttnQuitter.UseVisualStyleBackColor = true;
+            this.bttnQuitter.UseVisualStyleBackColor = false;
             this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
             // 
             // FormParcoursEngins
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Caserne.Properties.Resources.Fond;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1000, 611);
+            this.ClientSize = new System.Drawing.Size(1518, 754);
             this.Controls.Add(this.bttnQuitter);
             this.Controls.Add(this.bttnDebut);
             this.Controls.Add(this.bttnFin);
@@ -240,6 +249,7 @@
             this.Name = "FormParcoursEngins";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualisation des engins";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlChoixCaserne.ResumeLayout(false);
             this.pnlChoixCaserne.PerformLayout();
             this.pnlInfosEngins.ResumeLayout(false);
