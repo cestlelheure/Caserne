@@ -142,6 +142,7 @@
             // grpBoxInfoPompier
             // 
             this.grpBoxInfoPompier.Controls.Add(this.grpBoxCarriere);
+            this.grpBoxInfoPompier.Controls.Add(this.btnVeuillez);
             this.grpBoxInfoPompier.Controls.Add(this.lblED);
             this.grpBoxInfoPompier.Controls.Add(this.pictureBox1);
             this.grpBoxInfoPompier.Controls.Add(this.rdbVolontaire);
@@ -195,6 +196,7 @@
             // 
             // btnChanger
             // 
+            this.btnChanger.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChanger.Location = new System.Drawing.Point(364, 24);
             this.btnChanger.Name = "btnChanger";
             this.btnChanger.Size = new System.Drawing.Size(85, 27);
@@ -289,7 +291,7 @@
             this.btnVeuillez.Enabled = false;
             this.btnVeuillez.Font = new System.Drawing.Font("Microsoft YaHei UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeuillez.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVeuillez.Location = new System.Drawing.Point(713, 30);
+            this.btnVeuillez.Location = new System.Drawing.Point(-82, 6);
             this.btnVeuillez.Name = "btnVeuillez";
             this.btnVeuillez.Size = new System.Drawing.Size(592, 750);
             this.btnVeuillez.TabIndex = 16;
@@ -299,6 +301,7 @@
             // btnAfficherPlus
             // 
             this.btnAfficherPlus.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAfficherPlus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAfficherPlus.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAfficherPlus.Location = new System.Drawing.Point(1147, 425);
             this.btnAfficherPlus.Name = "btnAfficherPlus";
@@ -375,6 +378,7 @@
             // 
             // cboNewCaserne
             // 
+            this.cboNewCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboNewCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNewCaserne.FormattingEnabled = true;
             this.cboNewCaserne.Location = new System.Drawing.Point(240, 30);
@@ -394,6 +398,7 @@
             // cBoxConge
             // 
             this.cBoxConge.AutoSize = true;
+            this.cBoxConge.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBoxConge.Location = new System.Drawing.Point(38, 282);
             this.cBoxConge.Name = "cBoxConge";
             this.cBoxConge.Size = new System.Drawing.Size(107, 27);
@@ -404,6 +409,7 @@
             // btnMaj
             // 
             this.btnMaj.BackColor = System.Drawing.Color.IndianRed;
+            this.btnMaj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaj.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMaj.Location = new System.Drawing.Point(419, 282);
             this.btnMaj.Name = "btnMaj";
@@ -416,6 +422,7 @@
             // btnAfficherMoins
             // 
             this.btnAfficherMoins.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAfficherMoins.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAfficherMoins.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAfficherMoins.Location = new System.Drawing.Point(1147, 425);
             this.btnAfficherMoins.Name = "btnAfficherMoins";
@@ -506,7 +513,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1420, 819);
             this.Controls.Add(this.btnRetour);
-            this.Controls.Add(this.btnVeuillez);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAfficherMoins);

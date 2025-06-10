@@ -366,7 +366,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1540, 816);
+            this.ClientSize = new System.Drawing.Size(1540, 1055);
             this.Controls.Add(this.bttnAnnuler);
             this.Controls.Add(this.bttnCréerMission);
             this.Controls.Add(this.grpPompiersEngins);

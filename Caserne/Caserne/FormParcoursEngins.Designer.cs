@@ -254,7 +254,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1518, 754);
+            this.ClientSize = new System.Drawing.Size(1518, 1055);
             this.Controls.Add(this.lblNumPage);
             this.Controls.Add(this.bttnQuitter);
             this.Controls.Add(this.bttnDebut);
