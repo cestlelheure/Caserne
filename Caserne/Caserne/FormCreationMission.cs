@@ -2,18 +2,43 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Linq;
+using System.Collections.Generic;
 using System.Data.SQLite;
+using Caserne;
 
 namespace Caserne
 {
     public partial class FormCreationMission : Form
     {
         private MissionLocale missionEnCours;
+        private int numeroMission;
+        private string dateHeure;
+
+        // Tables du DataSet global (mode déconnecté)
+        private DataTable dtMission;
+        private DataTable dtMobiliser;
+        private DataTable dtPartirAvec;
+        private DataTable dtPompier;
+        private DataTable dtEngin;
+        private DataTable dtNatureSinistre;
+        private DataTable dtCaserne;
+        private DataTable dtNecessiter;
+        private DataTable dtTypeEngin;
+        private DataTable dtEmbarquer;
+        private DataTable dtPasser;
+        private DataTable dtAffectation;
+
+        private int[] idHabilitation;
+        private int[] idHabi;
+
+        // Utilisation de la classe Connexion existante
 
         public FormCreationMission()
         {
             InitializeComponent();
-            InitialiserFormulaire();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            ChargerDonneesBase();
+            InitialiserModeDeconnecte();
         }
 
         public class MissionLocale
@@ -37,55 +62,145 @@ namespace Caserne
             }
         }
 
-        #region Initialisation
-        private void InitialiserFormulaire()
-        {
-            RemplirComboBox(cmbNatureSinistre, "SELECT libelle FROM NatureSinistre", "types de sinistre");
-            RemplirComboBox(cmbCaserneMobiliser, "SELECT nom FROM Caserne", "casernes");
-            AfficherNumeroMission();
-            lblDateDebut.Text = $"Mission déclenchée le : {DateTime.Now:dd/MM/yyyy HH:mm}";
-        }
-
-        private void RemplirComboBox(ComboBox combo, string requete, string typeErreur)
+        #region Chargement des données depuis la base
+        private void ChargerDonneesBase()
         {
             try
             {
-                combo.Items.Clear();
-                using (SQLiteCommand command = new SQLiteCommand(requete, Connexion.Connec))
-                using (SQLiteDataReader reader = command.ExecuteReader())
+                SQLiteConnection connection = Connexion.Connec;
+                
+                if (connection != null && connection.State == ConnectionState.Open)
                 {
-                    while (reader.Read())
-                    {
-                        combo.Items.Add(reader[0].ToString());
-                    }
+                    // Charger toutes les tables nécessaires
+                    ChargerTable(connection, "Mission", "SELECT * FROM Mission");
+                    ChargerTable(connection, "Mobiliser", "SELECT * FROM Mobiliser");
+                    ChargerTable(connection, "PartirAvec", "SELECT * FROM PartirAvec");
+                    ChargerTable(connection, "Pompier", "SELECT * FROM Pompier");
+                    ChargerTable(connection, "Engin", "SELECT * FROM Engin");
+                    ChargerTable(connection, "NatureSinistre", "SELECT * FROM NatureSinistre");
+                    ChargerTable(connection, "Caserne", "SELECT * FROM Caserne");
+                    ChargerTable(connection, "Necessiter", "SELECT * FROM Necessiter");
+                    ChargerTable(connection, "TypeEngin", "SELECT * FROM TypeEngin");
+                    ChargerTable(connection, "Embarquer", "SELECT * FROM Embarquer");
+                    ChargerTable(connection, "Passer", "SELECT * FROM Passer");
+                    ChargerTable(connection, "Affectation", "SELECT * FROM Affectation");
+                }
+                else
+                {
+                    MessageBox.Show("Impossible d'établir la connexion à la base de données.", 
+                                  "Erreur de connexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors du chargement des {typeErreur} : {ex.Message}");
+                MessageBox.Show($"Erreur lors du chargement des données : {ex.Message}", 
+                              "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void AfficherNumeroMission()
+        private void ChargerTable(SQLiteConnection connection, string nomTable, string requete)
         {
             try
             {
-                int numeroMission = ObtenirProchainNumero("SELECT MAX(id) FROM Mission");
-                lblNumMission.Text = $"Mission n° {numeroMission}";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(requete, connection);
+                DataTable table = new DataTable(nomTable);
+                adapter.Fill(table);
+                
+                // Supprimer la table existante si elle existe déjà
+                if (MesDatas.DsGlobal.Tables.Contains(nomTable))
+                {
+                    MesDatas.DsGlobal.Tables.Remove(nomTable);
+                }
+                
+                MesDatas.DsGlobal.Tables.Add(table);
+                adapter.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors du chargement du numéro de mission : {ex.Message}");
+                MessageBox.Show($"Erreur lors du chargement de la table {nomTable} : {ex.Message}", 
+                              "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
 
-        private int ObtenirProchainNumero(string requete)
+        #region Initialisation Mode Déconnecté
+        private void InitialiserModeDeconnecte()
         {
-            using (SQLiteCommand command = new SQLiteCommand(requete, Connexion.Connec))
+            // Récupération des tables depuis le DataSet global
+            dtMission = MesDatas.DsGlobal.Tables["Mission"];
+            dtMobiliser = MesDatas.DsGlobal.Tables["Mobiliser"];
+            dtPartirAvec = MesDatas.DsGlobal.Tables["PartirAvec"];
+            dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
+            dtEngin = MesDatas.DsGlobal.Tables["Engin"];
+            dtNatureSinistre = MesDatas.DsGlobal.Tables["NatureSinistre"];
+            dtCaserne = MesDatas.DsGlobal.Tables["Caserne"];
+            dtNecessiter = MesDatas.DsGlobal.Tables["Necessiter"];
+            dtTypeEngin = MesDatas.DsGlobal.Tables["TypeEngin"];
+            dtEmbarquer = MesDatas.DsGlobal.Tables["Embarquer"];
+            dtPasser = MesDatas.DsGlobal.Tables["Passer"];
+            dtAffectation = MesDatas.DsGlobal.Tables["Affectation"];
+
+            idHabilitation = new int[100];
+
+            InitialiserFormulaire();
+        }
+
+        private void InitialiserFormulaire()
+        {
+            // Vérifier que les tables sont chargées avant de configurer les ComboBox
+            if (dtNatureSinistre != null && dtNatureSinistre.Rows.Count > 0)
             {
-                object result = command.ExecuteScalar();
-                return result == null || result == DBNull.Value ? 1 : Convert.ToInt32(result) + 1;
+                cmbNatureSinistre.DataSource = dtNatureSinistre;
+                cmbNatureSinistre.DisplayMember = "libelle";
+                cmbNatureSinistre.ValueMember = "id";
+                cmbNatureSinistre.SelectedIndex = -1;
             }
+            else
+            {
+                MessageBox.Show("Aucune nature de sinistre trouvée dans la base de données.", 
+                              "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (dtCaserne != null && dtCaserne.Rows.Count > 0)
+            {
+                cmbCaserneMobiliser.DataSource = dtCaserne;
+                cmbCaserneMobiliser.DisplayMember = "nom";
+                cmbCaserneMobiliser.ValueMember = "id";
+                cmbCaserneMobiliser.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show("Aucune caserne trouvée dans la base de données.", 
+                              "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Générer le numéro de mission
+            numeroMission = ObtenirProchainNumeroMission();
+            dateHeure = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            lblNumMission.Text = $"Mission n° {numeroMission}";
+            lblDateDebut.Text = $"Mission déclenchée le : {DateTime.Now:dd/MM/yyyy HH:mm}";
+
+            // Masquer la group box des ressources au démarrage
+            grpPompiersEngins.Visible = false;
+        }
+
+        private int ObtenirProchainNumeroMission()
+        {
+            if (dtMission == null || dtMission.Rows.Count == 0)
+                return 1;
+
+            int maxId = 0;
+            foreach (DataRow row in dtMission.Rows)
+            {
+                if (row["id"] != DBNull.Value)
+                {
+                    int id = Convert.ToInt32(row["id"]);
+                    if (id > maxId)
+                        maxId = id;
+                }
+            }
+            return maxId + 1;
         }
         #endregion
 
@@ -97,247 +212,250 @@ namespace Caserne
 
         private static void ValiderSaisieTexte(KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) &&
-                e.KeyChar != ' ' && !char.IsDigit(e.KeyChar))
+            e.Handled = true;
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) ||
+                e.KeyChar == ' ' || char.IsDigit(e.KeyChar) || e.KeyChar == '\'')
             {
-                e.Handled = true;
+                e.Handled = false;
             }
         }
 
         private static void ValiderSaisieNumerique(KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            e.Handled = true;
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = false;
             }
         }
         #endregion
 
-        #region Méthodes utilitaires
-        private int ObtenirId(string table, string colonne, string valeur, string nomColonne = "id")
+        #region Gestion des ressources en mode déconnecté
+        private void ChargerRessourcesDisponibles()
         {
-            try
+            if (!ValiderSelections()) return;
+
+            int natureSinistreId = Convert.ToInt32(cmbNatureSinistre.SelectedValue);
+            int caserneId = Convert.ToInt32(cmbCaserneMobiliser.SelectedValue);
+
+            // Rechercher les engins nécessaires
+            List<(string codeTypeEngin, int nombre, int equipage)> enginsNecessaires = ObtenirEnginsNecessaires(natureSinistreId, caserneId);
+
+            if (enginsNecessaires.Count == 0)
             {
-                string sql = $"SELECT {nomColonne} FROM {table} WHERE {colonne} = @valeur";
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec))
+                // Proposer une autre caserne
+                int nouvelleCaserne = TrouverCaserneAvecEngins(natureSinistreId);
+                if (nouvelleCaserne != -1 && nouvelleCaserne != caserneId)
                 {
-                    cmd.Parameters.AddWithValue("@valeur", valeur);
-                    object result = cmd.ExecuteScalar();
-                    return result != null && result != DBNull.Value ? Convert.ToInt32(result) : -1;
+                    ProposerChangementCaserne(nouvelleCaserne);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Aucune caserne ne dispose actuellement des engins nécessaires pour ce type de sinistre.");
+                    return;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erreur dans la récupération de l'ID de {table} : {ex.Message}");
-                return -1;
-            }
+
+            // Afficher les engins dans le DataGridView
+            AfficherEnginsDisponibles(enginsNecessaires, caserneId);
+
+            // Afficher les pompiers disponibles
+            AfficherPompiersDisponibles(enginsNecessaires, caserneId);
+
+            grpPompiersEngins.Visible = true;
         }
 
-        private int ObtenirIdNatureSinistre(string libelle) => ObtenirId("NatureSinistre", "libelle", libelle);
-        private int ObtenirIdCaserne(string nom) => ObtenirId("Caserne", "nom", nom);
-
-        private string ObtenirNomCaserne(int idCaserne)
+        private List<(string codeTypeEngin, int nombre, int equipage)> ObtenirEnginsNecessaires(int idNatureSinistre, int idCaserne)
         {
-            try
-            {
-                using (SQLiteCommand cmd = new SQLiteCommand("SELECT nom FROM Caserne WHERE id = @id", Connexion.Connec))
-                {
-                    cmd.Parameters.AddWithValue("@id", idCaserne);
-                    return cmd.ExecuteScalar()?.ToString() ?? "";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erreur lors de la récupération du nom de caserne : {ex.Message}");
-                return "";
-            }
-        }
-        #endregion
+            List<(string, int, int)> enginsNecessaires = new List<(string, int, int)>();
 
-        #region Gestion des ressources
-        private DataTable ObtenirDonnees(string requete, params SQLiteParameter[] parametres)
-        {
-            DataTable table = new DataTable();
-            try
-            {
-                using (SQLiteCommand cmd = new SQLiteCommand(requete, Connexion.Connec))
-                {
-                    if (parametres != null)
-                        cmd.Parameters.AddRange(parametres);
+            if (dtNecessiter == null) return enginsNecessaires;
 
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+            foreach (DataRow row in dtNecessiter.Select($"idNatureSinistre = {idNatureSinistre}"))
+            {
+                string codeTypeEngin = row["codeTypeEngin"].ToString();
+                int nombreNecessaire = Convert.ToInt32(row["nombre"]);
+
+                // Vérifier la disponibilité dans la caserne
+                if (dtEngin != null)
+                {
+                    DataRow[] enginsDisponibles = dtEngin.Select(
+                        $"codeTypeEngin = '{codeTypeEngin}' AND idCaserne = {idCaserne} AND enMission = 0 AND enPanne = 0");
+
+                    if (enginsDisponibles.Length >= nombreNecessaire)
                     {
-                        adapter.Fill(table);
+                        // Récupérer l'équipage nécessaire
+                        if (dtTypeEngin != null)
+                        {
+                            DataRow[] typeEnginRows = dtTypeEngin.Select($"code = '{codeTypeEngin}'");
+                            int equipage = typeEnginRows.Length > 0 ? Convert.ToInt32(typeEnginRows[0]["equipage"]) : 1;
+
+                            enginsNecessaires.Add((codeTypeEngin, nombreNecessaire, equipage));
+                        }
                     }
                 }
             }
-            catch (Exception ex)
+
+            return enginsNecessaires;
+        }
+
+        private void AfficherEnginsDisponibles(List<(string codeTypeEngin, int nombre, int equipage)> enginsNecessaires, int idCaserne)
+        {
+            dgvEngins.Rows.Clear();
+            if (dgvEngins.Columns.Count == 0)
             {
-                MessageBox.Show($"Erreur lors de la récupération des données : {ex.Message}");
+                dgvEngins.Columns.Add("codeTypeEngin", "Type d'engin");
+                dgvEngins.Columns.Add("nombre", "Quantité");
+                dgvEngins.Columns.Add("equipage", "Équipage requis");
+                dgvEngins.Columns.Add("numero", "Numéro");
+                dgvEngins.Columns.Add("idCaserne", "Caserne");
             }
-            return table;
-        }
 
-        private DataTable ObtenirEnginsPourSinistre(int idNatureSinistre, int idCaserne)
-        {
-            const string sql = @"SELECT 
-                                e.numero, 
-                                t.nom as TypeEngin, 
-                                e.dateReception, 
-                                e.codeTypeEngin,
-                                n.nombre as NombreNecessaire
-                             FROM Necessiter n
-                             INNER JOIN TypeEngin t ON n.codeTypeEngin = t.code
-                             INNER JOIN Engin e ON t.code = e.codeTypeEngin
-                             WHERE n.idNatureSinistre = @idNatureSinistre
-                             AND e.idCaserne = @idCaserne
-                             AND e.enMission = 0 AND e.enPanne = 0
-                             ORDER BY e.codeTypeEngin, e.dateReception";
+            if (dtEngin == null) return;
 
-            DataTable resultTemp = ObtenirDonnees(sql,
-                new SQLiteParameter("@idNatureSinistre", idNatureSinistre),
-                new SQLiteParameter("@idCaserne", idCaserne));
-
-            return FiltrerEnginsParQuantite(resultTemp);
-        }
-
-        private static DataTable FiltrerEnginsParQuantite(DataTable engins)
-        {
-            if (engins.Rows.Count == 0) return engins;
-
-            DataTable result = engins.Clone();
-            System.Collections.Generic.IEnumerable<System.Linq.IGrouping<string, DataRow>> groupes = engins.AsEnumerable()
-                .GroupBy(row => row.Field<string>("codeTypeEngin"));
-
-            foreach (System.Linq.IGrouping<string, DataRow> groupe in groupes)
+            foreach ((string codeTypeEngin, int nombre, int equipage) in enginsNecessaires)
             {
-                int nombreNecessaire = Convert.ToInt32(groupe.First().Field<object>("NombreNecessaire"));
-                System.Collections.Generic.IEnumerable<DataRow> enginsSelectionnes = groupe.Take(nombreNecessaire);
+                DataRow[] enginsDisponibles = dtEngin.Select(
+                    $"codeTypeEngin = '{codeTypeEngin}' AND idCaserne = {idCaserne} AND enMission = 0 AND enPanne = 0");
 
-                foreach (DataRow engin in enginsSelectionnes)
+                // Prendre seulement le nombre d'engins nécessaire
+                for (int i = 0; i < nombre && i < enginsDisponibles.Length; i++)
                 {
-                    result.ImportRow(engin);
+                    DataRow engin = enginsDisponibles[i];
+                    dgvEngins.Rows.Add(
+                        codeTypeEngin,
+                        1,
+                        equipage,
+                        engin["numero"],
+                        engin["idCaserne"]
+                    );
                 }
             }
-
-            return result;
         }
 
-        private DataTable ObtenirPompiersDisponibles(int idNatureSinistre, int idCaserne)
+        private void AfficherPompiersDisponibles(List<(string codeTypeEngin, int nombre, int equipage)> enginsNecessaires, int idCaserne)
         {
-            int nombrePompiersNecessaires = CalculerNombrePompiersNecessaires(idNatureSinistre);
-
-            const string sql = @"SELECT DISTINCT p.matricule, p.nom, p.prenom, g.libelle as Grade,
-                                GROUP_CONCAT(DISTINCT h.libelle) as Habilitations
-                        FROM Pompier p
-                        INNER JOIN Grade g ON p.codeGrade = g.code
-                        INNER JOIN Affectation af ON p.matricule = af.matriculePompier
-                        INNER JOIN Passer pa ON p.matricule = pa.matriculePompier
-                        INNER JOIN Habilitation h ON pa.idHabilitation = h.id
-                        WHERE p.enConge = 0 AND p.enMission = 0
-                        AND af.idCaserne = @idCaserne
-                        AND (af.dateFin IS NULL OR af.dateFin > date('now'))
-                        AND EXISTS (
-                            SELECT 1 FROM Embarquer emb 
-                            INNER JOIN Necessiter n ON emb.codeTypeEngin = n.codeTypeEngin
-                            WHERE emb.idHabilitation = h.id 
-                            AND n.idNatureSinistre = @idNatureSinistre
-                        )
-                        GROUP BY p.matricule, p.nom, p.prenom, g.libelle
-                        ORDER BY g.rang DESC, p.nom, p.prenom
-                        LIMIT @nombrePompiers";
-
-            return ObtenirDonnees(sql,
-                new SQLiteParameter("@idNatureSinistre", idNatureSinistre),
-                new SQLiteParameter("@idCaserne", idCaserne),
-                new SQLiteParameter("@nombrePompiers", nombrePompiersNecessaires));
-        }
-
-        private int CalculerNombrePompiersNecessaires(int idNatureSinistre)
-        {
-            const string sql = @"SELECT SUM(n.nombre * t.equipage) as TotalPompiers
-                               FROM Necessiter n
-                               INNER JOIN TypeEngin t ON n.codeTypeEngin = t.code
-                               WHERE n.idNatureSinistre = @idNatureSinistre";
-
-            try
+            dgvPompier.Rows.Clear();
+            if (dgvPompier.Columns.Count == 0)
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec))
-                {
-                    cmd.Parameters.AddWithValue("@idNatureSinistre", idNatureSinistre);
-                    object result = cmd.ExecuteScalar();
-                    return result != null && result != DBNull.Value ? Convert.ToInt32(result) : 10;
-                }
+                dgvPompier.Columns.Add("Matricule", "Matricule");
+                dgvPompier.Columns.Add("Nom", "Nom");
+                dgvPompier.Columns.Add("Prenom", "Prénom");
+                dgvPompier.Columns.Add("PourEngin", "Type Engin");
             }
-            catch (Exception ex)
+
+            if (dtEmbarquer == null || dtPasser == null || dtAffectation == null || dtPompier == null) 
+                return;
+
+            int indexHabilitation = 0;
+            idHabi = new int[100];
+
+            foreach ((string codeTypeEngin, int nombre, int equipage) in enginsNecessaires)
             {
-                MessageBox.Show($"Erreur calcul nombre pompiers : {ex.Message}");
-                return 10; // Valeur par défaut
+                // Trouver les habilitations nécessaires pour ce type d'engin
+                List<int> habilitationsRequises = dtEmbarquer.Select($"codeTypeEngin = '{codeTypeEngin}'")
+                    .Select(row => Convert.ToInt32(row["idHabilitation"]))
+                    .Distinct()
+                    .ToList();
+
+                List<DataRow> pompiersEligibles = new List<DataRow>();
+
+                foreach (int currentHabilitationId in habilitationsRequises)
+                {
+                    // Trouver les pompiers ayant cette habilitation
+                    DataRow[] passerRows = dtPasser.Select($"idHabilitation = {currentHabilitationId}");
+
+                    foreach (DataRow passerRow in passerRows)
+                    {
+                        int matricule = Convert.ToInt32(passerRow["matriculePompier"]);
+
+                        // Vérifier que le pompier est affecté à cette caserne
+                        DataRow[] affectationRows = dtAffectation.Select($"matriculePompier = {matricule} AND idCaserne = {idCaserne}");
+                        if (affectationRows.Length == 0) continue;
+
+                        // Vérifier la disponibilité du pompier
+                        DataRow[] pompierRows = dtPompier.Select($"matricule = {matricule}");
+                        if (pompierRows.Length == 0) continue;
+
+                        DataRow pompier = pompierRows[0];
+                        bool enMission = Convert.ToBoolean(pompier["enMission"]);
+                        bool enConge = Convert.ToBoolean(pompier["enConge"]);
+
+                        if (!enMission && !enConge && !pompiersEligibles.Contains(pompier))
+                        {
+                            pompiersEligibles.Add(pompier);
+                            if (indexHabilitation < idHabilitation.Length) 
+                            {
+                                idHabilitation[indexHabilitation] = currentHabilitationId;
+                                indexHabilitation++;
+                            }
+                        }
+                    }
+                }
+
+                // Sélectionner le nombre de pompiers nécessaires
+                int totalPompiersNecessaires = nombre * equipage;
+                List<DataRow> pompiersSelectionnes = pompiersEligibles.Take(totalPompiersNecessaires).ToList();
+
+                // Mettre à jour idHabi avec les bonnes habilitations
+                for (int j = 0; j < pompiersSelectionnes.Count && j < idHabi.Length; j++)
+                {
+                    idHabi[j] = idHabilitation[j];
+                }
+
+                // Ajouter les pompiers au DataGridView
+                foreach (DataRow pompier in pompiersSelectionnes)
+                {
+                    dgvPompier.Rows.Add(
+                        pompier["matricule"],
+                        pompier["nom"],
+                        pompier["prenom"],
+                        codeTypeEngin
+                    );
+                }
             }
         }
 
         private int TrouverCaserneAvecEngins(int idNatureSinistre)
         {
-            const string sql = @"SELECT c.id FROM Caserne c
-                        INNER JOIN Engin e ON c.id = e.idCaserne
-                        WHERE e.enMission = 0 AND e.enPanne = 0
-                        AND e.codeTypeEngin IN (
-                            SELECT n.codeTypeEngin FROM Necessiter n WHERE n.idNatureSinistre = @idNatureSinistre
-                        )
-                        GROUP BY c.id, c.nom
-                        ORDER BY COUNT(*) DESC
-                        LIMIT 1";
+            if (dtCaserne == null) return -1;
 
-            try
+            foreach (DataRow caserne in dtCaserne.Rows)
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec))
-                {
-                    cmd.Parameters.AddWithValue("@idNatureSinistre", idNatureSinistre);
-                    object result = cmd.ExecuteScalar();
-                    return result != null && result != DBNull.Value ? Convert.ToInt32(result) : -1;
-                }
+                int idCaserne = Convert.ToInt32(caserne["id"]);
+                List<(string, int, int)> engins = ObtenirEnginsNecessaires(idNatureSinistre, idCaserne);
+                if (engins.Count > 0)
+                    return idCaserne;
             }
-            catch (Exception ex)
+            return -1;
+        }
+
+        private void ProposerChangementCaserne(int idNouvelleCaserne)
+        {
+            if (dtCaserne == null) return;
+
+            string nomCaserne = dtCaserne.Select($"id = {idNouvelleCaserne}")[0]["nom"].ToString();
+
+            DialogResult resultat = MessageBox.Show(
+                $"Les engins nécessaires ne sont pas disponibles dans la caserne sélectionnée.\n" +
+                $"Voulez-vous attribuer la mission à la caserne '{nomCaserne}' qui dispose des ressources nécessaires ?",
+                "Changement de caserne",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultat == DialogResult.Yes)
             {
-                MessageBox.Show($"Erreur lors de la recherche d'une caserne alternative : {ex.Message}");
-                return -1;
+                cmbCaserneMobiliser.SelectedValue = idNouvelleCaserne;
+                ChargerRessourcesDisponibles();
             }
         }
         #endregion
 
-        #region Traitement principal
-        private void ChargerRessourcesDisponibles()
-        {
-            if (!ValiderSelections()) return;
-
-            int natureSinistreId = ObtenirIdNatureSinistre(cmbNatureSinistre.SelectedItem.ToString());
-            int caserneId = ObtenirIdCaserne(cmbCaserneMobiliser.SelectedItem.ToString());
-
-            if (natureSinistreId == -1 || caserneId == -1)
-            {
-                MessageBox.Show("Erreur dans la récupération des identifiants.");
-                return;
-            }
-
-            DataTable enginsDispo = ObtenirEnginsPourSinistre(natureSinistreId, caserneId);
-            DataTable pompiersDispos = ObtenirPompiersDisponibles(natureSinistreId, caserneId);
-
-            dgvEngins.DataSource = enginsDispo;
-            dgvPompier.DataSource = pompiersDispos;
-
-            if (!VerifierRessourcesDisponibles(enginsDispo, pompiersDispos))
-            {
-                ProposerAutresCasernes(natureSinistreId, caserneId);
-            }
-            else
-            {
-                CreerMissionLocale(natureSinistreId, caserneId, enginsDispo, pompiersDispos);
-            }
-        }
-
+        #region Validation et contrôles
         private bool ValiderSelections()
         {
-            if (cmbNatureSinistre.SelectedItem == null || cmbCaserneMobiliser.SelectedItem == null)
+            if (cmbNatureSinistre.SelectedValue == null || cmbCaserneMobiliser.SelectedValue == null)
             {
                 MessageBox.Show("Veuillez sélectionner une nature de sinistre et une caserne.");
                 return false;
@@ -345,83 +463,8 @@ namespace Caserne
             return true;
         }
 
-        private static bool VerifierRessourcesDisponibles(DataTable engins, DataTable pompiers)
-        {
-            if (engins.Rows.Count == 0) return false;
-
-            if (pompiers.Rows.Count == 0)
-            {
-                MessageBox.Show("Attention : Aucun pompier disponible avec les habilitations requises. " +
-                              "La mission sera déclenchée avec une équipe incomplète.");
-            }
-            return true;
-        }
-
-        private void ProposerAutresCasernes(int idNatureSinistre, int caserneActuelle)
-        {
-            int nouvelleCaserne = TrouverCaserneAvecEngins(idNatureSinistre);
-
-            if (nouvelleCaserne != -1 && nouvelleCaserne != caserneActuelle)
-            {
-                string nomCaserne = ObtenirNomCaserne(nouvelleCaserne);
-                if (ProposerChangementCaserne(nomCaserne))
-                {
-                    cmbCaserneMobiliser.SelectedItem = nomCaserne;
-                    ChargerRessourcesDisponibles();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Aucune caserne ne dispose actuellement des engins nécessaires pour ce type de sinistre.");
-            }
-        }
-
-        private static bool ProposerChangementCaserne(string nomCaserne)
-        {
-            return MessageBox.Show(
-                $"Les engins nécessaires ne sont pas disponibles dans la caserne sélectionnée.\n" +
-                $"Voulez-vous attribuer la mission à la caserne '{nomCaserne}' qui dispose des ressources nécessaires ?",
-                "Changement de caserne", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-        }
-
-        private void CreerMissionLocale(int idNatureSinistre, int idCaserne, DataTable engins, DataTable pompiers)
-        {
-            try
-            {
-                missionEnCours = new MissionLocale
-                {
-                    Numero = int.Parse(lblNumMission.Text.Replace("Mission n° ", "")),
-                    DateHeureDepart = DateTime.Now,
-                    Motif = tbMotifMission.Text,
-                    Adresse = tbRueSinistre.Text,
-                    CP = tbCodePostalSinistre.Text,
-                    Ville = tbVilleSinistre.Text,
-                    IdCaserne = idCaserne,
-                    IdNatureSinistre = idNatureSinistre,
-                    Engins = engins.Copy(),
-                    Pompiers = pompiers.Copy()
-                };
-
-                MessageBox.Show("Mission créée en mode local. Elle sera enregistrée dans la base lors de la clôture.",
-                              "Mission créée", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erreur lors de la création de la mission locale : {ex.Message}");
-            }
-        }
-        #endregion
-
-        #region Événements des boutons
-        private void bttnValider_Click(object sender, EventArgs e)
-        {
-            if (!ValiderFormulaire()) return;
-            ChargerRessourcesDisponibles();
-        }
-
         private bool ValiderFormulaire()
         {
-            // Vérification des champs obligatoires
             if (string.IsNullOrWhiteSpace(tbMotifMission.Text))
                 return AfficherErreurValidation("Motif de mission");
 
@@ -434,17 +477,15 @@ namespace Caserne
             if (string.IsNullOrWhiteSpace(tbVilleSinistre.Text))
                 return AfficherErreurValidation("Ville");
 
-            if (cmbNatureSinistre.SelectedItem == null || cmbCaserneMobiliser.SelectedItem == null)
+            if (cmbNatureSinistre.SelectedValue == null || cmbCaserneMobiliser.SelectedValue == null)
             {
-                MessageBox.Show("Veuillez sélectionner une nature de sinistre et une caserne.", "Sélection manquante",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Veuillez sélectionner une nature de sinistre et une caserne.");
                 return false;
             }
 
             if (tbCodePostalSinistre.Text.Length != 5)
             {
-                MessageBox.Show("Le code postal doit contenir 5 chiffres.", "Code postal invalide",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Le code postal doit contenir 5 chiffres.");
                 return false;
             }
 
@@ -453,30 +494,170 @@ namespace Caserne
 
         private static bool AfficherErreurValidation(string nomChamp)
         {
-            MessageBox.Show($"Le champ '{nomChamp}' est obligatoire.", "Champ manquant",
-                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show($"Le champ '{nomChamp}' est obligatoire.");
             return false;
         }
         #endregion
 
-        private void FormCreationMission_Load(object sender, EventArgs e)
+        #region Création de mission en mode déconnecté
+        private void CreerMissionLocale()
         {
+            if (dtMission == null) return;
 
+            // Ajouter la mission au DataSet
+            DataRow nouvelleMission = dtMission.NewRow();
+            nouvelleMission["id"] = numeroMission;
+            nouvelleMission["motifAppel"] = tbMotifMission.Text;
+            nouvelleMission["adresse"] = tbRueSinistre.Text;
+            nouvelleMission["cp"] = tbCodePostalSinistre.Text;
+            nouvelleMission["ville"] = tbVilleSinistre.Text;
+            nouvelleMission["dateHeureDepart"] = dateHeure;
+            nouvelleMission["idCaserne"] = Convert.ToInt32(cmbCaserneMobiliser.SelectedValue);
+            nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cmbNatureSinistre.SelectedValue);
+            nouvelleMission["terminee"] = 0;
+            dtMission.Rows.Add(nouvelleMission);
+
+            // Marquer les pompiers comme étant en mission et les ajouter à dtMobiliser
+            if (dtPompier != null && dtMobiliser != null)
+            {
+                HashSet<int> matriculesDejaAjoutes = new HashSet<int>();
+                int indexHabi = 0;
+
+                foreach (DataGridViewRow row in dgvPompier.Rows)
+                {
+                    if (row.Cells["Matricule"].Value != null)
+                    {
+                        int matricule = Convert.ToInt32(row.Cells["Matricule"].Value);
+
+                        if (!matriculesDejaAjoutes.Contains(matricule))
+                        {
+                            // Marquer le pompier comme étant en mission
+                            DataRow[] pompierRows = dtPompier.Select($"matricule = {matricule}");
+                            if (pompierRows.Length > 0)
+                            {
+                                pompierRows[0]["enMission"] = 1;
+                            }
+
+                            // Ajouter dans dtMobiliser
+                            DataRow nouveauMobiliser = dtMobiliser.NewRow();
+                            nouveauMobiliser["matriculePompier"] = matricule;
+                            nouveauMobiliser["idMission"] = numeroMission;
+                            nouveauMobiliser["idHabilitation"] = idHabi[indexHabi];
+                            dtMobiliser.Rows.Add(nouveauMobiliser);
+
+                            matriculesDejaAjoutes.Add(matricule);
+                            indexHabi++;
+                        }
+                    }
+                }
+            }
+
+            // Marquer les engins comme étant en mission
+            if (dtEngin != null)
+            {
+                foreach (DataGridViewRow row in dgvEngins.Rows)
+                {
+                    if (row.Cells["numero"].Value != null &&
+                        row.Cells["idCaserne"].Value != null &&
+                        row.Cells["codeTypeEngin"].Value != null)
+                    {
+                        string numero = row.Cells["numero"].Value.ToString();
+                        string idCaserne = row.Cells["idCaserne"].Value.ToString();
+                        string codeTypeEngin = row.Cells["codeTypeEngin"].Value.ToString();
+
+                        DataRow[] enginRows = dtEngin.Select(
+                            $"numero = '{numero}' AND idCaserne = '{idCaserne}' AND codeTypeEngin = '{codeTypeEngin}'");
+
+                        foreach (DataRow engin in enginRows)
+                        {
+                            engin["enMission"] = 1;
+                        }
+                    }
+                }
+            }
+
+            MessageBox.Show("Mission créée avec succès !",
+                          "Mission créée", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void bttnAnnuler_Click(object sender, EventArgs e)
+        private void ReinitialiserFormulaire()
         {
+            tbMotifMission.Clear();
+            tbRueSinistre.Clear();
+            tbCodePostalSinistre.Clear();
+            tbVilleSinistre.Clear();
 
+            cmbNatureSinistre.SelectedIndex = -1;
+            cmbCaserneMobiliser.SelectedIndex = -1;
+
+            dgvEngins.DataSource = null;
+            dgvPompier.DataSource = null;
+            dgvEngins.Rows.Clear();
+            dgvPompier.Rows.Clear();
+
+            grpPompiersEngins.Visible = false;
+            missionEnCours = null;
+
+            // Nouveau numéro de mission
+            numeroMission = ObtenirProchainNumeroMission();
+            dateHeure = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            lblNumMission.Text = $"Mission n° {numeroMission}";
+            lblDateDebut.Text = $"Mission déclenchée le : {DateTime.Now:dd/MM/yyyy HH:mm}";
+        }
+        #endregion
+
+        #region Événements des boutons
+        private void bttnValiderInfos_Click(object sender, EventArgs e)
+        {
+            if (!ValiderFormulaire()) return;
+            ChargerRessourcesDisponibles();
         }
 
         private void bttnEffacerInfos_Click(object sender, EventArgs e)
         {
+            DialogResult resultat = MessageBox.Show(
+                "Êtes-vous sûr de vouloir effacer toutes les informations saisies ?",
+                "Confirmation d'effacement",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
+            if (resultat == DialogResult.Yes)
+            {
+                ReinitialiserFormulaire();
+            }
         }
 
-        private void bttnValiderInfos_Click(object sender, EventArgs e)
+        private void bttnValider_Click(object sender, EventArgs e)
         {
+            if (!grpPompiersEngins.Visible)
+            {
+                MessageBox.Show("Veuillez d'abord valider les informations pour charger les ressources disponibles.");
+                return;
+            }
 
+            if (dgvEngins.Rows.Count == 0)
+            {
+                MessageBox.Show("Aucun engin disponible pour cette mission.");
+                return;
+            }
+
+            CreerMissionLocale();
+            ReinitialiserFormulaire();
         }
+
+        private void bttnAnnuler_Click(object sender, EventArgs e)
+        {
+            DialogResult resultat = MessageBox.Show(
+                "Êtes-vous sûr de vouloir quitter sans sauvegarder ?",
+                "Confirmation de fermeture",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultat == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+        #endregion
     }
 }
