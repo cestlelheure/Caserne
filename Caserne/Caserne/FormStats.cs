@@ -63,11 +63,6 @@ namespace Caserne
             {
                 MessageBox.Show($"Erreur lors du chargement des casernes : {ex.Message}");
             }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
-            }
         }
 
         private void CboChoixCaserne_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,11 +133,6 @@ namespace Caserne
             {
                 lblEnginsPlusUtilise.Text = $"Erreur : {ex.Message}";
             }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
-            }
         }
 
         private void LoadHeuresUtilisation(int caserneId)
@@ -197,11 +187,6 @@ namespace Caserne
             {
                 lblHeuresUtilisations.Text = $"Erreur : {ex.Message}";
             }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
-            }
         }
 
         private void LoadGlobalStats()
@@ -247,11 +232,6 @@ namespace Caserne
             {
                 lblNbInterventionParSinistre.Text = $"Erreur : {ex.Message}";
             }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
-            }
         }
 
         private void LoadHabilitationsSollicitees()
@@ -291,11 +271,6 @@ namespace Caserne
             {
                 lblHabiPlusSolicite.Text = $"Erreur : {ex.Message}";
             }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
-            }
         }
 
         private void LoadPompiersParHabilitation()
@@ -328,9 +303,6 @@ namespace Caserne
                             sb.AppendLine($"• {reader["habilitation"]} : {nbPompiers} pompier(s)");
                         }
 
-                        // Fermer la connexion avant d'appeler la méthode suivante
-                        connection.Close();
-
                         // Ajouter les pompiers sans habilitation
                         LoadPompiersSansHabilitation(sb);
 
@@ -341,11 +313,6 @@ namespace Caserne
             catch (Exception ex)
             {
                 lblListePompierPArHabilitation.Text = $"Erreur : {ex.Message}";
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
             }
         }
 
@@ -376,11 +343,6 @@ namespace Caserne
             catch (Exception ex)
             {
                 sb.AppendLine($"Erreur lors du chargement des pompiers sans habilitation : {ex.Message}");
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
             }
         }
 

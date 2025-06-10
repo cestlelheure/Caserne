@@ -424,5 +424,19 @@ namespace Caserne
                 txtBoxGrade.Text = reader["code"].ToString();
             }
         }
+        
+        private void bttnQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult resultat = MessageBox.Show(
+                "Êtes-vous sûr de vouloir quitter sans sauvegarder ?",
+                "Confirmation de fermeture",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultat == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

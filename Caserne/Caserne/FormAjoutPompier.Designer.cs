@@ -56,6 +56,7 @@
             this.grpBoxSexe = new System.Windows.Forms.GroupBox();
             this.rdbMasculin = new System.Windows.Forms.RadioButton();
             this.rdbFeminin = new System.Windows.Forms.RadioButton();
+            this.bttnQuitter = new System.Windows.Forms.Button();
             this.grpBoxPompier.SuspendLayout();
             this.grpBoxSituation.SuspendLayout();
             this.grpBoxSexe.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // grpBoxPompier
             // 
+            this.grpBoxPompier.Controls.Add(this.bttnQuitter);
             this.grpBoxPompier.Controls.Add(this.txtBoxGrade);
             this.grpBoxPompier.Controls.Add(this.cblHabilitations);
             this.grpBoxPompier.Controls.Add(this.lblHabilitations);
@@ -124,7 +126,7 @@
             this.grpBoxPompier.Controls.Add(this.txtBoxPrenom);
             this.grpBoxPompier.Controls.Add(this.txtBoxNom);
             this.grpBoxPompier.Controls.Add(this.lblPrenom);
-            this.grpBoxPompier.Location = new System.Drawing.Point(116, 13);
+            this.grpBoxPompier.Location = new System.Drawing.Point(445, 35);
             this.grpBoxPompier.Margin = new System.Windows.Forms.Padding(4);
             this.grpBoxPompier.Name = "grpBoxPompier";
             this.grpBoxPompier.Padding = new System.Windows.Forms.Padding(4);
@@ -354,11 +356,23 @@
             this.rdbFeminin.Text = "Féminin";
             this.rdbFeminin.UseVisualStyleBackColor = true;
             // 
+            // bttnQuitter
+            // 
+            this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnQuitter.Location = new System.Drawing.Point(19, 727);
+            this.bttnQuitter.Name = "bttnQuitter";
+            this.bttnQuitter.Size = new System.Drawing.Size(229, 68);
+            this.bttnQuitter.TabIndex = 28;
+            this.bttnQuitter.Text = "Quitter";
+            this.bttnQuitter.UseVisualStyleBackColor = false;
+            this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
+            // 
             // FormAjoutPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 845);
+            this.ClientSize = new System.Drawing.Size(1438, 845);
             this.Controls.Add(this.grpBoxPompier);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -408,5 +422,6 @@
         private System.Windows.Forms.Label lblHabilitations;
         private System.Windows.Forms.CheckedListBox cblHabilitations;
         private System.Windows.Forms.TextBox txtBoxGrade;
+        private System.Windows.Forms.Button bttnQuitter;
     }
 }

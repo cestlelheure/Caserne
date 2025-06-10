@@ -51,6 +51,7 @@
             this.btnAfficherPlus = new System.Windows.Forms.Button();
             this.grpBoxInfoCarriere = new System.Windows.Forms.GroupBox();
             this.grpBoxCarriere2 = new System.Windows.Forms.GroupBox();
+            this.lstBoxHabilitations = new System.Windows.Forms.ListBox();
             this.lstBoxAffectations = new System.Windows.Forms.ListBox();
             this.lblAffectations = new System.Windows.Forms.Label();
             this.lblHabilitations = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.lstBoxHabilitations = new System.Windows.Forms.ListBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -79,7 +79,7 @@
             // 
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
-            this.cboCaserne.Location = new System.Drawing.Point(113, 209);
+            this.cboCaserne.Location = new System.Drawing.Point(451, 213);
             this.cboCaserne.Margin = new System.Windows.Forms.Padding(4);
             this.cboCaserne.Name = "cboCaserne";
             this.cboCaserne.Size = new System.Drawing.Size(195, 27);
@@ -90,7 +90,7 @@
             // 
             this.cboPompier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPompier.FormattingEnabled = true;
-            this.cboPompier.Location = new System.Drawing.Point(113, 278);
+            this.cboPompier.Location = new System.Drawing.Point(451, 282);
             this.cboPompier.Margin = new System.Windows.Forms.Padding(4);
             this.cboPompier.Name = "cboPompier";
             this.cboPompier.Size = new System.Drawing.Size(196, 27);
@@ -149,7 +149,7 @@
             this.grpBoxInfoPompier.Controls.Add(this.lblBD);
             this.grpBoxInfoPompier.Controls.Add(this.lblSexe);
             this.grpBoxInfoPompier.Controls.Add(this.lblPrenom);
-            this.grpBoxInfoPompier.Location = new System.Drawing.Point(375, 35);
+            this.grpBoxInfoPompier.Location = new System.Drawing.Point(713, 39);
             this.grpBoxInfoPompier.Margin = new System.Windows.Forms.Padding(4);
             this.grpBoxInfoPompier.Name = "grpBoxInfoPompier";
             this.grpBoxInfoPompier.Padding = new System.Windows.Forms.Padding(4);
@@ -279,7 +279,7 @@
             this.btnVeuillez.Enabled = false;
             this.btnVeuillez.Font = new System.Drawing.Font("Microsoft YaHei UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeuillez.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVeuillez.Location = new System.Drawing.Point(375, 26);
+            this.btnVeuillez.Location = new System.Drawing.Point(713, 30);
             this.btnVeuillez.Name = "btnVeuillez";
             this.btnVeuillez.Size = new System.Drawing.Size(592, 750);
             this.btnVeuillez.TabIndex = 16;
@@ -290,7 +290,7 @@
             // 
             this.btnAfficherPlus.BackColor = System.Drawing.Color.IndianRed;
             this.btnAfficherPlus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAfficherPlus.Location = new System.Drawing.Point(809, 421);
+            this.btnAfficherPlus.Location = new System.Drawing.Point(1147, 425);
             this.btnAfficherPlus.Name = "btnAfficherPlus";
             this.btnAfficherPlus.Size = new System.Drawing.Size(158, 36);
             this.btnAfficherPlus.TabIndex = 7;
@@ -303,7 +303,7 @@
             // 
             this.grpBoxInfoCarriere.Controls.Add(this.grpBoxCarriere2);
             this.grpBoxInfoCarriere.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grpBoxInfoCarriere.Location = new System.Drawing.Point(375, 458);
+            this.grpBoxInfoCarriere.Location = new System.Drawing.Point(713, 462);
             this.grpBoxInfoCarriere.Name = "grpBoxInfoCarriere";
             this.grpBoxInfoCarriere.Size = new System.Drawing.Size(592, 339);
             this.grpBoxInfoCarriere.TabIndex = 8;
@@ -326,6 +326,15 @@
             this.grpBoxCarriere2.TabIndex = 0;
             this.grpBoxCarriere2.TabStop = false;
             this.grpBoxCarriere2.Text = "Informations carrière";
+            // 
+            // lstBoxHabilitations
+            // 
+            this.lstBoxHabilitations.FormattingEnabled = true;
+            this.lstBoxHabilitations.ItemHeight = 19;
+            this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 85);
+            this.lstBoxHabilitations.Name = "lstBoxHabilitations";
+            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 118);
+            this.lstBoxHabilitations.TabIndex = 18;
             // 
             // lstBoxAffectations
             // 
@@ -398,7 +407,7 @@
             // 
             this.btnAfficherMoins.BackColor = System.Drawing.Color.IndianRed;
             this.btnAfficherMoins.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAfficherMoins.Location = new System.Drawing.Point(809, 421);
+            this.btnAfficherMoins.Location = new System.Drawing.Point(1147, 425);
             this.btnAfficherMoins.Name = "btnAfficherMoins";
             this.btnAfficherMoins.Size = new System.Drawing.Size(158, 36);
             this.btnAfficherMoins.TabIndex = 13;
@@ -410,7 +419,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 212);
+            this.label1.Location = new System.Drawing.Point(375, 216);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 19);
             this.label1.TabIndex = 14;
@@ -419,7 +428,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 281);
+            this.label2.Location = new System.Drawing.Point(375, 285);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 15;
@@ -431,7 +440,7 @@
             this.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
             this.btnRetour.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRetour.Location = new System.Drawing.Point(66, 691);
+            this.btnRetour.Location = new System.Drawing.Point(404, 695);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(264, 82);
             this.btnRetour.TabIndex = 17;
@@ -439,22 +448,13 @@
             this.btnRetour.UseVisualStyleBackColor = false;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
-            // lstBoxHabilitations
-            // 
-            this.lstBoxHabilitations.FormattingEnabled = true;
-            this.lstBoxHabilitations.ItemHeight = 19;
-            this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 85);
-            this.lstBoxHabilitations.Name = "lstBoxHabilitations";
-            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 118);
-            this.lstBoxHabilitations.TabIndex = 18;
-            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.IndianRed;
             this.btnLogin.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(66, 329);
+            this.btnLogin.Location = new System.Drawing.Point(404, 333);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(265, 85);
             this.btnLogin.TabIndex = 3;
@@ -468,7 +468,7 @@
             this.btnNouveau.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNouveau.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveau.Image")));
             this.btnNouveau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveau.Location = new System.Drawing.Point(65, 466);
+            this.btnNouveau.Location = new System.Drawing.Point(403, 470);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(265, 84);
             this.btnNouveau.TabIndex = 4;
@@ -480,7 +480,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.IndianRed;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(132, 35);
+            this.pictureBox2.Location = new System.Drawing.Point(470, 39);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(150, 150);
             this.pictureBox2.TabIndex = 9;
@@ -499,7 +499,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1028, 819);
+            this.ClientSize = new System.Drawing.Size(1420, 819);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnVeuillez);
             this.Controls.Add(this.label2);
@@ -521,6 +521,7 @@
             this.Name = "FormGestionPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion du personnel";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpBoxInfoPompier.ResumeLayout(false);
             this.grpBoxInfoPompier.PerformLayout();

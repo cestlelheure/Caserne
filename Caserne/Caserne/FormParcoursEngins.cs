@@ -236,7 +236,7 @@ namespace Caserne
             {
                 lblNumeroEngin.Text = $"Numéro  :  {engin.IdCaserne} - {engin.CodeTypeEngin} - {engin.Numero}";
                 lblDateRCP.Text = $"Date de Réception  :  {engin.DateReception:dd/MM/yyyy}";
-                lblDisponible.Text = $"Disponibilité  :  {(engin.EnMission ? "Disponibilité" : "Disponible")}";
+                lblDisponible.Text = $"Disponibilité  :  {(engin.EnMission ? "En mission" : "Disponible")}";
                 lblEnPanne.Text = $"État  :  {(engin.EnPanne ? "En panne" : "Opérationnel")}";
 
                 ChargerImageEngin(pbEngin, engin.CodeTypeEngin);
