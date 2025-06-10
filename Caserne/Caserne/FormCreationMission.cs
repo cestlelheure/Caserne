@@ -504,80 +504,107 @@ namespace Caserne
         {
             if (dtMission == null) return;
 
-            // Ajouter la mission au DataSet
-            DataRow nouvelleMission = dtMission.NewRow();
-            nouvelleMission["id"] = numeroMission;
-            nouvelleMission["motifAppel"] = tbMotifMission.Text;
-            nouvelleMission["adresse"] = tbRueSinistre.Text;
-            nouvelleMission["cp"] = tbCodePostalSinistre.Text;
-            nouvelleMission["ville"] = tbVilleSinistre.Text;
-            nouvelleMission["dateHeureDepart"] = dateHeure;
-            nouvelleMission["idCaserne"] = Convert.ToInt32(cmbCaserneMobiliser.SelectedValue);
-            nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cmbNatureSinistre.SelectedValue);
-            nouvelleMission["terminee"] = 0;
-            dtMission.Rows.Add(nouvelleMission);
-
-            // Marquer les pompiers comme étant en mission et les ajouter à dtMobiliser
-            if (dtPompier != null && dtMobiliser != null)
+            try
             {
-                HashSet<int> matriculesDejaAjoutes = new HashSet<int>();
-                int indexHabi = 0;
+                // Ajouter la mission au DataSet
+                DataRow nouvelleMission = dtMission.NewRow();
+                nouvelleMission["id"] = numeroMission;
+                nouvelleMission["motifAppel"] = tbMotifMission.Text;
+                nouvelleMission["adresse"] = tbRueSinistre.Text;
+                nouvelleMission["cp"] = tbCodePostalSinistre.Text;
+                nouvelleMission["ville"] = tbVilleSinistre.Text;
+                nouvelleMission["dateHeureDepart"] = dateHeure;
+                nouvelleMission["idCaserne"] = Convert.ToInt32(cmbCaserneMobiliser.SelectedValue);
+                nouvelleMission["idNatureSinistre"] = Convert.ToInt32(cmbNatureSinistre.SelectedValue);
+                nouvelleMission["terminee"] = 0;
+                dtMission.Rows.Add(nouvelleMission);
 
-                foreach (DataGridViewRow row in dgvPompier.Rows)
+                // Marquer les pompiers comme étant en mission et les ajouter à dtMobiliser
+                if (dtPompier != null && dtMobiliser != null)
                 {
-                    if (row.Cells["Matricule"].Value != null)
-                    {
-                        int matricule = Convert.ToInt32(row.Cells["Matricule"].Value);
+                    HashSet<int> matriculesDejaAjoutes = new HashSet<int>();
+                    int indexHabi = 0;
 
-                        if (!matriculesDejaAjoutes.Contains(matricule))
+                    foreach (DataGridViewRow row in dgvPompier.Rows)
+                    {
+                        if (row.Cells["Matricule"].Value != null)
                         {
-                            // Marquer le pompier comme étant en mission
-                            DataRow[] pompierRows = dtPompier.Select($"matricule = {matricule}");
-                            if (pompierRows.Length > 0)
+                            int matricule = Convert.ToInt32(row.Cells["Matricule"].Value);
+
+                            if (!matriculesDejaAjoutes.Contains(matricule))
                             {
-                                pompierRows[0]["enMission"] = 1;
+                                // Marquer le pompier comme étant en mission
+                                DataRow[] pompierRows = dtPompier.Select($"matricule = {matricule}");
+                                if (pompierRows.Length > 0)
+                                {
+                                    pompierRows[0]["enMission"] = 1;
+                                }
+
+                                // Ajouter dans dtMobiliser
+                                DataRow nouveauMobiliser = dtMobiliser.NewRow();
+                                nouveauMobiliser["matriculePompier"] = matricule;
+                                nouveauMobiliser["idMission"] = numeroMission;
+                                nouveauMobiliser["idHabilitation"] = idHabi[indexHabi];
+                                dtMobiliser.Rows.Add(nouveauMobiliser);
+
+                                matriculesDejaAjoutes.Add(matricule);
+                                indexHabi++;
                             }
-
-                            // Ajouter dans dtMobiliser
-                            DataRow nouveauMobiliser = dtMobiliser.NewRow();
-                            nouveauMobiliser["matriculePompier"] = matricule;
-                            nouveauMobiliser["idMission"] = numeroMission;
-                            nouveauMobiliser["idHabilitation"] = idHabi[indexHabi];
-                            dtMobiliser.Rows.Add(nouveauMobiliser);
-
-                            matriculesDejaAjoutes.Add(matricule);
-                            indexHabi++;
                         }
                     }
                 }
-            }
 
-            // Marquer les engins comme étant en mission
-            if (dtEngin != null)
-            {
-                foreach (DataGridViewRow row in dgvEngins.Rows)
+                // Marquer les engins comme étant en mission et ajouter à dtPartirAvec
+                if (dtEngin != null && dtPartirAvec != null)
                 {
-                    if (row.Cells["numero"].Value != null &&
-                        row.Cells["idCaserne"].Value != null &&
-                        row.Cells["codeTypeEngin"].Value != null)
+                    HashSet<string> enginsDejaAjoutes = new HashSet<string>();
+
+                    foreach (DataGridViewRow row in dgvEngins.Rows)
                     {
-                        string numero = row.Cells["numero"].Value.ToString();
-                        string idCaserne = row.Cells["idCaserne"].Value.ToString();
-                        string codeTypeEngin = row.Cells["codeTypeEngin"].Value.ToString();
-
-                        DataRow[] enginRows = dtEngin.Select(
-                            $"numero = '{numero}' AND idCaserne = '{idCaserne}' AND codeTypeEngin = '{codeTypeEngin}'");
-
-                        foreach (DataRow engin in enginRows)
+                        if (row.Cells["numero"].Value != null &&
+                            row.Cells["idCaserne"].Value != null &&
+                            row.Cells["codeTypeEngin"].Value != null)
                         {
-                            engin["enMission"] = 1;
+                            string numero = row.Cells["numero"].Value.ToString();
+                            string idCaserne = row.Cells["idCaserne"].Value.ToString();
+                            string codeTypeEngin = row.Cells["codeTypeEngin"].Value.ToString();
+
+                            string cleEngin = $"{numero}-{idCaserne}";
+
+                            if (!enginsDejaAjoutes.Contains(cleEngin))
+                            {
+                                // Marquer l'engin comme étant en mission
+                                DataRow[] enginRows = dtEngin.Select(
+                                    $"numero = '{numero}' AND idCaserne = '{idCaserne}' AND codeTypeEngin = '{codeTypeEngin}'");
+
+                                foreach (DataRow engin in enginRows)
+                                {
+                                    engin["enMission"] = 1;
+                                }
+
+                                // Ajouter dans dtPartirAvec
+                                DataRow nouveauPartirAvec = dtPartirAvec.NewRow();
+                                nouveauPartirAvec["numeroEngin"] = numero;
+                                nouveauPartirAvec["idMission"] = numeroMission;
+                                dtPartirAvec.Rows.Add(nouveauPartirAvec);
+
+                                enginsDejaAjoutes.Add(cleEngin);
+                            }
                         }
                     }
                 }
-            }
 
-            MessageBox.Show("Mission créée avec succès !",
-                          "Mission créée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Sauvegarder en base de données
+                FrmTableauBord.SauvegarderDonneesEnBase();
+
+                MessageBox.Show("Mission créée avec succès !",
+                              "Mission créée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la création de la mission : {ex.Message}",
+                              "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ReinitialiserFormulaire()

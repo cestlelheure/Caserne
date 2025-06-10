@@ -98,6 +98,7 @@ namespace Caserne
             this.btnPersonnel.Size = new System.Drawing.Size(380, 89);
             this.btnPersonnel.TabIndex = 2;
             this.btnPersonnel.Text = "Gestion du personnel";
+            this.btnPersonnel.Click += new System.EventHandler(this.btnPersonnel_Click);
             // 
             // btnEngins
             // 
@@ -144,6 +145,7 @@ namespace Caserne
             this.btnMission.TabIndex = 3;
             this.btnMission.Text = "Nouvelle mission";
             this.btnMission.UseVisualStyleBackColor = true;
+            this.btnMission.Click += new System.EventHandler(this.btnMission_Click);
             // 
             // lblTitre
             // 
@@ -178,7 +180,7 @@ namespace Caserne
             // 
             // picQuitter
             // 
-            this.picQuitter.Image = global::Caserne.Properties.Resources.getout;
+            this.picQuitter.Image = global::Caserne.Properties.Resources.quitter;
             this.picQuitter.Location = new System.Drawing.Point(12, 581);
             this.picQuitter.Name = "picQuitter";
             this.picQuitter.Size = new System.Drawing.Size(80, 80);
@@ -187,7 +189,7 @@ namespace Caserne
             // 
             // picStat
             // 
-            this.picStat.Image = global::Caserne.Properties.Resources.stat;
+            this.picStat.Image = global::Caserne.Properties.Resources.stat1;
             this.picStat.Location = new System.Drawing.Point(12, 273);
             this.picStat.Name = "picStat";
             this.picStat.Size = new System.Drawing.Size(75, 75);
@@ -196,6 +198,7 @@ namespace Caserne
             // 
             // picPerso
             // 
+            this.picPerso.Image = global::Caserne.Properties.Resources.personnel;
             this.picPerso.Location = new System.Drawing.Point(12, 186);
             this.picPerso.Name = "picPerso";
             this.picPerso.Size = new System.Drawing.Size(75, 75);
@@ -204,6 +207,7 @@ namespace Caserne
             // 
             // picEng
             // 
+            this.picEng.Image = global::Caserne.Properties.Resources.engins;
             this.picEng.Location = new System.Drawing.Point(12, 97);
             this.picEng.Name = "picEng";
             this.picEng.Size = new System.Drawing.Size(75, 75);
@@ -212,6 +216,7 @@ namespace Caserne
             // 
             // picMenu
             // 
+            this.picMenu.Image = global::Caserne.Properties.Resources.tableaudebord;
             this.picMenu.Location = new System.Drawing.Point(12, 8);
             this.picMenu.Name = "picMenu";
             this.picMenu.Size = new System.Drawing.Size(75, 75);
@@ -225,6 +230,7 @@ namespace Caserne
             this.Controls.Add(this.panelMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTableauBord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Les soldats du feu";
             this.Load += new System.EventHandler(this.FrmTableauBord_Load);
             this.panelMenu.ResumeLayout(false);

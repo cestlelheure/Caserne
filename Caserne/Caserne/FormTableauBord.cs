@@ -49,21 +49,23 @@ namespace Caserne
             try
             {
                 string sql = @"
-            SELECT 
-                m.Id, 
-                m.DateHeureDepart, 
-                m.MotifAppel, 
-                c.Nom,
-                s.Libelle
-            FROM 
-                Mission m
-            JOIN Caserne c ON m.IdCaserne = c.Id
-            JOIN NatureSinistre s ON m.IdNatureSinistre = s.Id";
+        SELECT 
+            m.Id, 
+            m.DateHeureDepart, 
+            m.MotifAppel, 
+            c.Nom,
+            s.Libelle
+        FROM 
+            Mission m
+        JOIN Caserne c ON m.IdCaserne = c.Id
+        JOIN NatureSinistre s ON m.IdNatureSinistre = s.Id";
 
                 if (enCours)
                 {
                     sql += " WHERE m.DateHeureRetour IS NULL";
                 }
+
+                sql += " ORDER BY m.Id DESC"; // Ajout du tri par ID décroissant
 
                 SQLiteDataAdapter da = new SQLiteDataAdapter(sql, Connexion.Connec);
 
@@ -106,6 +108,24 @@ namespace Caserne
                 uc.BtnPDF.Click += CreationPDF;
 
                 flowMissions.Controls.Add(uc);
+            }
+        }
+
+        private void RefreshMissions()
+        {
+            try
+            {
+                // Recharger les missions selon l'état actuel de la checkbox
+                ChargerMissions(chkEnCours.Checked);
+
+                if (MesDatas.DsGlobal.Tables.Contains("Mission"))
+                {
+                    AfficherMissions(MesDatas.DsGlobal.Tables["Mission"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du rafraîchissement : " + ex.Message);
             }
         }
 
@@ -498,17 +518,27 @@ namespace Caserne
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-            // À implémenter
+            //try
+            //{
+            //    FormStatistiques formEngins = new FormStatistiques();
+
+            //    // Afficher le formulaire
+            //    formEngins.Show();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Erreur lors de l'ouverture du formulaire des statistiques : " + ex.Message,
+            //                    "Erreur",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
+            //}
         }
 
         private void btnEngins_Click(object sender, EventArgs e)
         {
             try
             {
-                // Créer une instance du formulaire FormParcoursEngins
                 FormParcoursEngins formEngins = new FormParcoursEngins();
-
-                // Afficher le formulaire
                 formEngins.Show();
             }
             catch (Exception ex)
@@ -517,6 +547,183 @@ namespace Caserne
                                 "Erreur",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMission_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormCreationMission formMission = new FormCreationMission();
+
+                // Utiliser ShowDialog au lieu de Show pour attendre la fermeture
+                DialogResult result = formMission.ShowDialog();
+
+                // Rafraîchir l'affichage après fermeture du formulaire
+                RefreshMissions();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ouverture du formulaire des missions : " + ex.Message,
+                                "Erreur",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPersonnel_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    FormGestionPompier formPersonnel = new FormGestionPompier();
+            //    formPersonnel.Show();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Erreur lors de l'ouverture du formulaire du personnel : " + ex.Message,
+            //                    "Erreur",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
+            //}
+        }
+
+        public static void SauvegarderDonneesEnBase()
+        {
+            try
+            {
+                SQLiteConnection connection = Connexion.Connec;
+                if (connection == null || connection.State != ConnectionState.Open)
+                {
+                    throw new Exception("Connexion à la base de données fermée.");
+                }
+
+                // Sauvegarder les nouvelles missions
+                if (MesDatas.DsGlobal.Tables.Contains("Mission"))
+                {
+                    DataTable dtMission = MesDatas.DsGlobal.Tables["Mission"];
+                    foreach (DataRow row in dtMission.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string sqlMission = @"INSERT INTO Mission 
+                        (Id, motifAppel, adresse, cp, ville, dateHeureDepart, idCaserne, idNatureSinistre, terminee, dateHeureRetour, compteRendu)
+                        VALUES (@Id, @motifAppel, @adresse, @cp, @ville, @dateHeureDepart, @idCaserne, @idNatureSinistre, @terminee, @dateHeureRetour, @compteRendu)";
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlMission, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@Id", row["Id"]);
+                                cmd.Parameters.AddWithValue("@motifAppel", row["motifAppel"]);
+                                cmd.Parameters.AddWithValue("@adresse", row["adresse"]);
+                                cmd.Parameters.AddWithValue("@cp", row["cp"]);
+                                cmd.Parameters.AddWithValue("@ville", row["ville"]);
+                                cmd.Parameters.AddWithValue("@dateHeureDepart", row["dateHeureDepart"]);
+                                cmd.Parameters.AddWithValue("@idCaserne", row["idCaserne"]);
+                                cmd.Parameters.AddWithValue("@idNatureSinistre", row["idNatureSinistre"]);
+                                cmd.Parameters.AddWithValue("@terminee", row["terminee"]);
+                                cmd.Parameters.AddWithValue("@dateHeureRetour", DBNull.Value);
+                                cmd.Parameters.AddWithValue("@compteRendu", DBNull.Value);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                // Sauvegarder les relations Mobiliser
+                if (MesDatas.DsGlobal.Tables.Contains("Mobiliser"))
+                {
+                    DataTable dtMobiliser = MesDatas.DsGlobal.Tables["Mobiliser"];
+                    foreach (DataRow row in dtMobiliser.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string sqlMobiliser = @"INSERT INTO Mobiliser 
+                        (matriculePompier, idMission, idHabilitation)
+                        VALUES (@matriculePompier, @idMission, @idHabilitation)";
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlMobiliser, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@matriculePompier", row["matriculePompier"]);
+                                cmd.Parameters.AddWithValue("@idMission", row["idMission"]);
+                                cmd.Parameters.AddWithValue("@idHabilitation", row["idHabilitation"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                // Sauvegarder les relations PartirAvec
+                if (MesDatas.DsGlobal.Tables.Contains("PartirAvec"))
+                {
+                    DataTable dtPartirAvec = MesDatas.DsGlobal.Tables["PartirAvec"];
+                    foreach (DataRow row in dtPartirAvec.Rows)
+                    {
+                        if (row.RowState == DataRowState.Added)
+                        {
+                            string sqlPartirAvec = @"INSERT INTO PartirAvec 
+                        (numeroEngin, idMission)
+                        VALUES (@numeroEngin, @idMission)";
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlPartirAvec, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@numeroEngin", row["numeroEngin"]);
+                                cmd.Parameters.AddWithValue("@idMission", row["idMission"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                // Mettre à jour le statut des pompiers et engins
+                if (MesDatas.DsGlobal.Tables.Contains("Pompier"))
+                {
+                    DataTable dtPompier = MesDatas.DsGlobal.Tables["Pompier"];
+                    foreach (DataRow row in dtPompier.Rows)
+                    {
+                        if (row.RowState == DataRowState.Modified)
+                        {
+                            string sqlPompier = @"UPDATE Pompier SET enMission = @enMission WHERE matricule = @matricule";
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlPompier, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@enMission", row["enMission"]);
+                                cmd.Parameters.AddWithValue("@matricule", row["matricule"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                if (MesDatas.DsGlobal.Tables.Contains("Engin"))
+                {
+                    DataTable dtEngin = MesDatas.DsGlobal.Tables["Engin"];
+                    foreach (DataRow row in dtEngin.Rows)
+                    {
+                        if (row.RowState == DataRowState.Modified)
+                        {
+                            string sqlEngin = @"UPDATE Engin SET enMission = @enMission WHERE numero = @numero AND idCaserne = @idCaserne";
+
+                            using (SQLiteCommand cmd = new SQLiteCommand(sqlEngin, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@enMission", row["enMission"]);
+                                cmd.Parameters.AddWithValue("@numero", row["numero"]);
+                                cmd.Parameters.AddWithValue("@idCaserne", row["idCaserne"]);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                // Accepter tous les changements dans le DataSet
+                MesDatas.DsGlobal.AcceptChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erreur lors de la sauvegarde en base : {ex.Message}");
             }
         }
     }
