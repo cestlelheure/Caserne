@@ -177,22 +177,22 @@ namespace Caserne
 
                 // Récupérer toutes les données de la mission depuis la base de données
                 string sql = @"
-            SELECT 
-                m.id,
-                m.dateHeureDepart,
-                m.dateHeureRetour,
-                m.motifAppel,
-                m.adresse,
-                m.cp,
-                m.ville,
-                m.compteRendu,
-                c.nom as NomCaserne,
-                s.libelle as NatureSinistre
-            FROM 
-                Mission m
-            JOIN Caserne c ON m.idCaserne = c.id
-            JOIN NatureSinistre s ON m.idNatureSinistre = s.id
-            WHERE m.id = @Id";
+    SELECT 
+        m.id,
+        m.dateHeureDepart,
+        m.dateHeureRetour,
+        m.motifAppel,
+        m.adresse,
+        m.cp,
+        m.ville,
+        m.compteRendu,
+        c.nom as NomCaserne,
+        s.libelle as NatureSinistre
+    FROM 
+        Mission m
+    JOIN Caserne c ON m.idCaserne = c.id
+    JOIN NatureSinistre s ON m.idNatureSinistre = s.id
+    WHERE m.id = @Id";
 
                 SQLiteCommand cmd = new SQLiteCommand(sql, Connexion.Connec);
                 cmd.Parameters.AddWithValue("@Id", idMission);
@@ -221,11 +221,11 @@ namespace Caserne
 
                     // Récupérer les pompiers affectés à cette mission
                     string sqlPompiers = @"
-                SELECT p.matricule, p.nom, p.prenom, g.libelle as grade
-                FROM Mobiliser mo
-                JOIN Pompier p ON mo.matriculePompier = p.matricule
-                JOIN Grade g ON p.codeGrade = g.code
-                WHERE mo.idMission = @Id";
+        SELECT p.matricule, p.nom, p.prenom, g.libelle as grade
+        FROM Mobiliser mo
+        JOIN Pompier p ON mo.matriculePompier = p.matricule
+        JOIN Grade g ON p.codeGrade = g.code
+        WHERE mo.idMission = @Id";
 
                     SQLiteCommand cmdPompiers = new SQLiteCommand(sqlPompiers, Connexion.Connec);
                     cmdPompiers.Parameters.AddWithValue("@Id", idMission);
@@ -239,13 +239,13 @@ namespace Caserne
                     }
                     readerPompiers.Close();
 
-                    // Récupérer les engins utilisés pour cette mission
                     string sqlEngins = @"
-                SELECT e.numero, te.nom as typeEngin
-                FROM PartirAvec pa
-                JOIN Engin e ON pa.numeroEngin = e.numero
-                JOIN TypeEngin te ON e.codeTypeEngin = te.code
-                WHERE pa.idMission = @Id";
+        SELECT DISTINCT e.numero, te.nom as typeEngin
+        FROM PartirAvec pa
+        INNER JOIN Engin e ON pa.numeroEngin = e.numero
+        INNER JOIN TypeEngin te ON e.codeTypeEngin = te.code
+        WHERE pa.idMission = @Id
+        ORDER BY te.nom, e.numero";
 
                     SQLiteCommand cmdEngins = new SQLiteCommand(sqlEngins, Connexion.Connec);
                     cmdEngins.Parameters.AddWithValue("@Id", idMission);
