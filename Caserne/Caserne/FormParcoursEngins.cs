@@ -164,13 +164,16 @@ namespace Caserne
                 {
                     bindingSourceEngins.Position = 0;
                     AfficherBoutonsNavigation();
+                    MettreAJourNumeroPage();
                 }
                 else
                 {
                     AfficherInfo("Aucun engin trouvé pour la caserne spécifiée.");
                     ViderAffichage();
                     MasquerBoutonsNavigation();
+                    MettreAJourNumeroPage();
                 }
+
             }
             catch (Exception ex)
             {
@@ -250,8 +253,10 @@ namespace Caserne
             if (bindingSourceEngins.Count > 0)
             {
                 bindingSourceEngins.Position = position;
+                MettreAJourNumeroPage();
             }
         }
+
 
         private void NaviguerCirculaire(bool versSuivant)
         {
@@ -269,14 +274,31 @@ namespace Caserne
                     nouvellePosition = bindingSourceEngins.Count - 1;
                 bindingSourceEngins.Position = nouvellePosition;
             }
+            MettreAJourNumeroPage();
         }
+
         #endregion
 
         #region Gestionnaires d'événements
         private void BindingSourceEngins_CurrentChanged(object sender, EventArgs e)
         {
             AfficherEnginCourant();
+            MettreAJourNumeroPage();
         }
+
+
+        private void MettreAJourNumeroPage()
+        {
+            if (bindingSourceEngins.Count == 0)
+            {
+                lblNumPage.Text = "";
+            }
+            else
+            {
+                lblNumPage.Text = $"{bindingSourceEngins.Position + 1} / {bindingSourceEngins.Count}";
+            }
+        }
+
 
         private void bttnDebut_Click(object sender, EventArgs e)
         {

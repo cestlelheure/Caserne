@@ -41,10 +41,11 @@
             this.grpInfos = new System.Windows.Forms.GroupBox();
             this.lblNumeroEngin = new System.Windows.Forms.Label();
             this.lblDateRCP = new System.Windows.Forms.Label();
+            this.pbEngin = new System.Windows.Forms.PictureBox();
             this.bttnFin = new System.Windows.Forms.Button();
             this.bttnDebut = new System.Windows.Forms.Button();
             this.bttnQuitter = new System.Windows.Forms.Button();
-            this.pbEngin = new System.Windows.Forms.PictureBox();
+            this.lblNumPage = new System.Windows.Forms.Label();
             this.pnlChoixCaserne.SuspendLayout();
             this.pnlInfosEngins.SuspendLayout();
             this.grpEtat.SuspendLayout();
@@ -184,6 +185,15 @@
             this.lblDateRCP.TabIndex = 16;
             this.lblDateRCP.Text = "Date de récéption : ";
             // 
+            // pbEngin
+            // 
+            this.pbEngin.Location = new System.Drawing.Point(416, 54);
+            this.pbEngin.Name = "pbEngin";
+            this.pbEngin.Size = new System.Drawing.Size(500, 269);
+            this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbEngin.TabIndex = 15;
+            this.pbEngin.TabStop = false;
+            // 
             // bttnFin
             // 
             this.bttnFin.BackColor = System.Drawing.Color.IndianRed;
@@ -224,14 +234,13 @@
             this.bttnQuitter.UseVisualStyleBackColor = false;
             this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
             // 
-            // pbEngin
+            // lblNumPage
             // 
-            this.pbEngin.Location = new System.Drawing.Point(416, 54);
-            this.pbEngin.Name = "pbEngin";
-            this.pbEngin.Size = new System.Drawing.Size(500, 269);
-            this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbEngin.TabIndex = 15;
-            this.pbEngin.TabStop = false;
+            this.lblNumPage.AutoSize = true;
+            this.lblNumPage.Location = new System.Drawing.Point(707, 709);
+            this.lblNumPage.Name = "lblNumPage";
+            this.lblNumPage.Size = new System.Drawing.Size(0, 20);
+            this.lblNumPage.TabIndex = 9;
             // 
             // FormParcoursEngins
             // 
@@ -240,6 +249,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1518, 754);
+            this.Controls.Add(this.lblNumPage);
             this.Controls.Add(this.bttnQuitter);
             this.Controls.Add(this.bttnDebut);
             this.Controls.Add(this.bttnFin);
@@ -264,6 +274,7 @@
             this.grpInfos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -284,5 +295,6 @@
         private System.Windows.Forms.Label lblNumeroEngin;
         private System.Windows.Forms.Label lblDateRCP;
         private System.Windows.Forms.Button bttnQuitter;
+        private System.Windows.Forms.Label lblNumPage;
     }
 }
