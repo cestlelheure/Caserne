@@ -33,6 +33,7 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtBoxPrenom = new System.Windows.Forms.TextBox();
             this.grpBoxPompier = new System.Windows.Forms.GroupBox();
+            this.txtBoxGrade = new System.Windows.Forms.TextBox();
             this.cblHabilitations = new System.Windows.Forms.CheckedListBox();
             this.lblHabilitations = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.grpBoxSexe = new System.Windows.Forms.GroupBox();
             this.rdbMasculin = new System.Windows.Forms.RadioButton();
             this.rdbFeminin = new System.Windows.Forms.RadioButton();
-            this.txtBoxGrade = new System.Windows.Forms.TextBox();
             this.grpBoxPompier.SuspendLayout();
             this.grpBoxSituation.SuspendLayout();
             this.grpBoxSexe.SuspendLayout();
@@ -131,6 +131,14 @@
             this.grpBoxPompier.Size = new System.Drawing.Size(720, 812);
             this.grpBoxPompier.TabIndex = 5;
             this.grpBoxPompier.TabStop = false;
+            // 
+            // txtBoxGrade
+            // 
+            this.txtBoxGrade.Enabled = false;
+            this.txtBoxGrade.Location = new System.Drawing.Point(257, 505);
+            this.txtBoxGrade.Name = "txtBoxGrade";
+            this.txtBoxGrade.Size = new System.Drawing.Size(74, 24);
+            this.txtBoxGrade.TabIndex = 27;
             // 
             // cblHabilitations
             // 
@@ -346,19 +354,11 @@
             this.rdbFeminin.Text = "Féminin";
             this.rdbFeminin.UseVisualStyleBackColor = true;
             // 
-            // txtBoxGrade
-            // 
-            this.txtBoxGrade.Enabled = false;
-            this.txtBoxGrade.Location = new System.Drawing.Point(257, 505);
-            this.txtBoxGrade.Name = "txtBoxGrade";
-            this.txtBoxGrade.Size = new System.Drawing.Size(74, 24);
-            this.txtBoxGrade.TabIndex = 27;
-            // 
             // FormAjoutPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 859);
+            this.ClientSize = new System.Drawing.Size(948, 845);
             this.Controls.Add(this.grpBoxPompier);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -367,6 +367,7 @@
             this.Name = "FormAjoutPompier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajout d\'un pompier";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormAjoutPompier_Load);
             this.grpBoxPompier.ResumeLayout(false);
             this.grpBoxPompier.PerformLayout();

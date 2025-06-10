@@ -66,20 +66,20 @@
             // 
             this.lblNumMission.AutoSize = true;
             this.lblNumMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblNumMission.Location = new System.Drawing.Point(614, 0);
+            this.lblNumMission.Location = new System.Drawing.Point(621, 33);
             this.lblNumMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumMission.Name = "lblNumMission";
-            this.lblNumMission.Size = new System.Drawing.Size(96, 23);
+            this.lblNumMission.Size = new System.Drawing.Size(80, 20);
             this.lblNumMission.TabIndex = 0;
             this.lblNumMission.Text = "Mission n°";
             // 
             // lblDateDebut
             // 
             this.lblDateDebut.AutoSize = true;
-            this.lblDateDebut.Location = new System.Drawing.Point(854, 0);
+            this.lblDateDebut.Location = new System.Drawing.Point(861, 33);
             this.lblDateDebut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateDebut.Name = "lblDateDebut";
-            this.lblDateDebut.Size = new System.Drawing.Size(207, 23);
+            this.lblDateDebut.Size = new System.Drawing.Size(169, 20);
             this.lblDateDebut.TabIndex = 1;
             this.lblDateDebut.Text = "Mission déclenchée le : ";
             // 
@@ -108,7 +108,7 @@
             this.tbRueSinistre.Location = new System.Drawing.Point(766, 51);
             this.tbRueSinistre.Margin = new System.Windows.Forms.Padding(4);
             this.tbRueSinistre.Name = "tbRueSinistre";
-            this.tbRueSinistre.Size = new System.Drawing.Size(232, 30);
+            this.tbRueSinistre.Size = new System.Drawing.Size(232, 25);
             this.tbRueSinistre.TabIndex = 40;
             this.tbRueSinistre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRueSinistre_KeyPress);
             // 
@@ -117,7 +117,7 @@
             this.tbCodePostalSinistre.Location = new System.Drawing.Point(767, 93);
             this.tbCodePostalSinistre.Margin = new System.Windows.Forms.Padding(4);
             this.tbCodePostalSinistre.Name = "tbCodePostalSinistre";
-            this.tbCodePostalSinistre.Size = new System.Drawing.Size(94, 30);
+            this.tbCodePostalSinistre.Size = new System.Drawing.Size(94, 25);
             this.tbCodePostalSinistre.TabIndex = 39;
             this.tbCodePostalSinistre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCodePostalSinistre_KeyPress);
             // 
@@ -126,7 +126,7 @@
             this.tbVilleSinistre.Location = new System.Drawing.Point(767, 136);
             this.tbVilleSinistre.Margin = new System.Windows.Forms.Padding(4);
             this.tbVilleSinistre.Name = "tbVilleSinistre";
-            this.tbVilleSinistre.Size = new System.Drawing.Size(230, 30);
+            this.tbVilleSinistre.Size = new System.Drawing.Size(230, 25);
             this.tbVilleSinistre.TabIndex = 38;
             this.tbVilleSinistre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbVilleSinistre_KeyPress);
             // 
@@ -146,7 +146,7 @@
             this.lblMotif.Location = new System.Drawing.Point(224, 40);
             this.lblMotif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotif.Name = "lblMotif";
-            this.lblMotif.Size = new System.Drawing.Size(55, 23);
+            this.lblMotif.Size = new System.Drawing.Size(46, 20);
             this.lblMotif.TabIndex = 35;
             this.lblMotif.Text = "Motif";
             // 
@@ -156,7 +156,7 @@
             this.lblVilleSinistre.Location = new System.Drawing.Point(646, 140);
             this.lblVilleSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVilleSinistre.Name = "lblVilleSinistre";
-            this.lblVilleSinistre.Size = new System.Drawing.Size(47, 23);
+            this.lblVilleSinistre.Size = new System.Drawing.Size(38, 20);
             this.lblVilleSinistre.TabIndex = 37;
             this.lblVilleSinistre.Text = "Ville";
             // 
@@ -166,7 +166,7 @@
             this.lblAdSinistre.Location = new System.Drawing.Point(793, 24);
             this.lblAdSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdSinistre.Name = "lblAdSinistre";
-            this.lblAdSinistre.Size = new System.Drawing.Size(169, 23);
+            this.lblAdSinistre.Size = new System.Drawing.Size(140, 20);
             this.lblAdSinistre.TabIndex = 33;
             this.lblAdSinistre.Text = "Location du sinistre";
             // 
@@ -176,7 +176,7 @@
             this.lblRueSinistre.Location = new System.Drawing.Point(646, 56);
             this.lblRueSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRueSinistre.Name = "lblRueSinistre";
-            this.lblRueSinistre.Size = new System.Drawing.Size(75, 23);
+            this.lblRueSinistre.Size = new System.Drawing.Size(61, 20);
             this.lblRueSinistre.TabIndex = 32;
             this.lblRueSinistre.Text = "Adresse";
             // 
@@ -186,7 +186,7 @@
             this.lblCodePostalSinistre.Location = new System.Drawing.Point(646, 100);
             this.lblCodePostalSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodePostalSinistre.Name = "lblCodePostalSinistre";
-            this.lblCodePostalSinistre.Size = new System.Drawing.Size(108, 23);
+            this.lblCodePostalSinistre.Size = new System.Drawing.Size(89, 20);
             this.lblCodePostalSinistre.TabIndex = 34;
             this.lblCodePostalSinistre.Text = "Code postal";
             // 
@@ -237,7 +237,7 @@
             this.lblNatureDuSinistre.Location = new System.Drawing.Point(148, 31);
             this.lblNatureDuSinistre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNatureDuSinistre.Name = "lblNatureDuSinistre";
-            this.lblNatureDuSinistre.Size = new System.Drawing.Size(159, 23);
+            this.lblNatureDuSinistre.Size = new System.Drawing.Size(132, 20);
             this.lblNatureDuSinistre.TabIndex = 14;
             this.lblNatureDuSinistre.Text = "Nature du sinistre ";
             // 
@@ -248,7 +248,7 @@
             this.cmbCaserneMobiliser.Location = new System.Drawing.Point(798, 28);
             this.cmbCaserneMobiliser.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCaserneMobiliser.Name = "cmbCaserneMobiliser";
-            this.cmbCaserneMobiliser.Size = new System.Drawing.Size(265, 31);
+            this.cmbCaserneMobiliser.Size = new System.Drawing.Size(265, 28);
             this.cmbCaserneMobiliser.TabIndex = 13;
             // 
             // cmbNatureSinistre
@@ -258,7 +258,7 @@
             this.cmbNatureSinistre.Location = new System.Drawing.Point(315, 28);
             this.cmbNatureSinistre.Margin = new System.Windows.Forms.Padding(4);
             this.cmbNatureSinistre.Name = "cmbNatureSinistre";
-            this.cmbNatureSinistre.Size = new System.Drawing.Size(265, 31);
+            this.cmbNatureSinistre.Size = new System.Drawing.Size(265, 28);
             this.cmbNatureSinistre.TabIndex = 12;
             // 
             // lblCaserneAMobilise
@@ -267,7 +267,7 @@
             this.lblCaserneAMobilise.Location = new System.Drawing.Point(615, 28);
             this.lblCaserneAMobilise.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCaserneAMobilise.Name = "lblCaserneAMobilise";
-            this.lblCaserneAMobilise.Size = new System.Drawing.Size(175, 23);
+            this.lblCaserneAMobilise.Size = new System.Drawing.Size(144, 20);
             this.lblCaserneAMobilise.TabIndex = 15;
             this.lblCaserneAMobilise.Text = "Caserne à mobiliser ";
             // 
@@ -340,7 +340,7 @@
             this.lblPompiersMobilise.Location = new System.Drawing.Point(844, 48);
             this.lblPompiersMobilise.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPompiersMobilise.Name = "lblPompiersMobilise";
-            this.lblPompiersMobilise.Size = new System.Drawing.Size(171, 23);
+            this.lblPompiersMobilise.Size = new System.Drawing.Size(139, 20);
             this.lblPompiersMobilise.TabIndex = 1;
             this.lblPompiersMobilise.Text = "Pompiers mobilisés";
             // 
@@ -350,16 +350,17 @@
             this.lblEnginMobilise.Location = new System.Drawing.Point(208, 48);
             this.lblEnginMobilise.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnginMobilise.Name = "lblEnginMobilise";
-            this.lblEnginMobilise.Size = new System.Drawing.Size(147, 23);
+            this.lblEnginMobilise.Size = new System.Drawing.Size(121, 20);
             this.lblEnginMobilise.TabIndex = 0;
             this.lblEnginMobilise.Text = "Engins mobilisés";
             // 
             // FormCreationMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1712, 816);
+            this.ClientSize = new System.Drawing.Size(1540, 816);
             this.Controls.Add(this.bttnAnnuler);
             this.Controls.Add(this.bttnCréerMission);
             this.Controls.Add(this.grpPompiersEngins);

@@ -50,41 +50,41 @@
             this.cboChoixCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboChoixCaserne.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboChoixCaserne.FormattingEnabled = true;
-            this.cboChoixCaserne.Location = new System.Drawing.Point(459, 39);
+            this.cboChoixCaserne.Location = new System.Drawing.Point(680, 19);
             this.cboChoixCaserne.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboChoixCaserne.Name = "cboChoixCaserne";
-            this.cboChoixCaserne.Size = new System.Drawing.Size(276, 31);
+            this.cboChoixCaserne.Size = new System.Drawing.Size(276, 28);
             this.cboChoixCaserne.TabIndex = 0;
             // 
             // lblChoixCaserne
             // 
             this.lblChoixCaserne.AutoSize = true;
             this.lblChoixCaserne.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChoixCaserne.Location = new System.Drawing.Point(33, 39);
+            this.lblChoixCaserne.Location = new System.Drawing.Point(254, 19);
             this.lblChoixCaserne.Name = "lblChoixCaserne";
-            this.lblChoixCaserne.Size = new System.Drawing.Size(420, 27);
+            this.lblChoixCaserne.Size = new System.Drawing.Size(338, 22);
             this.lblChoixCaserne.TabIndex = 1;
             this.lblChoixCaserne.Text = "Choix de la caserne pour ses statistiques";
             // 
             // lblHeuresUtilisations
             // 
             this.lblHeuresUtilisations.AutoSize = true;
-            this.lblHeuresUtilisations.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeuresUtilisations.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeuresUtilisations.Location = new System.Drawing.Point(556, 24);
             this.lblHeuresUtilisations.MaximumSize = new System.Drawing.Size(700, 0);
             this.lblHeuresUtilisations.Name = "lblHeuresUtilisations";
-            this.lblHeuresUtilisations.Size = new System.Drawing.Size(308, 17);
+            this.lblHeuresUtilisations.Size = new System.Drawing.Size(258, 16);
             this.lblHeuresUtilisations.TabIndex = 2;
             this.lblHeuresUtilisations.Text = "Total d\'heures d\'utilisation pour chaque engin : ";
             // 
             // lblEnginsPlusUtilise
             // 
             this.lblEnginsPlusUtilise.AutoSize = true;
-            this.lblEnginsPlusUtilise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnginsPlusUtilise.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnginsPlusUtilise.Location = new System.Drawing.Point(14, 24);
             this.lblEnginsPlusUtilise.MaximumSize = new System.Drawing.Size(700, 0);
             this.lblEnginsPlusUtilise.Name = "lblEnginsPlusUtilise";
-            this.lblEnginsPlusUtilise.Size = new System.Drawing.Size(162, 17);
+            this.lblEnginsPlusUtilise.Size = new System.Drawing.Size(132, 16);
             this.lblEnginsPlusUtilise.TabIndex = 3;
             this.lblEnginsPlusUtilise.Text = "Engins les plus utilisés : ";
             // 
@@ -92,55 +92,57 @@
             // 
             this.lblStatsToutesCasernes.AutoSize = true;
             this.lblStatsToutesCasernes.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatsToutesCasernes.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblStatsToutesCasernes.Location = new System.Drawing.Point(33, 314);
+            this.lblStatsToutesCasernes.ForeColor = System.Drawing.Color.Red;
+            this.lblStatsToutesCasernes.Location = new System.Drawing.Point(254, 327);
             this.lblStatsToutesCasernes.Name = "lblStatsToutesCasernes";
-            this.lblStatsToutesCasernes.Size = new System.Drawing.Size(411, 27);
+            this.lblStatsToutesCasernes.Size = new System.Drawing.Size(329, 22);
             this.lblStatsToutesCasernes.TabIndex = 4;
             this.lblStatsToutesCasernes.Text = "Statistiques de l\'ensemble des casernes";
             // 
             // lblListePompierPArHabilitation
             // 
             this.lblListePompierPArHabilitation.AutoSize = true;
-            this.lblListePompierPArHabilitation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListePompierPArHabilitation.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblListePompierPArHabilitation.Location = new System.Drawing.Point(377, 12);
             this.lblListePompierPArHabilitation.MaximumSize = new System.Drawing.Size(350, 0);
             this.lblListePompierPArHabilitation.Name = "lblListePompierPArHabilitation";
-            this.lblListePompierPArHabilitation.Size = new System.Drawing.Size(224, 17);
+            this.lblListePompierPArHabilitation.Size = new System.Drawing.Size(187, 16);
             this.lblListePompierPArHabilitation.TabIndex = 5;
             this.lblListePompierPArHabilitation.Text = "Liste des pompiers par habilitation";
             // 
             // lblHabiPlusSolicite
             // 
             this.lblHabiPlusSolicite.AutoSize = true;
-            this.lblHabiPlusSolicite.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHabiPlusSolicite.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHabiPlusSolicite.Location = new System.Drawing.Point(749, 12);
             this.lblHabiPlusSolicite.MaximumSize = new System.Drawing.Size(350, 0);
             this.lblHabiPlusSolicite.Name = "lblHabiPlusSolicite";
-            this.lblHabiPlusSolicite.Size = new System.Drawing.Size(202, 17);
+            this.lblHabiPlusSolicite.Size = new System.Drawing.Size(170, 16);
             this.lblHabiPlusSolicite.TabIndex = 10;
             this.lblHabiPlusSolicite.Text = "Habilitations les plus sollicitées";
             // 
             // lblNbInterventionParSinistre
             // 
             this.lblNbInterventionParSinistre.AutoSize = true;
-            this.lblNbInterventionParSinistre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbInterventionParSinistre.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNbInterventionParSinistre.Location = new System.Drawing.Point(15, 12);
             this.lblNbInterventionParSinistre.MaximumSize = new System.Drawing.Size(350, 0);
             this.lblNbInterventionParSinistre.Name = "lblNbInterventionParSinistre";
-            this.lblNbInterventionParSinistre.Size = new System.Drawing.Size(291, 17);
+            this.lblNbInterventionParSinistre.Size = new System.Drawing.Size(243, 16);
             this.lblNbInterventionParSinistre.TabIndex = 11;
             this.lblNbInterventionParSinistre.Text = "Nombre d\'interventions par type de sinistre : ";
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(892, 37);
+            this.btnRefresh.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRefresh.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRefresh.Location = new System.Drawing.Point(1013, 17);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 33);
+            this.btnRefresh.Size = new System.Drawing.Size(151, 38);
             this.btnRefresh.TabIndex = 12;
             this.btnRefresh.Text = "Actualiser";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // panelCaserne
@@ -148,41 +150,43 @@
             this.panelCaserne.BackColor = System.Drawing.Color.LightGray;
             this.panelCaserne.Controls.Add(this.lblHeuresUtilisations);
             this.panelCaserne.Controls.Add(this.lblEnginsPlusUtilise);
-            this.panelCaserne.Location = new System.Drawing.Point(20, 83);
+            this.panelCaserne.Location = new System.Drawing.Point(241, 63);
             this.panelCaserne.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelCaserne.Name = "panelCaserne";
-            this.panelCaserne.Size = new System.Drawing.Size(1078, 210);
+            this.panelCaserne.Size = new System.Drawing.Size(1078, 260);
             this.panelCaserne.TabIndex = 13;
             // 
             // panelGlobal
             // 
-            this.panelGlobal.BackColor = System.Drawing.Color.LightBlue;
+            this.panelGlobal.BackColor = System.Drawing.Color.IndianRed;
             this.panelGlobal.Controls.Add(this.lblHabiPlusSolicite);
             this.panelGlobal.Controls.Add(this.lblNbInterventionParSinistre);
             this.panelGlobal.Controls.Add(this.lblListePompierPArHabilitation);
-            this.panelGlobal.Location = new System.Drawing.Point(20, 354);
+            this.panelGlobal.Location = new System.Drawing.Point(241, 367);
             this.panelGlobal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelGlobal.Name = "panelGlobal";
-            this.panelGlobal.Size = new System.Drawing.Size(1078, 310);
+            this.panelGlobal.Size = new System.Drawing.Size(1078, 397);
             this.panelGlobal.TabIndex = 14;
             // 
             // bttnQuitter
             // 
+            this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
             this.bttnQuitter.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnQuitter.Location = new System.Drawing.Point(998, 37);
+            this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnQuitter.Location = new System.Drawing.Point(1170, 17);
             this.bttnQuitter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bttnQuitter.Name = "bttnQuitter";
-            this.bttnQuitter.Size = new System.Drawing.Size(100, 33);
+            this.bttnQuitter.Size = new System.Drawing.Size(151, 38);
             this.bttnQuitter.TabIndex = 15;
             this.bttnQuitter.Text = "Quitter";
-            this.bttnQuitter.UseVisualStyleBackColor = true;
+            this.bttnQuitter.UseVisualStyleBackColor = false;
             this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
             // 
             // FormStats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 680);
+            this.ClientSize = new System.Drawing.Size(1425, 845);
             this.Controls.Add(this.bttnQuitter);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblStatsToutesCasernes);
@@ -194,9 +198,11 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "FormStats";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistiques pour le régulateur";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelCaserne.ResumeLayout(false);
             this.panelCaserne.PerformLayout();
             this.panelGlobal.ResumeLayout(false);

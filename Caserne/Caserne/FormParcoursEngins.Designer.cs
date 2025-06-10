@@ -94,7 +94,7 @@
             this.lblChoixCaserne.Location = new System.Drawing.Point(20, 23);
             this.lblChoixCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChoixCaserne.Name = "lblChoixCaserne";
-            this.lblChoixCaserne.Size = new System.Drawing.Size(177, 23);
+            this.lblChoixCaserne.Size = new System.Drawing.Size(146, 20);
             this.lblChoixCaserne.TabIndex = 6;
             this.lblChoixCaserne.Text = "Choix de la caserne :";
             // 
@@ -105,7 +105,7 @@
             this.cmbChoixCaserne.Location = new System.Drawing.Point(295, 20);
             this.cmbChoixCaserne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbChoixCaserne.Name = "cmbChoixCaserne";
-            this.cmbChoixCaserne.Size = new System.Drawing.Size(639, 31);
+            this.cmbChoixCaserne.Size = new System.Drawing.Size(639, 28);
             this.cmbChoixCaserne.TabIndex = 5;
             this.cmbChoixCaserne.SelectedIndexChanged += new System.EventHandler(this.cmbChoixCaserne_SelectedIndexChanged);
             // 
@@ -137,7 +137,7 @@
             this.lblDisponible.Location = new System.Drawing.Point(49, 48);
             this.lblDisponible.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDisponible.Name = "lblDisponible";
-            this.lblDisponible.Size = new System.Drawing.Size(129, 23);
+            this.lblDisponible.Size = new System.Drawing.Size(106, 20);
             this.lblDisponible.TabIndex = 10;
             this.lblDisponible.Text = "Disponibilité : ";
             // 
@@ -147,7 +147,7 @@
             this.lblEnPanne.Location = new System.Drawing.Point(49, 94);
             this.lblEnPanne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnPanne.Name = "lblEnPanne";
-            this.lblEnPanne.Size = new System.Drawing.Size(98, 23);
+            this.lblEnPanne.Size = new System.Drawing.Size(84, 20);
             this.lblEnPanne.TabIndex = 9;
             this.lblEnPanne.Text = "En panne : ";
             // 
@@ -168,7 +168,7 @@
             this.lblNumeroEngin.Location = new System.Drawing.Point(49, 41);
             this.lblNumeroEngin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumeroEngin.Name = "lblNumeroEngin";
-            this.lblNumeroEngin.Size = new System.Drawing.Size(91, 23);
+            this.lblNumeroEngin.Size = new System.Drawing.Size(75, 20);
             this.lblNumeroEngin.TabIndex = 15;
             this.lblNumeroEngin.Text = "Numéro : ";
             // 
@@ -178,7 +178,7 @@
             this.lblDateRCP.Location = new System.Drawing.Point(49, 83);
             this.lblDateRCP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateRCP.Name = "lblDateRCP";
-            this.lblDateRCP.Size = new System.Drawing.Size(171, 23);
+            this.lblDateRCP.Size = new System.Drawing.Size(141, 20);
             this.lblDateRCP.TabIndex = 16;
             this.lblDateRCP.Text = "Date de récéption : ";
             // 
@@ -231,8 +231,9 @@
             // 
             // FormParcoursEngins
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1518, 754);
             this.Controls.Add(this.bttnQuitter);

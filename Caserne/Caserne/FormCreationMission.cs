@@ -686,25 +686,5 @@ namespace Caserne
             }
         }
         #endregion
-
-        private void tbMotifMission_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void tbRueSinistre_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void tbCodePostalSinistre_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void tbVilleSinistre_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-
-        }
     }
 }

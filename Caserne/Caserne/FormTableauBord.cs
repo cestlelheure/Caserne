@@ -518,20 +518,20 @@ namespace Caserne
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    FormStatistiques formEngins = new FormStatistiques();
+            try
+            {
+                FormStats formEngins = new FormStats();
 
-            //    // Afficher le formulaire
-            //    formEngins.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Erreur lors de l'ouverture du formulaire des statistiques : " + ex.Message,
-            //                    "Erreur",
-            //                    MessageBoxButtons.OK,
-            //                    MessageBoxIcon.Error);
-            //}
+                //Afficher le formulaire
+                formEngins.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ouverture du formulaire des statistiques : " + ex.Message,
+                                "Erreur",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
 
         private void btnEngins_Click(object sender, EventArgs e)
