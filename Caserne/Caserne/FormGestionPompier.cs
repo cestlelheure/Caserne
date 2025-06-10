@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Reflection;
 using System.Data.SqlClient;
+using System.Windows.Forms.VisualStyles;
 
 namespace Caserne
 {
@@ -42,11 +43,8 @@ namespace Caserne
         private void Form1_Load(object sender, EventArgs e)
         {
             string requete = "SELECT nom FROM Caserne;";
-            comboBox1.Focus();
-            RemplirComboBoxDepuisSQLite(comboBox1, requete, "nom");
-            pictureBox2.Image = Image.FromFile(@"Images/Logo/Logo.png");
-
-
+            cboCaserne.Focus();
+            RemplirComboBoxDepuisSQLite(cboCaserne, requete, "nom");
         }
 
         private void RemplirComboBoxDepuisSQLite(ComboBox combo, string requeteSQL, string colonneAffichage)
@@ -94,18 +92,6 @@ namespace Caserne
             reader.Close();
         }
 
-        public void chargerCheckedListBox(CheckedListBox lstBox, string requete, string colonne)
-        {
-            SQLiteConnection connec = Connexion.Connec;
-            SQLiteCommand commande = new SQLiteCommand(requete, connec);
-            SQLiteDataReader reader = commande.ExecuteReader();
-            lstBox.Items.Clear();
-            while (reader.Read())
-            {
-                lstBox.Items.Add(reader[colonne].ToString());
-            }
-            reader.Close();
-        }
 
         private void RemplirComboBoxDepuisSQLite(ComboBox combo, string requeteSQL, string[] colonnesAffichage)
         {
@@ -143,27 +129,27 @@ namespace Caserne
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox2.Text = null;
+            cboPompier.Text = null;
             grpBoxInfoPompier.Visible = false;
             grpBoxInfoCarriere.Visible = false;
             btnAfficherMoins.Visible = false;
-            int caserneI = comboBox1.SelectedIndex + 1;
+            int caserneI = cboCaserne.SelectedIndex + 1;
             string requete = "SELECT * FROM Pompier p JOIN Affectation a ON p.matricule = a.matriculePompier " +
                 "JOIN Caserne c ON a.idCaserne = c.id WHERE c.id = '" + caserneI.ToString() + "';";
             string[] nomPrenom = { "nom", "prenom" };
-            RemplirComboBoxDepuisSQLite(comboBox2, requete, nomPrenom);
+            RemplirComboBoxDepuisSQLite(cboPompier, requete, nomPrenom);
             btnVeuillez.Visible = true;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnVeuillez.Visible = false;
-            if (comboBox2.SelectedItem == null) return;
+            if (cboPompier.SelectedItem == null) return;
             btnChanger.Visible = false;
             grpBoxInfoPompier.Visible = true;
             btnAfficherPlus.Visible = true;
 
-            string selected = comboBox2.SelectedItem.ToString();
+            string selected = cboPompier.SelectedItem.ToString();
             string[] nomPrenom = selected.Split(new[] { "  " }, StringSplitOptions.None);
             if (nomPrenom.Length != 2) return;
 
@@ -216,7 +202,7 @@ namespace Caserne
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                comboBox3.Text = $"{reader["libelle"]}";
+                cboGrade.Text = $"{reader["libelle"]}";
             }
 
             else
@@ -226,17 +212,16 @@ namespace Caserne
             reader.Close();
             cmd.Dispose();
             requete = "SELECT DISTINCT libelle from Grade";
-            RemplirComboBoxDepuisSQLite(comboBox3, requete, "libelle");
+            RemplirComboBoxDepuisSQLite(cboGrade, requete, "libelle");
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.Image = Image.FromFile(@"Images/ImagesGrades/" + txtBoxGrade.Text + ".png");
             lstBoxAffectations.Items.Clear();
-            requete = "SELECT libelle FROM Habilitation";
-            chargerCheckedListBox(clbHabilitations, requete, "libelle");
-            requete = "SELECT h.libelle FROM Habilitation h JOIN Passer s ON h.id = s.idHabilitation JOIN Pompier p ON s.matriculePompier = p.matricule WHERE p.matricule = '" + matricule + "';";
-            CocherHabilitationsConnues(clbHabilitations, requete, "libelle", matricule);
+            string[] colonnes = { "dateObtention", "libelle" };
+            requete = "SELECT h.libelle, s.dateObtention FROM Habilitation h JOIN Passer s ON h.id = s.idHabilitation JOIN Pompier p ON s.matriculePompier = p.matricule WHERE p.matricule = '" + matricule + "';";
+            chargerListBox(lstBoxHabilitations, requete, colonnes);
             requete = "SELECT a.dateA , c.nom FROM Affectation a JOIN Caserne c ON c.id = a.idCaserne JOIN Pompier p on a.matriculePompier = p.matricule WHERE p.matricule = '" + matricule + "' AND a.dateFin IS NOT NULL";
-            string[] colonnes = { "dateA", "nom" };
-            chargerListBox(lstBoxAffectations, requete, colonnes);
+            string [] colonnes2 = { "dateA", "nom" };
+            chargerListBox(lstBoxAffectations, requete, colonnes2);
         }
 
         private void btnAfficherPlus_Click(object sender, EventArgs e)
@@ -245,8 +230,8 @@ namespace Caserne
             btnAfficherMoins.Visible = true;
             grpBoxInfoCarriere.Visible = true;
             string requete = "SELECT nom FROM Caserne;";
-            RemplirComboBoxDepuisSQLite(comboBox4, requete, "nom");
-            comboBox4.SelectedIndex = comboBox1.SelectedIndex;
+            RemplirComboBoxDepuisSQLite(cboNewCaserne, requete, "nom");
+            cboNewCaserne.SelectedIndex = cboCaserne.SelectedIndex;
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
@@ -258,7 +243,7 @@ namespace Caserne
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBoxGrade.Enabled = false;
-            string requete = "SELECT code FROM Grade where libelle = '" + comboBox3.Text + "';";
+            string requete = "SELECT code FROM Grade where libelle = '" + cboGrade.Text + "';";
             SQLiteConnection connec = Connexion.Connec;
             SQLiteCommand cmd = new SQLiteCommand(requete, connec);
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -362,17 +347,17 @@ namespace Caserne
             {
                 try
                 {
-                    int caserneI = comboBox4.SelectedIndex + 1;
-                    SQLiteConnection connec = Connexion.Connec;
-                    string requete = "UPDATE Affectation SET idCaserne = @idCaserne WHERE matriculePompier = @matricule;";
-                    SQLiteCommand cmd = new SQLiteCommand(requete, connec);
+                    int caserneI = cboNewCaserne.SelectedIndex + 1;
+                    SQLiteConnection connec1 = Connexion.Connec;
+                    string requete2 = "UPDATE Affectation SET idCaserne = @idCaserne WHERE matriculePompier = @matricule;";
+                    SQLiteCommand cmd = new SQLiteCommand(requete2, connec1);
                     cmd.Parameters.AddWithValue("@idCaserne", caserneI);
                     cmd.Parameters.AddWithValue("@matricule", matricule);
                     cmd.ExecuteNonQuery();
                     if (cBoxConge.Checked)
                     {
                         string requete1 = "UPDATE Pompier SET enConge = 1 WHERE matricule = '" + matricule +"'";
-                        SQLiteCommand cmd1 = new SQLiteCommand(requete1, connec);
+                        SQLiteCommand cmd1 = new SQLiteCommand(requete1, connec1);
 
                         cmd1.ExecuteNonQuery();
                     }
@@ -398,34 +383,15 @@ namespace Caserne
             }
         }
 
-        private void CocherHabilitationsConnues(CheckedListBox clb, string requete, string colonne, string matricule)
-        {
-            try
-            {
-                SQLiteConnection connec = Connexion.Connec;
-                SQLiteCommand cmd = new SQLiteCommand(requete, connec);
-                cmd.Parameters.AddWithValue("@matricule", matricule);
-                SQLiteDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    string habilitation = reader[colonne].ToString();
-                    for (int i = 0; i < clb.Items.Count; i++)
-                    {
-                        if (clb.Items[i].ToString() == habilitation)
-                        {
-                            clb.SetItemChecked(i, true);
-                        }
-                    }
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Êtes-vous sûr de vouloir quitter ? Les modifications non validées ne seront pas sauvegardées.", "Confirmation de fermeture", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
             {
-                MessageBox.Show("Erreur lors du chargement des habilitations : " + ex.Message);
+                this.Close();
             }
         }
-
-
     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjoutPompier));
             this.lblNom = new System.Windows.Forms.Label();
             this.txtBoxNom = new System.Windows.Forms.TextBox();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtBoxPrenom = new System.Windows.Forms.TextBox();
             this.grpBoxPompier = new System.Windows.Forms.GroupBox();
+            this.cblHabilitations = new System.Windows.Forms.CheckedListBox();
             this.lblHabilitations = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.cboMois = new System.Windows.Forms.ComboBox();
@@ -55,7 +55,7 @@
             this.grpBoxSexe = new System.Windows.Forms.GroupBox();
             this.rdbMasculin = new System.Windows.Forms.RadioButton();
             this.rdbFeminin = new System.Windows.Forms.RadioButton();
-            this.cblHabilitations = new System.Windows.Forms.CheckedListBox();
+            this.txtBoxGrade = new System.Windows.Forms.TextBox();
             this.grpBoxPompier.SuspendLayout();
             this.grpBoxSituation.SuspendLayout();
             this.grpBoxSexe.SuspendLayout();
@@ -101,6 +101,7 @@
             // 
             // grpBoxPompier
             // 
+            this.grpBoxPompier.Controls.Add(this.txtBoxGrade);
             this.grpBoxPompier.Controls.Add(this.cblHabilitations);
             this.grpBoxPompier.Controls.Add(this.lblHabilitations);
             this.grpBoxPompier.Controls.Add(this.btnAjouter);
@@ -130,6 +131,14 @@
             this.grpBoxPompier.Size = new System.Drawing.Size(720, 812);
             this.grpBoxPompier.TabIndex = 5;
             this.grpBoxPompier.TabStop = false;
+            // 
+            // cblHabilitations
+            // 
+            this.cblHabilitations.FormattingEnabled = true;
+            this.cblHabilitations.Location = new System.Drawing.Point(90, 567);
+            this.cblHabilitations.Name = "cblHabilitations";
+            this.cblHabilitations.Size = new System.Drawing.Size(504, 137);
+            this.cblHabilitations.TabIndex = 26;
             // 
             // lblHabilitations
             // 
@@ -229,15 +238,16 @@
             // 
             this.cboGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGrade.FormattingEnabled = true;
-            this.cboGrade.Location = new System.Drawing.Point(312, 500);
+            this.cboGrade.Location = new System.Drawing.Point(344, 502);
             this.cboGrade.Name = "cboGrade";
             this.cboGrade.Size = new System.Drawing.Size(174, 27);
             this.cboGrade.TabIndex = 13;
+            this.cboGrade.SelectedIndexChanged += new System.EventHandler(this.cboGrade_SelectedIndexChanged);
             // 
             // lblGrade
             // 
             this.lblGrade.AutoSize = true;
-            this.lblGrade.Location = new System.Drawing.Point(237, 503);
+            this.lblGrade.Location = new System.Drawing.Point(191, 508);
             this.lblGrade.Name = "lblGrade";
             this.lblGrade.Size = new System.Drawing.Size(57, 19);
             this.lblGrade.TabIndex = 13;
@@ -336,13 +346,13 @@
             this.rdbFeminin.Text = "Féminin";
             this.rdbFeminin.UseVisualStyleBackColor = true;
             // 
-            // cblHabilitations
+            // txtBoxGrade
             // 
-            this.cblHabilitations.FormattingEnabled = true;
-            this.cblHabilitations.Location = new System.Drawing.Point(90, 567);
-            this.cblHabilitations.Name = "cblHabilitations";
-            this.cblHabilitations.Size = new System.Drawing.Size(504, 137);
-            this.cblHabilitations.TabIndex = 26;
+            this.txtBoxGrade.Enabled = false;
+            this.txtBoxGrade.Location = new System.Drawing.Point(257, 505);
+            this.txtBoxGrade.Name = "txtBoxGrade";
+            this.txtBoxGrade.Size = new System.Drawing.Size(74, 24);
+            this.txtBoxGrade.TabIndex = 27;
             // 
             // FormAjoutPompier
             // 
@@ -352,7 +362,6 @@
             this.Controls.Add(this.grpBoxPompier);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormAjoutPompier";
@@ -397,5 +406,6 @@
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Label lblHabilitations;
         private System.Windows.Forms.CheckedListBox cblHabilitations;
+        private System.Windows.Forms.TextBox txtBoxGrade;
     }
 }

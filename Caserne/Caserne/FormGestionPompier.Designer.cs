@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionPompier));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboCaserne = new System.Windows.Forms.ComboBox();
+            this.cboPompier = new System.Windows.Forms.ComboBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblSexe = new System.Windows.Forms.Label();
@@ -40,11 +40,10 @@
             this.lblBip = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
             this.btnChanger = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboGrade = new System.Windows.Forms.ComboBox();
             this.txtBoxGrade = new System.Windows.Forms.TextBox();
             this.lblGrade = new System.Windows.Forms.Label();
             this.lblED = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rdbVolontaire = new System.Windows.Forms.RadioButton();
             this.rdbProfessionnel = new System.Windows.Forms.RadioButton();
             this.lblMatricule = new System.Windows.Forms.Label();
@@ -52,50 +51,51 @@
             this.btnAfficherPlus = new System.Windows.Forms.Button();
             this.grpBoxInfoCarriere = new System.Windows.Forms.GroupBox();
             this.grpBoxCarriere2 = new System.Windows.Forms.GroupBox();
-            this.clbHabilitations = new System.Windows.Forms.CheckedListBox();
             this.lstBoxAffectations = new System.Windows.Forms.ListBox();
             this.lblAffectations = new System.Windows.Forms.Label();
             this.lblHabilitations = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboNewCaserne = new System.Windows.Forms.ComboBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.cBoxConge = new System.Windows.Forms.CheckBox();
             this.btnMaj = new System.Windows.Forms.Button();
-            this.btnNouveau = new System.Windows.Forms.Button();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.btnAfficherMoins = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.menuPanel1 = new Caserne.MenuPanel();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.lstBoxHabilitations = new System.Windows.Forms.ListBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnNouveau = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxInfoPompier.SuspendLayout();
             this.grpBoxCarriere.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxInfoCarriere.SuspendLayout();
             this.grpBoxCarriere2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cboCaserne
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(424, 197);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(196, 27);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCaserne.FormattingEnabled = true;
+            this.cboCaserne.Location = new System.Drawing.Point(113, 209);
+            this.cboCaserne.Margin = new System.Windows.Forms.Padding(4);
+            this.cboCaserne.Name = "cboCaserne";
+            this.cboCaserne.Size = new System.Drawing.Size(195, 27);
+            this.cboCaserne.TabIndex = 1;
+            this.cboCaserne.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cboPompier
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(424, 266);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(196, 27);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cboPompier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPompier.FormattingEnabled = true;
+            this.cboPompier.Location = new System.Drawing.Point(113, 278);
+            this.cboPompier.Margin = new System.Windows.Forms.Padding(4);
+            this.cboPompier.Name = "cboPompier";
+            this.cboPompier.Size = new System.Drawing.Size(196, 27);
+            this.cboPompier.TabIndex = 2;
+            this.cboPompier.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // lblNom
             // 
@@ -149,7 +149,7 @@
             this.grpBoxInfoPompier.Controls.Add(this.lblBD);
             this.grpBoxInfoPompier.Controls.Add(this.lblSexe);
             this.grpBoxInfoPompier.Controls.Add(this.lblPrenom);
-            this.grpBoxInfoPompier.Location = new System.Drawing.Point(664, 23);
+            this.grpBoxInfoPompier.Location = new System.Drawing.Point(375, 35);
             this.grpBoxInfoPompier.Margin = new System.Windows.Forms.Padding(4);
             this.grpBoxInfoPompier.Name = "grpBoxInfoPompier";
             this.grpBoxInfoPompier.Padding = new System.Windows.Forms.Padding(4);
@@ -163,7 +163,7 @@
             this.grpBoxCarriere.Controls.Add(this.lblBip);
             this.grpBoxCarriere.Controls.Add(this.lblTel);
             this.grpBoxCarriere.Controls.Add(this.btnChanger);
-            this.grpBoxCarriere.Controls.Add(this.comboBox3);
+            this.grpBoxCarriere.Controls.Add(this.cboGrade);
             this.grpBoxCarriere.Controls.Add(this.txtBoxGrade);
             this.grpBoxCarriere.Controls.Add(this.lblGrade);
             this.grpBoxCarriere.Location = new System.Drawing.Point(61, 261);
@@ -202,14 +202,14 @@
             this.btnChanger.Visible = false;
             this.btnChanger.Click += new System.EventHandler(this.btnChanger_Click);
             // 
-            // comboBox3
+            // cboGrade
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(169, 24);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(176, 27);
-            this.comboBox3.TabIndex = 2;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.cboGrade.FormattingEnabled = true;
+            this.cboGrade.Location = new System.Drawing.Point(169, 24);
+            this.cboGrade.Name = "cboGrade";
+            this.cboGrade.Size = new System.Drawing.Size(176, 27);
+            this.cboGrade.TabIndex = 2;
+            this.cboGrade.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // txtBoxGrade
             // 
@@ -237,18 +237,11 @@
             this.lblED.TabIndex = 10;
             this.lblED.Text = "Date d\'embauche : ";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(425, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // rdbVolontaire
             // 
             this.rdbVolontaire.AutoSize = true;
             this.rdbVolontaire.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rdbVolontaire.Enabled = false;
             this.rdbVolontaire.Location = new System.Drawing.Point(343, 190);
             this.rdbVolontaire.Name = "rdbVolontaire";
             this.rdbVolontaire.Size = new System.Drawing.Size(90, 23);
@@ -261,6 +254,7 @@
             // 
             this.rdbProfessionnel.AutoSize = true;
             this.rdbProfessionnel.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rdbProfessionnel.Enabled = false;
             this.rdbProfessionnel.Location = new System.Drawing.Point(101, 190);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
             this.rdbProfessionnel.Size = new System.Drawing.Size(109, 23);
@@ -285,7 +279,7 @@
             this.btnVeuillez.Enabled = false;
             this.btnVeuillez.Font = new System.Drawing.Font("Microsoft YaHei UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeuillez.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVeuillez.Location = new System.Drawing.Point(664, 23);
+            this.btnVeuillez.Location = new System.Drawing.Point(375, 26);
             this.btnVeuillez.Name = "btnVeuillez";
             this.btnVeuillez.Size = new System.Drawing.Size(592, 750);
             this.btnVeuillez.TabIndex = 16;
@@ -294,12 +288,14 @@
             // 
             // btnAfficherPlus
             // 
-            this.btnAfficherPlus.Location = new System.Drawing.Point(1098, 409);
+            this.btnAfficherPlus.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAfficherPlus.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAfficherPlus.Location = new System.Drawing.Point(809, 421);
             this.btnAfficherPlus.Name = "btnAfficherPlus";
             this.btnAfficherPlus.Size = new System.Drawing.Size(158, 36);
             this.btnAfficherPlus.TabIndex = 7;
             this.btnAfficherPlus.Text = "Afficher plus ...";
-            this.btnAfficherPlus.UseVisualStyleBackColor = true;
+            this.btnAfficherPlus.UseVisualStyleBackColor = false;
             this.btnAfficherPlus.Visible = false;
             this.btnAfficherPlus.Click += new System.EventHandler(this.btnAfficherPlus_Click);
             // 
@@ -307,7 +303,7 @@
             // 
             this.grpBoxInfoCarriere.Controls.Add(this.grpBoxCarriere2);
             this.grpBoxInfoCarriere.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grpBoxInfoCarriere.Location = new System.Drawing.Point(664, 446);
+            this.grpBoxInfoCarriere.Location = new System.Drawing.Point(375, 458);
             this.grpBoxInfoCarriere.Name = "grpBoxInfoCarriere";
             this.grpBoxInfoCarriere.Size = new System.Drawing.Size(592, 339);
             this.grpBoxInfoCarriere.TabIndex = 8;
@@ -316,11 +312,11 @@
             // 
             // grpBoxCarriere2
             // 
-            this.grpBoxCarriere2.Controls.Add(this.clbHabilitations);
+            this.grpBoxCarriere2.Controls.Add(this.lstBoxHabilitations);
             this.grpBoxCarriere2.Controls.Add(this.lstBoxAffectations);
             this.grpBoxCarriere2.Controls.Add(this.lblAffectations);
             this.grpBoxCarriere2.Controls.Add(this.lblHabilitations);
-            this.grpBoxCarriere2.Controls.Add(this.comboBox4);
+            this.grpBoxCarriere2.Controls.Add(this.cboNewCaserne);
             this.grpBoxCarriere2.Controls.Add(this.lblCaserne);
             this.grpBoxCarriere2.Controls.Add(this.cBoxConge);
             this.grpBoxCarriere2.Controls.Add(this.btnMaj);
@@ -330,14 +326,6 @@
             this.grpBoxCarriere2.TabIndex = 0;
             this.grpBoxCarriere2.TabStop = false;
             this.grpBoxCarriere2.Text = "Informations carrière";
-            // 
-            // clbHabilitations
-            // 
-            this.clbHabilitations.FormattingEnabled = true;
-            this.clbHabilitations.Location = new System.Drawing.Point(55, 85);
-            this.clbHabilitations.Name = "clbHabilitations";
-            this.clbHabilitations.Size = new System.Drawing.Size(449, 118);
-            this.clbHabilitations.TabIndex = 16;
             // 
             // lstBoxAffectations
             // 
@@ -366,14 +354,14 @@
             this.lblHabilitations.TabIndex = 4;
             this.lblHabilitations.Text = "Habilitations :";
             // 
-            // comboBox4
+            // cboNewCaserne
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(240, 30);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(264, 27);
-            this.comboBox4.TabIndex = 3;
+            this.cboNewCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNewCaserne.FormattingEnabled = true;
+            this.cboNewCaserne.Location = new System.Drawing.Point(240, 30);
+            this.cboNewCaserne.Name = "cboNewCaserne";
+            this.cboNewCaserne.Size = new System.Drawing.Size(264, 27);
+            this.cboNewCaserne.TabIndex = 3;
             // 
             // lblCaserne
             // 
@@ -396,65 +384,33 @@
             // 
             // btnMaj
             // 
+            this.btnMaj.BackColor = System.Drawing.Color.IndianRed;
+            this.btnMaj.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMaj.Location = new System.Drawing.Point(419, 282);
             this.btnMaj.Name = "btnMaj";
             this.btnMaj.Size = new System.Drawing.Size(145, 26);
             this.btnMaj.TabIndex = 0;
             this.btnMaj.Text = "Mettre à jour";
-            this.btnMaj.UseVisualStyleBackColor = true;
+            this.btnMaj.UseVisualStyleBackColor = false;
             this.btnMaj.Click += new System.EventHandler(this.btnMaj_Click);
-            // 
-            // btnNouveau
-            // 
-            this.btnNouveau.BackColor = System.Drawing.Color.IndianRed;
-            this.btnNouveau.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNouveau.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveau.Image")));
-            this.btnNouveau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveau.Location = new System.Drawing.Point(354, 454);
-            this.btnNouveau.Name = "btnNouveau";
-            this.btnNouveau.Size = new System.Drawing.Size(265, 84);
-            this.btnNouveau.TabIndex = 4;
-            this.btnNouveau.Text = "Ajouter un pompier";
-            this.btnNouveau.UseVisualStyleBackColor = false;
-            this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.Color.IndianRed;
-            this.btnLogin.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
-            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(355, 317);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(265, 85);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "S\'identifier";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnAfficherMoins
             // 
-            this.btnAfficherMoins.Location = new System.Drawing.Point(1098, 409);
+            this.btnAfficherMoins.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAfficherMoins.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAfficherMoins.Location = new System.Drawing.Point(809, 421);
             this.btnAfficherMoins.Name = "btnAfficherMoins";
             this.btnAfficherMoins.Size = new System.Drawing.Size(158, 36);
             this.btnAfficherMoins.TabIndex = 13;
             this.btnAfficherMoins.Text = "Afficher moins";
-            this.btnAfficherMoins.UseVisualStyleBackColor = true;
+            this.btnAfficherMoins.UseVisualStyleBackColor = false;
             this.btnAfficherMoins.Visible = false;
             this.btnAfficherMoins.Click += new System.EventHandler(this.btnAfficherMoins_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(407, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(153, 143);
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(350, 200);
+            this.label1.Location = new System.Drawing.Point(37, 212);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 19);
             this.label1.TabIndex = 14;
@@ -463,28 +419,88 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(350, 269);
+            this.label2.Location = new System.Drawing.Point(37, 281);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 15;
             this.label2.Text = "Pompier :";
             // 
-            // menuPanel1
+            // btnRetour
             // 
-            this.menuPanel1.BackColor = System.Drawing.Color.IndianRed;
-            this.menuPanel1.Location = new System.Drawing.Point(-1, 0);
-            this.menuPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(326, 797);
-            this.menuPanel1.TabIndex = 17;
+            this.btnRetour.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
+            this.btnRetour.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRetour.Location = new System.Drawing.Point(66, 691);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(264, 82);
+            this.btnRetour.TabIndex = 17;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = false;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // lstBoxHabilitations
+            // 
+            this.lstBoxHabilitations.FormattingEnabled = true;
+            this.lstBoxHabilitations.ItemHeight = 19;
+            this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 85);
+            this.lstBoxHabilitations.Name = "lstBoxHabilitations";
+            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 118);
+            this.lstBoxHabilitations.TabIndex = 18;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.IndianRed;
+            this.btnLogin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(66, 329);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(265, 85);
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Text = "S\'identifier";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnNouveau
+            // 
+            this.btnNouveau.BackColor = System.Drawing.Color.IndianRed;
+            this.btnNouveau.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNouveau.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveau.Image")));
+            this.btnNouveau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveau.Location = new System.Drawing.Point(65, 466);
+            this.btnNouveau.Name = "btnNouveau";
+            this.btnNouveau.Size = new System.Drawing.Size(265, 84);
+            this.btnNouveau.TabIndex = 4;
+            this.btnNouveau.Text = "Ajouter un pompier";
+            this.btnNouveau.UseVisualStyleBackColor = false;
+            this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.IndianRed;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(132, 35);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(425, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // FormGestionPompier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1287, 798);
-            this.Controls.Add(this.menuPanel1);
+            this.ClientSize = new System.Drawing.Size(1028, 819);
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnVeuillez);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -494,8 +510,8 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.grpBoxInfoCarriere);
             this.Controls.Add(this.btnAfficherPlus);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboPompier);
+            this.Controls.Add(this.cboCaserne);
             this.Controls.Add(this.grpBoxInfoPompier);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -510,11 +526,11 @@
             this.grpBoxInfoPompier.PerformLayout();
             this.grpBoxCarriere.ResumeLayout(false);
             this.grpBoxCarriere.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxInfoCarriere.ResumeLayout(false);
             this.grpBoxCarriere2.ResumeLayout(false);
             this.grpBoxCarriere2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,8 +538,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboCaserne;
+        private System.Windows.Forms.ComboBox cboPompier;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblSexe;
@@ -538,7 +554,7 @@
         private System.Windows.Forms.Label lblED;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnChanger;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboGrade;
         private System.Windows.Forms.TextBox txtBoxGrade;
         private System.Windows.Forms.Label lblGrade;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -546,7 +562,7 @@
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.GroupBox grpBoxCarriere2;
         private System.Windows.Forms.Label lblHabilitations;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboNewCaserne;
         private System.Windows.Forms.Label lblCaserne;
         private System.Windows.Forms.CheckBox cBoxConge;
         private System.Windows.Forms.Button btnMaj;
@@ -557,8 +573,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNouveau;
-        private System.Windows.Forms.CheckedListBox clbHabilitations;
         private System.Windows.Forms.Button btnVeuillez;
-        private MenuPanel menuPanel1;
+        private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.ListBox lstBoxHabilitations;
     }
 }

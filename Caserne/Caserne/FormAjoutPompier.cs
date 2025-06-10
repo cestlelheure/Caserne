@@ -131,16 +131,37 @@ namespace Caserne
                 string dateNaissance = $"{cboAnnee.SelectedItem}-{cboMois.SelectedItem}-{cboJours.SelectedItem}";
                 string sexe = rdbFeminin.Checked ? "f" : "m";
                 string situation = rdbProfessionnel.Checked ? "p" : "v";
-                string caserne = cboCaserne.SelectedItem.ToString();
-                string grade = cboGrade.SelectedItem.ToString();
+                int caserne = cboCaserne.SelectedIndex + 1;
+                string grade = txtBoxGrade.Text;
                 int enMission = 0;
                 int enConge = 0;
                 string codeGrade;
                 string dateEmbauche = DateTime.Now.ToString("yyyy-MM-dd");
-                string requeteAjoutPompier = @"INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) VALUES @matricule, @nom, @prenom, @sexe, @dateNaissance, @type, @portable, @bip, @enMission, @enConge, @codeGrade, @dateEmbauche);";
+                string requeteAjoutPompier = @"INSERT INTO Pompier (matricule, nom, prenom, sexe, dateNaissance, type, portable, bip, enMission, enConge, codeGrade, dateEmbauche) VALUES (@matricule, @nom, @prenom, @sexe, @dateNaissance, @type, @portable, @bip, @enMission, @enConge, @codeGrade, @dateEmbauche);";
+                string requeteAjoutCaserne = @"INSERT INTO Affectation (matriculePompier, dateA, idCaserne) VALUES (@matricule, @dateEmbauche, @caserne);";
                 SQLiteConnection connec = Connexion.Connec;
                 SQLiteCommand cmd = new SQLiteCommand(requeteAjoutPompier, connec);
+                SQLiteCommand cmd2 = new SQLiteCommand(requeteAjoutCaserne , connec);
+                cmd.Parameters.AddWithValue("@matricule", matricule);
+                cmd.Parameters.AddWithValue("@nom", nom);
+                cmd.Parameters.AddWithValue("@prenom", prenom);
+                cmd.Parameters.AddWithValue("@sexe", sexe);
+                cmd.Parameters.AddWithValue("@dateNaissance", dateNaissance);
+                cmd.Parameters.AddWithValue("@type", situation);
+                cmd.Parameters.AddWithValue("@portable", telephone);
+                cmd.Parameters.AddWithValue("@bip", bip);
+                cmd.Parameters.AddWithValue("@enMission", enMission);
+                cmd.Parameters.AddWithValue("@enConge", enConge);
+                cmd.Parameters.AddWithValue("@codeGrade", grade);
+                cmd.Parameters.AddWithValue("@dateEmbauche", dateEmbauche);
+                cmd2.Parameters.AddWithValue("@matricule", matricule);
+                cmd2.Parameters.AddWithValue("@dateEmbauche", dateEmbauche);
+                cmd2.Parameters.AddWithValue("@caserne", caserne);
                 VerifierCheckListBox(cblHabilitations);
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                MessageBox.Show(nom + " " + prenom + "a bien été ajouté.");
+                this.Close();
             }
 
             catch (Exception ex)
@@ -311,7 +332,7 @@ namespace Caserne
                 return;
             }
 
-            if (char.IsControl(e.KeyChar))
+            if (char.IsControl(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
                 return;
@@ -339,7 +360,7 @@ namespace Caserne
                 return;
             }
 
-            if (char.IsControl(e.KeyChar))
+            if (char.IsControl(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
                 return;
@@ -388,6 +409,19 @@ namespace Caserne
         private void cboAnnee_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateJoursComboBox();
+        }
+
+        private void cboGrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string requete = "SELECT code FROM Grade WHERE libelle = @libelle";
+            SQLiteConnection connec = Connexion.Connec;
+            SQLiteCommand cmd = new SQLiteCommand(requete, connec);
+            cmd.Parameters.AddWithValue("@libelle", cboGrade.Text);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                txtBoxGrade.Text = reader["code"].ToString();
+            }
         }
     }
 }
