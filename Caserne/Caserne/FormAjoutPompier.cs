@@ -180,8 +180,9 @@ namespace Caserne
                 bool estCoche = checkedListBox.GetItemChecked(i);
                 if (estCoche)
                 {
-                    requete = "INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) VALUES " + matricule + "," + i + 1 + "," + DateTime.Now.ToString("yyyy-MM-dd") +";";
+                    requete = "INSERT INTO Passer (matriculePompier, idHabilitation, dateObtention) VALUES (" + matricule + "," + i + 1 + "," + DateTime.Now.ToString("yyyy-MM-dd") +");";
                     SQLiteCommand cmd = new SQLiteCommand(requete, connec);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
