@@ -28,30 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picture1 = new System.Windows.Forms.PictureBox();
             this.missionPanel = new System.Windows.Forms.Panel();
             this.lblNature = new System.Windows.Forms.Label();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
-            this.pic1 = new System.Windows.Forms.PictureBox();
-            this.btnPDF = new System.Windows.Forms.Button();
             this.btnTerminer = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picture1)).BeginInit();
+            this.btnPDF = new System.Windows.Forms.Button();
+            this.picture1 = new System.Windows.Forms.PictureBox();
+            this.pic1 = new System.Windows.Forms.PictureBox();
             this.missionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picture1
-            // 
-            this.picture1.Image = global::Caserne.Properties.Resources.sirene;
-            this.picture1.Location = new System.Drawing.Point(-1, -1);
-            this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picture1.Name = "picture1";
-            this.picture1.Size = new System.Drawing.Size(136, 111);
-            this.picture1.TabIndex = 5;
-            this.picture1.TabStop = false;
             // 
             // missionPanel
             // 
@@ -119,6 +109,36 @@
             this.lblDesc.TabIndex = 1;
             this.lblDesc.Text = "--> Description ...";
             // 
+            // btnTerminer
+            // 
+            this.btnTerminer.Image = global::Caserne.Properties.Resources.terminer;
+            this.btnTerminer.Location = new System.Drawing.Point(1044, 71);
+            this.btnTerminer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTerminer.Name = "btnTerminer";
+            this.btnTerminer.Size = new System.Drawing.Size(53, 49);
+            this.btnTerminer.TabIndex = 3;
+            this.btnTerminer.UseVisualStyleBackColor = true;
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.Image = global::Caserne.Properties.Resources.pdf;
+            this.btnPDF.Location = new System.Drawing.Point(1044, 10);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(53, 49);
+            this.btnPDF.TabIndex = 2;
+            this.btnPDF.UseVisualStyleBackColor = true;
+            // 
+            // picture1
+            // 
+            this.picture1.Image = global::Caserne.Properties.Resources.sirene1;
+            this.picture1.Location = new System.Drawing.Point(-1, -1);
+            this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picture1.Name = "picture1";
+            this.picture1.Size = new System.Drawing.Size(136, 111);
+            this.picture1.TabIndex = 5;
+            this.picture1.TabStop = false;
+            // 
             // pic1
             // 
             this.pic1.Location = new System.Drawing.Point(3, 133);
@@ -127,24 +147,6 @@
             this.pic1.Size = new System.Drawing.Size(100, 50);
             this.pic1.TabIndex = 2;
             this.pic1.TabStop = false;
-            // 
-            // btnPDF
-            // 
-            this.btnPDF.Location = new System.Drawing.Point(1044, 10);
-            this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPDF.Name = "btnPDF";
-            this.btnPDF.Size = new System.Drawing.Size(53, 49);
-            this.btnPDF.TabIndex = 2;
-            this.btnPDF.UseVisualStyleBackColor = true;
-            // 
-            // btnTerminer
-            // 
-            this.btnTerminer.Location = new System.Drawing.Point(1044, 71);
-            this.btnTerminer.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTerminer.Name = "btnTerminer";
-            this.btnTerminer.Size = new System.Drawing.Size(53, 49);
-            this.btnTerminer.TabIndex = 3;
-            this.btnTerminer.UseVisualStyleBackColor = true;
             // 
             // UcMission
             // 
@@ -156,9 +158,9 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UcMission";
             this.Size = new System.Drawing.Size(1105, 128);
-            ((System.ComponentModel.ISupportInitialize)(this.picture1)).EndInit();
             this.missionPanel.ResumeLayout(false);
             this.missionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.ResumeLayout(false);
 
