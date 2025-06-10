@@ -225,7 +225,7 @@ namespace Caserne
         {
             lblNumeroEngin.Text = "Numéro  :  ";
             lblDateRCP.Text = "Date de Réception  :  ";
-            lblEnMission.Text = "En Mission  :  ";
+            lblDisponible.Text = "Disponibilité  :  ";
             lblEnPanne.Text = "État  :  ";
             LibererImagePictureBox(pbEngin);
         }
@@ -236,7 +236,7 @@ namespace Caserne
             {
                 lblNumeroEngin.Text = $"Numéro  :  {engin.IdCaserne} - {engin.CodeTypeEngin} - {engin.Numero}";
                 lblDateRCP.Text = $"Date de Réception  :  {engin.DateReception:dd/MM/yyyy}";
-                lblEnMission.Text = $"En Mission  :  {(engin.EnMission ? "En mission" : "Disponible")}";
+                lblDisponible.Text = $"Disponibilité  :  {(engin.EnMission ? "Disponibilité" : "Disponible")}";
                 lblEnPanne.Text = $"État  :  {(engin.EnPanne ? "En panne" : "Opérationnel")}";
 
                 ChargerImageEngin(pbEngin, engin.CodeTypeEngin);
@@ -316,5 +316,19 @@ namespace Caserne
             }
         }
         #endregion
+
+        private void bttnQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult resultat = MessageBox.Show(
+                "Êtes-vous sûr de vouloir quitter ?",
+                "Confirmation de fermeture",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultat == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

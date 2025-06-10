@@ -35,20 +35,21 @@
             this.lblChoixCaserne = new System.Windows.Forms.Label();
             this.cmbChoixCaserne = new System.Windows.Forms.ComboBox();
             this.pnlInfosEngins = new System.Windows.Forms.Panel();
-            this.pbEngin = new System.Windows.Forms.PictureBox();
-            this.lblEnMission = new System.Windows.Forms.Label();
-            this.lblEnPanne = new System.Windows.Forms.Label();
-            this.bttnFin = new System.Windows.Forms.Button();
-            this.bttnDebut = new System.Windows.Forms.Button();
-            this.grpInfos = new System.Windows.Forms.GroupBox();
             this.grpEtat = new System.Windows.Forms.GroupBox();
+            this.lblDisponible = new System.Windows.Forms.Label();
+            this.lblEnPanne = new System.Windows.Forms.Label();
+            this.grpInfos = new System.Windows.Forms.GroupBox();
             this.lblNumeroEngin = new System.Windows.Forms.Label();
             this.lblDateRCP = new System.Windows.Forms.Label();
+            this.pbEngin = new System.Windows.Forms.PictureBox();
+            this.bttnFin = new System.Windows.Forms.Button();
+            this.bttnDebut = new System.Windows.Forms.Button();
+            this.bttnQuitter = new System.Windows.Forms.Button();
             this.pnlChoixCaserne.SuspendLayout();
             this.pnlInfosEngins.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).BeginInit();
-            this.grpInfos.SuspendLayout();
             this.grpEtat.SuspendLayout();
+            this.grpInfos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).BeginInit();
             this.SuspendLayout();
             // 
             // bttnPrecedent
@@ -115,24 +116,26 @@
             this.pnlInfosEngins.Size = new System.Drawing.Size(950, 351);
             this.pnlInfosEngins.TabIndex = 5;
             // 
-            // pbEngin
+            // grpEtat
             // 
-            this.pbEngin.Location = new System.Drawing.Point(416, 54);
-            this.pbEngin.Name = "pbEngin";
-            this.pbEngin.Size = new System.Drawing.Size(500, 269);
-            this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbEngin.TabIndex = 15;
-            this.pbEngin.TabStop = false;
+            this.grpEtat.Controls.Add(this.lblDisponible);
+            this.grpEtat.Controls.Add(this.lblEnPanne);
+            this.grpEtat.Location = new System.Drawing.Point(41, 181);
+            this.grpEtat.Name = "grpEtat";
+            this.grpEtat.Size = new System.Drawing.Size(340, 142);
+            this.grpEtat.TabIndex = 17;
+            this.grpEtat.TabStop = false;
+            this.grpEtat.Text = "Etat";
             // 
-            // lblEnMission
+            // lblDisponible
             // 
-            this.lblEnMission.AutoSize = true;
-            this.lblEnMission.Location = new System.Drawing.Point(49, 48);
-            this.lblEnMission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEnMission.Name = "lblEnMission";
-            this.lblEnMission.Size = new System.Drawing.Size(129, 23);
-            this.lblEnMission.TabIndex = 10;
-            this.lblEnMission.Text = "Disponibilité : ";
+            this.lblDisponible.AutoSize = true;
+            this.lblDisponible.Location = new System.Drawing.Point(49, 48);
+            this.lblDisponible.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDisponible.Name = "lblDisponible";
+            this.lblDisponible.Size = new System.Drawing.Size(129, 23);
+            this.lblDisponible.TabIndex = 10;
+            this.lblDisponible.Text = "Disponibilité : ";
             // 
             // lblEnPanne
             // 
@@ -143,6 +146,46 @@
             this.lblEnPanne.Size = new System.Drawing.Size(98, 23);
             this.lblEnPanne.TabIndex = 9;
             this.lblEnPanne.Text = "En panne : ";
+            // 
+            // grpInfos
+            // 
+            this.grpInfos.Controls.Add(this.lblNumeroEngin);
+            this.grpInfos.Controls.Add(this.lblDateRCP);
+            this.grpInfos.Location = new System.Drawing.Point(41, 42);
+            this.grpInfos.Name = "grpInfos";
+            this.grpInfos.Size = new System.Drawing.Size(340, 133);
+            this.grpInfos.TabIndex = 16;
+            this.grpInfos.TabStop = false;
+            this.grpInfos.Text = "Informations";
+            // 
+            // lblNumeroEngin
+            // 
+            this.lblNumeroEngin.AutoSize = true;
+            this.lblNumeroEngin.Location = new System.Drawing.Point(49, 41);
+            this.lblNumeroEngin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNumeroEngin.Name = "lblNumeroEngin";
+            this.lblNumeroEngin.Size = new System.Drawing.Size(91, 23);
+            this.lblNumeroEngin.TabIndex = 15;
+            this.lblNumeroEngin.Text = "Numéro : ";
+            // 
+            // lblDateRCP
+            // 
+            this.lblDateRCP.AutoSize = true;
+            this.lblDateRCP.Location = new System.Drawing.Point(49, 83);
+            this.lblDateRCP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDateRCP.Name = "lblDateRCP";
+            this.lblDateRCP.Size = new System.Drawing.Size(171, 23);
+            this.lblDateRCP.TabIndex = 16;
+            this.lblDateRCP.Text = "Date de récéption : ";
+            // 
+            // pbEngin
+            // 
+            this.pbEngin.Location = new System.Drawing.Point(416, 54);
+            this.pbEngin.Name = "pbEngin";
+            this.pbEngin.Size = new System.Drawing.Size(500, 269);
+            this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbEngin.TabIndex = 15;
+            this.pbEngin.TabStop = false;
             // 
             // bttnFin
             // 
@@ -166,47 +209,15 @@
             this.bttnDebut.UseVisualStyleBackColor = true;
             this.bttnDebut.Click += new System.EventHandler(this.bttnDebut_Click);
             // 
-            // grpInfos
+            // bttnQuitter
             // 
-            this.grpInfos.Controls.Add(this.lblNumeroEngin);
-            this.grpInfos.Controls.Add(this.lblDateRCP);
-            this.grpInfos.Location = new System.Drawing.Point(41, 42);
-            this.grpInfos.Name = "grpInfos";
-            this.grpInfos.Size = new System.Drawing.Size(340, 133);
-            this.grpInfos.TabIndex = 16;
-            this.grpInfos.TabStop = false;
-            this.grpInfos.Text = "Informations";
-            // 
-            // grpEtat
-            // 
-            this.grpEtat.Controls.Add(this.lblEnMission);
-            this.grpEtat.Controls.Add(this.lblEnPanne);
-            this.grpEtat.Location = new System.Drawing.Point(41, 181);
-            this.grpEtat.Name = "grpEtat";
-            this.grpEtat.Size = new System.Drawing.Size(340, 142);
-            this.grpEtat.TabIndex = 17;
-            this.grpEtat.TabStop = false;
-            this.grpEtat.Text = "Etat";
-            // 
-            // lblNumeroEngin
-            // 
-            this.lblNumeroEngin.AutoSize = true;
-            this.lblNumeroEngin.Location = new System.Drawing.Point(49, 41);
-            this.lblNumeroEngin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNumeroEngin.Name = "lblNumeroEngin";
-            this.lblNumeroEngin.Size = new System.Drawing.Size(91, 23);
-            this.lblNumeroEngin.TabIndex = 15;
-            this.lblNumeroEngin.Text = "Numéro : ";
-            // 
-            // lblDateRCP
-            // 
-            this.lblDateRCP.AutoSize = true;
-            this.lblDateRCP.Location = new System.Drawing.Point(49, 83);
-            this.lblDateRCP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDateRCP.Name = "lblDateRCP";
-            this.lblDateRCP.Size = new System.Drawing.Size(171, 23);
-            this.lblDateRCP.TabIndex = 16;
-            this.lblDateRCP.Text = "Date de récéption : ";
+            this.bttnQuitter.Location = new System.Drawing.Point(874, 549);
+            this.bttnQuitter.Name = "bttnQuitter";
+            this.bttnQuitter.Size = new System.Drawing.Size(113, 49);
+            this.bttnQuitter.TabIndex = 8;
+            this.bttnQuitter.Text = "Quitter";
+            this.bttnQuitter.UseVisualStyleBackColor = true;
+            this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
             // 
             // FormParcoursEngins
             // 
@@ -215,13 +226,14 @@
             this.BackgroundImage = global::Caserne.Properties.Resources.Fond;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 611);
+            this.Controls.Add(this.bttnQuitter);
             this.Controls.Add(this.bttnDebut);
             this.Controls.Add(this.bttnFin);
             this.Controls.Add(this.pnlInfosEngins);
             this.Controls.Add(this.pnlChoixCaserne);
             this.Controls.Add(this.bttnSuivant);
             this.Controls.Add(this.bttnPrecedent);
-            this.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -231,11 +243,11 @@
             this.pnlChoixCaserne.ResumeLayout(false);
             this.pnlChoixCaserne.PerformLayout();
             this.pnlInfosEngins.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).EndInit();
-            this.grpInfos.ResumeLayout(false);
-            this.grpInfos.PerformLayout();
             this.grpEtat.ResumeLayout(false);
             this.grpEtat.PerformLayout();
+            this.grpInfos.ResumeLayout(false);
+            this.grpInfos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEngin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,7 +260,7 @@
         private System.Windows.Forms.ComboBox cmbChoixCaserne;
         private System.Windows.Forms.Panel pnlInfosEngins;
         private System.Windows.Forms.PictureBox pbEngin;
-        private System.Windows.Forms.Label lblEnMission;
+        private System.Windows.Forms.Label lblDisponible;
         private System.Windows.Forms.Label lblEnPanne;
         private System.Windows.Forms.Button bttnFin;
         private System.Windows.Forms.Button bttnDebut;
@@ -256,5 +268,6 @@
         private System.Windows.Forms.GroupBox grpInfos;
         private System.Windows.Forms.Label lblNumeroEngin;
         private System.Windows.Forms.Label lblDateRCP;
+        private System.Windows.Forms.Button bttnQuitter;
     }
 }
