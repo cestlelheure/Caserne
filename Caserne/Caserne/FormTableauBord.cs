@@ -573,18 +573,18 @@ namespace Caserne
 
         private void btnPersonnel_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    FormGestionPompier formPersonnel = new FormGestionPompier();
-            //    formPersonnel.Show();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Erreur lors de l'ouverture du formulaire du personnel : " + ex.Message,
-            //                    "Erreur",
-            //                    MessageBoxButtons.OK,
-            //                    MessageBoxIcon.Error);
-            //}
+            try
+            {
+                FormGestionPompier formPersonnel = new FormGestionPompier();
+                formPersonnel.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ouverture du formulaire du personnel : " + ex.Message,
+                                "Erreur",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
 
         public static void SauvegarderDonneesEnBase()

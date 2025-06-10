@@ -40,9 +40,10 @@ namespace Caserne
             // 
             this.lblInstruction.AutoSize = true;
             this.lblInstruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruction.Location = new System.Drawing.Point(12, 15);
+            this.lblInstruction.Location = new System.Drawing.Point(14, 18);
+            this.lblInstruction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInstruction.Name = "lblInstruction";
-            this.lblInstruction.Size = new System.Drawing.Size(264, 15);
+            this.lblInstruction.Size = new System.Drawing.Size(256, 15);
             this.lblInstruction.TabIndex = 0;
             this.lblInstruction.Text = "Veuillez saisir le compte rendu de la mission :";
             // 
@@ -52,36 +53,44 @@ namespace Caserne
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompteRendu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompteRendu.Location = new System.Drawing.Point(15, 40);
+            this.txtCompteRendu.Location = new System.Drawing.Point(18, 49);
+            this.txtCompteRendu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCompteRendu.Multiline = true;
             this.txtCompteRendu.Name = "txtCompteRendu";
             this.txtCompteRendu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtCompteRendu.Size = new System.Drawing.Size(460, 200);
+            this.txtCompteRendu.Size = new System.Drawing.Size(536, 245);
             this.txtCompteRendu.TabIndex = 1;
             this.txtCompteRendu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCompteRendu_KeyDown);
             // 
             // btnValider
             // 
             this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnValider.BackColor = System.Drawing.Color.IndianRed;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValider.Location = new System.Drawing.Point(235, 10);
+            this.btnValider.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnValider.Location = new System.Drawing.Point(274, 12);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(85, 30);
+            this.btnValider.Size = new System.Drawing.Size(99, 37);
             this.btnValider.TabIndex = 2;
             this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.UseVisualStyleBackColor = false;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // btnAnnuler
             // 
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAnnuler.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnuler.Location = new System.Drawing.Point(330, 10);
+            this.btnAnnuler.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAnnuler.Location = new System.Drawing.Point(385, 12);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(85, 30);
+            this.btnAnnuler.Size = new System.Drawing.Size(99, 37);
             this.btnAnnuler.TabIndex = 3;
             this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.UseVisualStyleBackColor = false;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // panelButtons
@@ -89,29 +98,32 @@ namespace Caserne
             this.panelButtons.Controls.Add(this.btnValider);
             this.panelButtons.Controls.Add(this.btnAnnuler);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 255);
+            this.panelButtons.Location = new System.Drawing.Point(0, 313);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(484, 50);
+            this.panelButtons.Size = new System.Drawing.Size(565, 62);
             this.panelButtons.TabIndex = 4;
             // 
             // FormCompteRendu
             // 
             this.AcceptButton = this.btnValider;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnnuler;
-            this.ClientSize = new System.Drawing.Size(484, 305);
+            this.ClientSize = new System.Drawing.Size(565, 375);
             this.Controls.Add(this.panelButtons);
             this.Controls.Add(this.txtCompteRendu);
             this.Controls.Add(this.lblInstruction);
+            this.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 250);
+            this.MinimumSize = new System.Drawing.Size(464, 299);
             this.Name = "FormCompteRendu";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compte Rendu de Mission";
             this.Load += new System.EventHandler(this.FormCompteRendu_Load);
             this.panelButtons.ResumeLayout(false);

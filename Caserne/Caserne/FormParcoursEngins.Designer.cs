@@ -41,10 +41,10 @@
             this.grpInfos = new System.Windows.Forms.GroupBox();
             this.lblNumeroEngin = new System.Windows.Forms.Label();
             this.lblDateRCP = new System.Windows.Forms.Label();
-            this.pbEngin = new System.Windows.Forms.PictureBox();
             this.bttnFin = new System.Windows.Forms.Button();
             this.bttnDebut = new System.Windows.Forms.Button();
             this.bttnQuitter = new System.Windows.Forms.Button();
+            this.pbEngin = new System.Windows.Forms.PictureBox();
             this.pnlChoixCaserne.SuspendLayout();
             this.pnlInfosEngins.SuspendLayout();
             this.grpEtat.SuspendLayout();
@@ -55,26 +55,28 @@
             // bttnPrecedent
             // 
             this.bttnPrecedent.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnPrecedent.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnPrecedent.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttnPrecedent.Location = new System.Drawing.Point(610, 626);
+            this.bttnPrecedent.Location = new System.Drawing.Point(628, 622);
             this.bttnPrecedent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnPrecedent.Name = "bttnPrecedent";
-            this.bttnPrecedent.Size = new System.Drawing.Size(94, 30);
+            this.bttnPrecedent.Size = new System.Drawing.Size(77, 67);
             this.bttnPrecedent.TabIndex = 2;
-            this.bttnPrecedent.Text = "<--";
+            this.bttnPrecedent.Text = "<";
             this.bttnPrecedent.UseVisualStyleBackColor = false;
             this.bttnPrecedent.Click += new System.EventHandler(this.bttnPrecedent_Click);
             // 
             // bttnSuivant
             // 
             this.bttnSuivant.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnSuivant.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnSuivant.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttnSuivant.Location = new System.Drawing.Point(762, 626);
+            this.bttnSuivant.Location = new System.Drawing.Point(780, 622);
             this.bttnSuivant.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bttnSuivant.Name = "bttnSuivant";
-            this.bttnSuivant.Size = new System.Drawing.Size(94, 30);
+            this.bttnSuivant.Size = new System.Drawing.Size(77, 67);
             this.bttnSuivant.TabIndex = 3;
-            this.bttnSuivant.Text = "-->";
+            this.bttnSuivant.Text = ">";
             this.bttnSuivant.UseVisualStyleBackColor = false;
             this.bttnSuivant.Click += new System.EventHandler(this.bttnSuivant_Click);
             // 
@@ -182,6 +184,46 @@
             this.lblDateRCP.TabIndex = 16;
             this.lblDateRCP.Text = "Date de récéption : ";
             // 
+            // bttnFin
+            // 
+            this.bttnFin.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnFin.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnFin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnFin.Location = new System.Drawing.Point(882, 622);
+            this.bttnFin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bttnFin.Name = "bttnFin";
+            this.bttnFin.Size = new System.Drawing.Size(77, 67);
+            this.bttnFin.TabIndex = 6;
+            this.bttnFin.Text = ">>\r\n";
+            this.bttnFin.UseVisualStyleBackColor = false;
+            this.bttnFin.Click += new System.EventHandler(this.bttnFin_Click);
+            // 
+            // bttnDebut
+            // 
+            this.bttnDebut.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnDebut.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDebut.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnDebut.Location = new System.Drawing.Point(526, 622);
+            this.bttnDebut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bttnDebut.Name = "bttnDebut";
+            this.bttnDebut.Size = new System.Drawing.Size(77, 67);
+            this.bttnDebut.TabIndex = 7;
+            this.bttnDebut.Text = "<<";
+            this.bttnDebut.UseVisualStyleBackColor = false;
+            this.bttnDebut.Click += new System.EventHandler(this.bttnDebut_Click);
+            // 
+            // bttnQuitter
+            // 
+            this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.bttnQuitter.Location = new System.Drawing.Point(1061, 617);
+            this.bttnQuitter.Name = "bttnQuitter";
+            this.bttnQuitter.Size = new System.Drawing.Size(154, 76);
+            this.bttnQuitter.TabIndex = 8;
+            this.bttnQuitter.Text = "Quitter";
+            this.bttnQuitter.UseVisualStyleBackColor = false;
+            this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
+            // 
             // pbEngin
             // 
             this.pbEngin.Location = new System.Drawing.Point(416, 54);
@@ -190,44 +232,6 @@
             this.pbEngin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbEngin.TabIndex = 15;
             this.pbEngin.TabStop = false;
-            // 
-            // bttnFin
-            // 
-            this.bttnFin.BackColor = System.Drawing.Color.IndianRed;
-            this.bttnFin.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttnFin.Location = new System.Drawing.Point(864, 626);
-            this.bttnFin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bttnFin.Name = "bttnFin";
-            this.bttnFin.Size = new System.Drawing.Size(94, 30);
-            this.bttnFin.TabIndex = 6;
-            this.bttnFin.Text = "-->";
-            this.bttnFin.UseVisualStyleBackColor = false;
-            this.bttnFin.Click += new System.EventHandler(this.bttnFin_Click);
-            // 
-            // bttnDebut
-            // 
-            this.bttnDebut.BackColor = System.Drawing.Color.IndianRed;
-            this.bttnDebut.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttnDebut.Location = new System.Drawing.Point(508, 626);
-            this.bttnDebut.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bttnDebut.Name = "bttnDebut";
-            this.bttnDebut.Size = new System.Drawing.Size(94, 30);
-            this.bttnDebut.TabIndex = 7;
-            this.bttnDebut.Text = "<--";
-            this.bttnDebut.UseVisualStyleBackColor = false;
-            this.bttnDebut.Click += new System.EventHandler(this.bttnDebut_Click);
-            // 
-            // bttnQuitter
-            // 
-            this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
-            this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bttnQuitter.Location = new System.Drawing.Point(1102, 617);
-            this.bttnQuitter.Name = "bttnQuitter";
-            this.bttnQuitter.Size = new System.Drawing.Size(113, 49);
-            this.bttnQuitter.TabIndex = 8;
-            this.bttnQuitter.Text = "Quitter";
-            this.bttnQuitter.UseVisualStyleBackColor = false;
-            this.bttnQuitter.Click += new System.EventHandler(this.bttnQuitter_Click);
             // 
             // FormParcoursEngins
             // 

@@ -93,7 +93,7 @@
             this.lblStatsToutesCasernes.AutoSize = true;
             this.lblStatsToutesCasernes.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatsToutesCasernes.ForeColor = System.Drawing.Color.Red;
-            this.lblStatsToutesCasernes.Location = new System.Drawing.Point(254, 327);
+            this.lblStatsToutesCasernes.Location = new System.Drawing.Point(254, 341);
             this.lblStatsToutesCasernes.Name = "lblStatsToutesCasernes";
             this.lblStatsToutesCasernes.Size = new System.Drawing.Size(329, 22);
             this.lblStatsToutesCasernes.TabIndex = 4;
