@@ -30,14 +30,14 @@
         {
             this.missionPanel = new System.Windows.Forms.Panel();
             this.lblNature = new System.Windows.Forms.Label();
+            this.picture1 = new System.Windows.Forms.PictureBox();
             this.lblCaserne = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
+            this.pic1 = new System.Windows.Forms.PictureBox();
             this.btnTerminer = new System.Windows.Forms.Button();
             this.btnPDF = new System.Windows.Forms.Button();
-            this.picture1 = new System.Windows.Forms.PictureBox();
-            this.pic1 = new System.Windows.Forms.PictureBox();
             this.missionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
@@ -68,6 +68,16 @@
             this.lblNature.Size = new System.Drawing.Size(141, 24);
             this.lblNature.TabIndex = 6;
             this.lblNature.Text = "NatureSinistre";
+            // 
+            // picture1
+            // 
+            this.picture1.Image = global::Caserne.Properties.Resources.sirene1;
+            this.picture1.Location = new System.Drawing.Point(-1, -1);
+            this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picture1.Name = "picture1";
+            this.picture1.Size = new System.Drawing.Size(136, 111);
+            this.picture1.TabIndex = 5;
+            this.picture1.TabStop = false;
             // 
             // lblCaserne
             // 
@@ -109,8 +119,18 @@
             this.lblDesc.TabIndex = 1;
             this.lblDesc.Text = "--> Description ...";
             // 
+            // pic1
+            // 
+            this.pic1.Location = new System.Drawing.Point(3, 133);
+            this.pic1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(100, 50);
+            this.pic1.TabIndex = 2;
+            this.pic1.TabStop = false;
+            // 
             // btnTerminer
             // 
+            this.btnTerminer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTerminer.Image = global::Caserne.Properties.Resources.terminer;
             this.btnTerminer.Location = new System.Drawing.Point(1044, 71);
             this.btnTerminer.Margin = new System.Windows.Forms.Padding(4);
@@ -121,6 +141,7 @@
             // 
             // btnPDF
             // 
+            this.btnPDF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPDF.Image = global::Caserne.Properties.Resources.pdf;
             this.btnPDF.Location = new System.Drawing.Point(1044, 10);
             this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
@@ -128,25 +149,6 @@
             this.btnPDF.Size = new System.Drawing.Size(53, 49);
             this.btnPDF.TabIndex = 2;
             this.btnPDF.UseVisualStyleBackColor = true;
-            // 
-            // picture1
-            // 
-            this.picture1.Image = global::Caserne.Properties.Resources.sirene1;
-            this.picture1.Location = new System.Drawing.Point(-1, -1);
-            this.picture1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picture1.Name = "picture1";
-            this.picture1.Size = new System.Drawing.Size(136, 111);
-            this.picture1.TabIndex = 5;
-            this.picture1.TabStop = false;
-            // 
-            // pic1
-            // 
-            this.pic1.Location = new System.Drawing.Point(3, 133);
-            this.pic1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(100, 50);
-            this.pic1.TabIndex = 2;
-            this.pic1.TabStop = false;
             // 
             // UcMission
             // 

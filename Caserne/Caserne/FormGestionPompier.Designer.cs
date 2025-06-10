@@ -44,6 +44,7 @@
             this.txtBoxGrade = new System.Windows.Forms.TextBox();
             this.lblGrade = new System.Windows.Forms.Label();
             this.lblED = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rdbVolontaire = new System.Windows.Forms.RadioButton();
             this.rdbProfessionnel = new System.Windows.Forms.RadioButton();
             this.lblMatricule = new System.Windows.Forms.Label();
@@ -66,34 +67,35 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxInfoPompier.SuspendLayout();
             this.grpBoxCarriere.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxInfoCarriere.SuspendLayout();
             this.grpBoxCarriere2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cboCaserne
             // 
+            this.cboCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCaserne.FormattingEnabled = true;
             this.cboCaserne.Location = new System.Drawing.Point(451, 213);
             this.cboCaserne.Margin = new System.Windows.Forms.Padding(4);
             this.cboCaserne.Name = "cboCaserne";
-            this.cboCaserne.Size = new System.Drawing.Size(195, 27);
+            this.cboCaserne.Size = new System.Drawing.Size(195, 29);
             this.cboCaserne.TabIndex = 1;
             this.cboCaserne.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // cboPompier
             // 
+            this.cboPompier.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPompier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPompier.FormattingEnabled = true;
             this.cboPompier.Location = new System.Drawing.Point(451, 282);
             this.cboPompier.Margin = new System.Windows.Forms.Padding(4);
             this.cboPompier.Name = "cboPompier";
-            this.cboPompier.Size = new System.Drawing.Size(196, 27);
+            this.cboPompier.Size = new System.Drawing.Size(196, 29);
             this.cboPompier.TabIndex = 2;
             this.cboPompier.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -103,7 +105,7 @@
             this.lblNom.Location = new System.Drawing.Point(18, 61);
             this.lblNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(51, 19);
+            this.lblNom.Size = new System.Drawing.Size(65, 23);
             this.lblNom.TabIndex = 2;
             this.lblNom.Text = "Nom : ";
             // 
@@ -113,7 +115,7 @@
             this.lblPrenom.Location = new System.Drawing.Point(18, 94);
             this.lblPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(68, 19);
+            this.lblPrenom.Size = new System.Drawing.Size(87, 23);
             this.lblPrenom.TabIndex = 3;
             this.lblPrenom.Text = "Prénom : ";
             // 
@@ -123,7 +125,7 @@
             this.lblSexe.Location = new System.Drawing.Point(18, 124);
             this.lblSexe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSexe.Name = "lblSexe";
-            this.lblSexe.Size = new System.Drawing.Size(49, 19);
+            this.lblSexe.Size = new System.Drawing.Size(63, 23);
             this.lblSexe.TabIndex = 4;
             this.lblSexe.Text = "Sexe : ";
             // 
@@ -133,7 +135,7 @@
             this.lblBD.Location = new System.Drawing.Point(18, 155);
             this.lblBD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBD.Name = "lblBD";
-            this.lblBD.Size = new System.Drawing.Size(131, 19);
+            this.lblBD.Size = new System.Drawing.Size(171, 23);
             this.lblBD.TabIndex = 5;
             this.lblBD.Text = "Date de naissance : ";
             // 
@@ -178,7 +180,7 @@
             this.lblBip.AutoSize = true;
             this.lblBip.Location = new System.Drawing.Point(220, 65);
             this.lblBip.Name = "lblBip";
-            this.lblBip.Size = new System.Drawing.Size(39, 19);
+            this.lblBip.Size = new System.Drawing.Size(51, 23);
             this.lblBip.TabIndex = 5;
             this.lblBip.Text = "Bip : ";
             // 
@@ -187,7 +189,7 @@
             this.lblTel.AutoSize = true;
             this.lblTel.Location = new System.Drawing.Point(22, 65);
             this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(83, 19);
+            this.lblTel.Size = new System.Drawing.Size(111, 23);
             this.lblTel.TabIndex = 4;
             this.lblTel.Text = "Téléphone : ";
             // 
@@ -207,7 +209,7 @@
             this.cboGrade.FormattingEnabled = true;
             this.cboGrade.Location = new System.Drawing.Point(169, 24);
             this.cboGrade.Name = "cboGrade";
-            this.cboGrade.Size = new System.Drawing.Size(176, 27);
+            this.cboGrade.Size = new System.Drawing.Size(176, 29);
             this.cboGrade.TabIndex = 2;
             this.cboGrade.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
@@ -216,7 +218,7 @@
             this.txtBoxGrade.Enabled = false;
             this.txtBoxGrade.Location = new System.Drawing.Point(74, 27);
             this.txtBoxGrade.Name = "txtBoxGrade";
-            this.txtBoxGrade.Size = new System.Drawing.Size(75, 24);
+            this.txtBoxGrade.Size = new System.Drawing.Size(75, 28);
             this.txtBoxGrade.TabIndex = 1;
             // 
             // lblGrade
@@ -224,7 +226,7 @@
             this.lblGrade.AutoSize = true;
             this.lblGrade.Location = new System.Drawing.Point(22, 30);
             this.lblGrade.Name = "lblGrade";
-            this.lblGrade.Size = new System.Drawing.Size(53, 19);
+            this.lblGrade.Size = new System.Drawing.Size(68, 23);
             this.lblGrade.TabIndex = 0;
             this.lblGrade.Text = "Grade :";
             // 
@@ -233,9 +235,17 @@
             this.lblED.AutoSize = true;
             this.lblED.Location = new System.Drawing.Point(18, 229);
             this.lblED.Name = "lblED";
-            this.lblED.Size = new System.Drawing.Size(128, 19);
+            this.lblED.Size = new System.Drawing.Size(167, 23);
             this.lblED.TabIndex = 10;
             this.lblED.Text = "Date d\'embauche : ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(425, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // rdbVolontaire
             // 
@@ -244,7 +254,7 @@
             this.rdbVolontaire.Enabled = false;
             this.rdbVolontaire.Location = new System.Drawing.Point(343, 190);
             this.rdbVolontaire.Name = "rdbVolontaire";
-            this.rdbVolontaire.Size = new System.Drawing.Size(90, 23);
+            this.rdbVolontaire.Size = new System.Drawing.Size(116, 27);
             this.rdbVolontaire.TabIndex = 8;
             this.rdbVolontaire.TabStop = true;
             this.rdbVolontaire.Text = "Volontaire";
@@ -257,7 +267,7 @@
             this.rdbProfessionnel.Enabled = false;
             this.rdbProfessionnel.Location = new System.Drawing.Point(101, 190);
             this.rdbProfessionnel.Name = "rdbProfessionnel";
-            this.rdbProfessionnel.Size = new System.Drawing.Size(109, 23);
+            this.rdbProfessionnel.Size = new System.Drawing.Size(141, 27);
             this.rdbProfessionnel.TabIndex = 7;
             this.rdbProfessionnel.TabStop = true;
             this.rdbProfessionnel.Text = "Professionnel";
@@ -269,7 +279,7 @@
             this.lblMatricule.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatricule.Location = new System.Drawing.Point(178, 21);
             this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(115, 28);
+            this.lblMatricule.Size = new System.Drawing.Size(144, 35);
             this.lblMatricule.TabIndex = 6;
             this.lblMatricule.Text = "Matricule ";
             // 
@@ -330,19 +340,19 @@
             // lstBoxHabilitations
             // 
             this.lstBoxHabilitations.FormattingEnabled = true;
-            this.lstBoxHabilitations.ItemHeight = 19;
+            this.lstBoxHabilitations.ItemHeight = 21;
             this.lstBoxHabilitations.Location = new System.Drawing.Point(55, 85);
             this.lstBoxHabilitations.Name = "lstBoxHabilitations";
-            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 118);
+            this.lstBoxHabilitations.Size = new System.Drawing.Size(449, 109);
             this.lstBoxHabilitations.TabIndex = 18;
             // 
             // lstBoxAffectations
             // 
             this.lstBoxAffectations.FormattingEnabled = true;
-            this.lstBoxAffectations.ItemHeight = 19;
+            this.lstBoxAffectations.ItemHeight = 21;
             this.lstBoxAffectations.Location = new System.Drawing.Point(55, 229);
             this.lstBoxAffectations.Name = "lstBoxAffectations";
-            this.lstBoxAffectations.Size = new System.Drawing.Size(449, 42);
+            this.lstBoxAffectations.Size = new System.Drawing.Size(449, 25);
             this.lstBoxAffectations.TabIndex = 7;
             // 
             // lblAffectations
@@ -350,7 +360,7 @@
             this.lblAffectations.AutoSize = true;
             this.lblAffectations.Location = new System.Drawing.Point(51, 207);
             this.lblAffectations.Name = "lblAffectations";
-            this.lblAffectations.Size = new System.Drawing.Size(142, 19);
+            this.lblAffectations.Size = new System.Drawing.Size(186, 23);
             this.lblAffectations.TabIndex = 6;
             this.lblAffectations.Text = "Affectations passées :";
             // 
@@ -359,7 +369,7 @@
             this.lblHabilitations.AutoSize = true;
             this.lblHabilitations.Location = new System.Drawing.Point(51, 63);
             this.lblHabilitations.Name = "lblHabilitations";
-            this.lblHabilitations.Size = new System.Drawing.Size(92, 19);
+            this.lblHabilitations.Size = new System.Drawing.Size(122, 23);
             this.lblHabilitations.TabIndex = 4;
             this.lblHabilitations.Text = "Habilitations :";
             // 
@@ -369,7 +379,7 @@
             this.cboNewCaserne.FormattingEnabled = true;
             this.cboNewCaserne.Location = new System.Drawing.Point(240, 30);
             this.cboNewCaserne.Name = "cboNewCaserne";
-            this.cboNewCaserne.Size = new System.Drawing.Size(264, 27);
+            this.cboNewCaserne.Size = new System.Drawing.Size(264, 29);
             this.cboNewCaserne.TabIndex = 3;
             // 
             // lblCaserne
@@ -377,7 +387,7 @@
             this.lblCaserne.AutoSize = true;
             this.lblCaserne.Location = new System.Drawing.Point(51, 33);
             this.lblCaserne.Name = "lblCaserne";
-            this.lblCaserne.Size = new System.Drawing.Size(171, 19);
+            this.lblCaserne.Size = new System.Drawing.Size(221, 23);
             this.lblCaserne.TabIndex = 2;
             this.lblCaserne.Text = "Caserne de rattachement :";
             // 
@@ -386,7 +396,7 @@
             this.cBoxConge.AutoSize = true;
             this.cBoxConge.Location = new System.Drawing.Point(38, 282);
             this.cBoxConge.Name = "cBoxConge";
-            this.cBoxConge.Size = new System.Drawing.Size(85, 23);
+            this.cBoxConge.Size = new System.Drawing.Size(107, 27);
             this.cBoxConge.TabIndex = 1;
             this.cBoxConge.Text = "En congé";
             this.cBoxConge.UseVisualStyleBackColor = true;
@@ -421,7 +431,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(375, 216);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 19);
+            this.label1.Size = new System.Drawing.Size(88, 23);
             this.label1.TabIndex = 14;
             this.label1.Text = "Caserne : ";
             // 
@@ -430,13 +440,14 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(375, 285);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 19);
+            this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 15;
             this.label2.Text = "Pompier :";
             // 
             // btnRetour
             // 
             this.btnRetour.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRetour.Image = ((System.Drawing.Image)(resources.GetObject("btnRetour.Image")));
             this.btnRetour.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -451,6 +462,7 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.IndianRed;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -465,6 +477,7 @@
             // btnNouveau
             // 
             this.btnNouveau.BackColor = System.Drawing.Color.IndianRed;
+            this.btnNouveau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNouveau.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNouveau.Image = ((System.Drawing.Image)(resources.GetObject("btnNouveau.Image")));
             this.btnNouveau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -486,17 +499,9 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(425, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormGestionPompier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1420, 819);
@@ -527,11 +532,11 @@
             this.grpBoxInfoPompier.PerformLayout();
             this.grpBoxCarriere.ResumeLayout(false);
             this.grpBoxCarriere.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxInfoCarriere.ResumeLayout(false);
             this.grpBoxCarriere2.ResumeLayout(false);
             this.grpBoxCarriere2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

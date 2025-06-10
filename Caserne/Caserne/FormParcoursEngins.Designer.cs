@@ -56,6 +56,7 @@
             // bttnPrecedent
             // 
             this.bttnPrecedent.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnPrecedent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnPrecedent.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnPrecedent.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bttnPrecedent.Location = new System.Drawing.Point(628, 622);
@@ -70,6 +71,7 @@
             // bttnSuivant
             // 
             this.bttnSuivant.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnSuivant.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnSuivant.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bttnSuivant.Location = new System.Drawing.Point(780, 622);
@@ -97,18 +99,19 @@
             this.lblChoixCaserne.Location = new System.Drawing.Point(20, 23);
             this.lblChoixCaserne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChoixCaserne.Name = "lblChoixCaserne";
-            this.lblChoixCaserne.Size = new System.Drawing.Size(146, 20);
+            this.lblChoixCaserne.Size = new System.Drawing.Size(177, 23);
             this.lblChoixCaserne.TabIndex = 6;
             this.lblChoixCaserne.Text = "Choix de la caserne :";
             // 
             // cmbChoixCaserne
             // 
+            this.cmbChoixCaserne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbChoixCaserne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChoixCaserne.FormattingEnabled = true;
             this.cmbChoixCaserne.Location = new System.Drawing.Point(295, 20);
             this.cmbChoixCaserne.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbChoixCaserne.Name = "cmbChoixCaserne";
-            this.cmbChoixCaserne.Size = new System.Drawing.Size(639, 28);
+            this.cmbChoixCaserne.Size = new System.Drawing.Size(639, 31);
             this.cmbChoixCaserne.TabIndex = 5;
             this.cmbChoixCaserne.SelectedIndexChanged += new System.EventHandler(this.cmbChoixCaserne_SelectedIndexChanged);
             // 
@@ -140,7 +143,7 @@
             this.lblDisponible.Location = new System.Drawing.Point(49, 48);
             this.lblDisponible.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDisponible.Name = "lblDisponible";
-            this.lblDisponible.Size = new System.Drawing.Size(106, 20);
+            this.lblDisponible.Size = new System.Drawing.Size(129, 23);
             this.lblDisponible.TabIndex = 10;
             this.lblDisponible.Text = "Disponibilité : ";
             // 
@@ -150,7 +153,7 @@
             this.lblEnPanne.Location = new System.Drawing.Point(49, 94);
             this.lblEnPanne.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEnPanne.Name = "lblEnPanne";
-            this.lblEnPanne.Size = new System.Drawing.Size(84, 20);
+            this.lblEnPanne.Size = new System.Drawing.Size(98, 23);
             this.lblEnPanne.TabIndex = 9;
             this.lblEnPanne.Text = "En panne : ";
             // 
@@ -171,7 +174,7 @@
             this.lblNumeroEngin.Location = new System.Drawing.Point(49, 41);
             this.lblNumeroEngin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNumeroEngin.Name = "lblNumeroEngin";
-            this.lblNumeroEngin.Size = new System.Drawing.Size(75, 20);
+            this.lblNumeroEngin.Size = new System.Drawing.Size(91, 23);
             this.lblNumeroEngin.TabIndex = 15;
             this.lblNumeroEngin.Text = "Numéro : ";
             // 
@@ -181,7 +184,7 @@
             this.lblDateRCP.Location = new System.Drawing.Point(49, 83);
             this.lblDateRCP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateRCP.Name = "lblDateRCP";
-            this.lblDateRCP.Size = new System.Drawing.Size(141, 20);
+            this.lblDateRCP.Size = new System.Drawing.Size(171, 23);
             this.lblDateRCP.TabIndex = 16;
             this.lblDateRCP.Text = "Date de récéption : ";
             // 
@@ -197,6 +200,7 @@
             // bttnFin
             // 
             this.bttnFin.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnFin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnFin.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnFin.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bttnFin.Location = new System.Drawing.Point(882, 622);
@@ -211,6 +215,7 @@
             // bttnDebut
             // 
             this.bttnDebut.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnDebut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnDebut.Font = new System.Drawing.Font("MS PGothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttnDebut.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bttnDebut.Location = new System.Drawing.Point(526, 622);
@@ -225,6 +230,7 @@
             // bttnQuitter
             // 
             this.bttnQuitter.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnQuitter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnQuitter.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bttnQuitter.Location = new System.Drawing.Point(1061, 617);
             this.bttnQuitter.Name = "bttnQuitter";
@@ -239,12 +245,12 @@
             this.lblNumPage.AutoSize = true;
             this.lblNumPage.Location = new System.Drawing.Point(707, 709);
             this.lblNumPage.Name = "lblNumPage";
-            this.lblNumPage.Size = new System.Drawing.Size(0, 20);
+            this.lblNumPage.Size = new System.Drawing.Size(0, 23);
             this.lblNumPage.TabIndex = 9;
             // 
             // FormParcoursEngins
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

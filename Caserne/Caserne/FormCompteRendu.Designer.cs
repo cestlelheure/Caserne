@@ -43,7 +43,7 @@ namespace Caserne
             this.lblInstruction.Location = new System.Drawing.Point(14, 18);
             this.lblInstruction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInstruction.Name = "lblInstruction";
-            this.lblInstruction.Size = new System.Drawing.Size(256, 15);
+            this.lblInstruction.Size = new System.Drawing.Size(306, 18);
             this.lblInstruction.TabIndex = 0;
             this.lblInstruction.Text = "Veuillez saisir le compte rendu de la mission :";
             // 
@@ -54,7 +54,7 @@ namespace Caserne
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCompteRendu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompteRendu.Location = new System.Drawing.Point(18, 49);
-            this.txtCompteRendu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCompteRendu.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompteRendu.Multiline = true;
             this.txtCompteRendu.Name = "txtCompteRendu";
             this.txtCompteRendu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -66,10 +66,11 @@ namespace Caserne
             // 
             this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnValider.BackColor = System.Drawing.Color.IndianRed;
+            this.btnValider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValider.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnValider.Location = new System.Drawing.Point(274, 12);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(99, 37);
             this.btnValider.TabIndex = 2;
@@ -81,11 +82,12 @@ namespace Caserne
             // 
             this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnnuler.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAnnuler.Location = new System.Drawing.Point(385, 12);
-            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(99, 37);
             this.btnAnnuler.TabIndex = 3;
@@ -99,7 +101,7 @@ namespace Caserne
             this.panelButtons.Controls.Add(this.btnAnnuler);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtons.Location = new System.Drawing.Point(0, 313);
-            this.panelButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(4);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(565, 62);
             this.panelButtons.TabIndex = 4;
@@ -107,7 +109,7 @@ namespace Caserne
             // FormCompteRendu
             // 
             this.AcceptButton = this.btnValider;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnnuler;
             this.ClientSize = new System.Drawing.Size(565, 375);
@@ -116,7 +118,7 @@ namespace Caserne
             this.Controls.Add(this.lblInstruction);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(464, 299);

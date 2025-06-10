@@ -22,15 +22,15 @@ namespace Caserne
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTableauBord));
             this.panelMain = new System.Windows.Forms.Panel();
             this.btnMission = new System.Windows.Forms.Button();
-            this.lblTitre = new System.Windows.Forms.Label();
-            this.chkEnCours = new System.Windows.Forms.CheckBox();
             this.flowMissions = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkEnCours = new System.Windows.Forms.CheckBox();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
             this.btnPersonnel = new System.Windows.Forms.Button();
             this.btnEngins = new System.Windows.Forms.Button();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelMain.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -51,6 +51,7 @@ namespace Caserne
             // 
             // btnMission
             // 
+            this.btnMission.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMission.Location = new System.Drawing.Point(573, 8);
             this.btnMission.Name = "btnMission";
@@ -59,27 +60,6 @@ namespace Caserne
             this.btnMission.Text = "Nouvelle mission";
             this.btnMission.UseVisualStyleBackColor = true;
             this.btnMission.Click += new System.EventHandler(this.btnMission_Click);
-            // 
-            // lblTitre
-            // 
-            this.lblTitre.AutoSize = true;
-            this.lblTitre.Font = new System.Drawing.Font("Arial", 21F, System.Drawing.FontStyle.Bold);
-            this.lblTitre.Location = new System.Drawing.Point(270, 20);
-            this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(232, 33);
-            this.lblTitre.TabIndex = 0;
-            this.lblTitre.Text = "Tableau de bord";
-            // 
-            // chkEnCours
-            // 
-            this.chkEnCours.AutoSize = true;
-            this.chkEnCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEnCours.Location = new System.Drawing.Point(16, 12);
-            this.chkEnCours.Name = "chkEnCours";
-            this.chkEnCours.Size = new System.Drawing.Size(87, 22);
-            this.chkEnCours.TabIndex = 1;
-            this.chkEnCours.Text = "En cours";
-            this.chkEnCours.CheckedChanged += new System.EventHandler(this.chkEnCours_CheckedChanged);
             // 
             // flowMissions
             // 
@@ -90,6 +70,28 @@ namespace Caserne
             this.flowMissions.Size = new System.Drawing.Size(993, 665);
             this.flowMissions.TabIndex = 2;
             this.flowMissions.WrapContents = false;
+            // 
+            // chkEnCours
+            // 
+            this.chkEnCours.AutoSize = true;
+            this.chkEnCours.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkEnCours.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEnCours.Location = new System.Drawing.Point(16, 12);
+            this.chkEnCours.Name = "chkEnCours";
+            this.chkEnCours.Size = new System.Drawing.Size(108, 28);
+            this.chkEnCours.TabIndex = 1;
+            this.chkEnCours.Text = "En cours";
+            this.chkEnCours.CheckedChanged += new System.EventHandler(this.chkEnCours_CheckedChanged);
+            // 
+            // lblTitre
+            // 
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Arial", 21F, System.Drawing.FontStyle.Bold);
+            this.lblTitre.Location = new System.Drawing.Point(270, 20);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(280, 41);
+            this.lblTitre.TabIndex = 0;
+            this.lblTitre.Text = "Tableau de bord";
             // 
             // panelMenu
             // 
@@ -105,8 +107,18 @@ namespace Caserne
             this.panelMenu.Size = new System.Drawing.Size(471, 831);
             this.panelMenu.TabIndex = 1;
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(24, 285);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(415, 415);
+            this.pbLogo.TabIndex = 4;
+            this.pbLogo.TabStop = false;
+            // 
             // btnQuitter
             // 
+            this.btnQuitter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuitter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnQuitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitter.ForeColor = System.Drawing.SystemColors.Control;
@@ -121,6 +133,7 @@ namespace Caserne
             // 
             // btnStats
             // 
+            this.btnStats.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStats.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStats.ForeColor = System.Drawing.Color.Snow;
@@ -135,6 +148,7 @@ namespace Caserne
             // 
             // btnPersonnel
             // 
+            this.btnPersonnel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPersonnel.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPersonnel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPersonnel.ForeColor = System.Drawing.Color.Snow;
@@ -149,6 +163,7 @@ namespace Caserne
             // 
             // btnEngins
             // 
+            this.btnEngins.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEngins.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEngins.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEngins.ForeColor = System.Drawing.Color.Snow;
@@ -160,15 +175,6 @@ namespace Caserne
             this.btnEngins.TabIndex = 3;
             this.btnEngins.Text = "Gestion des engins";
             this.btnEngins.Click += new System.EventHandler(this.btnEngins_Click);
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(24, 285);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(415, 415);
-            this.pbLogo.TabIndex = 4;
-            this.pbLogo.TabStop = false;
             // 
             // FrmTableauBord
             // 

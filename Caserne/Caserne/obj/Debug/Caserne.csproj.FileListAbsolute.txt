@@ -16,3 +16,11 @@ C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.exe
 C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.pdb
 C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormCompteRendu.resources
 C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormLogin.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.UserControlRessourcesMobilisees.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FrmTableauBord.resources
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\itextsharp.dll
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\arthu\A21\Caserne\Caserne\bin\Debug\itextsharp.xml
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormStats.resources
+C:\Users\arthu\A21\Caserne\Caserne\obj\Debug\Caserne.FormAjoutPompier.resources

@@ -42,7 +42,7 @@
             this.lblID.AutoSize = true;
             this.lblID.Location = new System.Drawing.Point(59, 60);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(79, 19);
+            this.lblID.Size = new System.Drawing.Size(102, 23);
             this.lblID.TabIndex = 0;
             this.lblID.Text = "Identifiant :";
             // 
@@ -51,7 +51,7 @@
             this.lblMDP.AutoSize = true;
             this.lblMDP.Location = new System.Drawing.Point(59, 112);
             this.lblMDP.Name = "lblMDP";
-            this.lblMDP.Size = new System.Drawing.Size(103, 19);
+            this.lblMDP.Size = new System.Drawing.Size(135, 23);
             this.lblMDP.TabIndex = 1;
             this.lblMDP.Text = "Mot de passe : ";
             // 
@@ -59,41 +59,47 @@
             // 
             this.txtBoxID.Location = new System.Drawing.Point(184, 58);
             this.txtBoxID.Name = "txtBoxID";
-            this.txtBoxID.Size = new System.Drawing.Size(152, 24);
+            this.txtBoxID.Size = new System.Drawing.Size(152, 28);
             this.txtBoxID.TabIndex = 1;
             // 
             // txtBoxMDP
             // 
             this.txtBoxMDP.Location = new System.Drawing.Point(184, 112);
             this.txtBoxMDP.Name = "txtBoxMDP";
-            this.txtBoxMDP.Size = new System.Drawing.Size(152, 24);
+            this.txtBoxMDP.Size = new System.Drawing.Size(152, 28);
             this.txtBoxMDP.TabIndex = 2;
             this.txtBoxMDP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxMDP_KeyDown);
-            this.txtBoxMDP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBoxMDP_MouseDown);
+            this.txtBoxMDP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxMDP_KeyPress);
             // 
             // btnConfirmer
             // 
+            this.btnConfirmer.BackColor = System.Drawing.Color.IndianRed;
+            this.btnConfirmer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmer.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnConfirmer.Location = new System.Drawing.Point(351, 196);
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Size = new System.Drawing.Size(90, 36);
             this.btnConfirmer.TabIndex = 4;
             this.btnConfirmer.Text = "Valider";
-            this.btnConfirmer.UseVisualStyleBackColor = true;
+            this.btnConfirmer.UseVisualStyleBackColor = false;
             this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
             // 
             // btnOeil
             // 
+            this.btnOeil.BackColor = System.Drawing.Color.IndianRed;
+            this.btnOeil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOeil.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnOeil.Location = new System.Drawing.Point(342, 112);
             this.btnOeil.Name = "btnOeil";
             this.btnOeil.Size = new System.Drawing.Size(35, 24);
             this.btnOeil.TabIndex = 3;
             this.btnOeil.Text = "👁";
-            this.btnOeil.UseVisualStyleBackColor = true;
+            this.btnOeil.UseVisualStyleBackColor = false;
             this.btnOeil.Click += new System.EventHandler(this.btnOeil_Click);
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 248);
             this.Controls.Add(this.btnOeil);

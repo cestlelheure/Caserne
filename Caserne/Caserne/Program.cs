@@ -16,12 +16,7 @@ namespace Caserne
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCreationMission());
-            //Application.Run(new FormGestionPompier());
-            Application.Run(new FormParcoursEngins());
-            //Application.Run(new FrmTableauBord());
-            Application.Run(new FormLogin());
-            Application.Run(new FormGestionPompier());
+            Application.Run(new FrmTableauBord());
 
         }
     }
